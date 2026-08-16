@@ -660,7 +660,7 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "old-uyghur",
-    fontHint: "'Noto Sans Old Uyghur', serif",
+    fontHint: "'Noto Serif Old Uyghur', serif",
     sample: "𐽰𐽱𐽲",
     sampleNote: "Old Uyghur aleph, beth, gimel.",
     name: "Old Uyghur",

@@ -183,3 +183,40 @@ DetailLeaf (hero block). Verify new specimens with
 (shown only at ≥3 groups). Tapping a chip scrolls that section's running head to
 the top; an onScroll spy marks the current family and scrolls the active chip into
 view. `jumpingTo` ref suppresses the spy during the smooth-scroll animation.
+
+## Specimen rendering bug (round 4) — root cause and fix
+
+Reported from a real iPhone: many plate nodes drew a Latin name with a blank
+where the specimen should be (Wancho, Tangsa, Adlam, Mundari Bani, Pahawh Hmong,
+N'Ko, Medefaidrin, Bamum, Vai, Cherokee, Georgian, Armenian, Gothic, Coptic,
+Runic, Glagolitic, Old Permic, Paleo-Hebrew, Samaritan, Serbian Cyrillic, Han).
+
+**Not a font problem, and not missing data.** Every one of those entries has an
+endonym and a fontHint, and all 123 needed families resolve from Google Fonts
+(each stylesheet fetched with an iPhone UA returned 200 with @font-face rules).
+
+The cause was two different visibility gates in `Dendrogram.tsx`:
+
+```
+glyph: span * max(radius, 60)      * k > 30
+label: span * max(radius + 12, 60) * k > 17
+```
+
+A glyph needed ~1.8x the arc a name needed, so a wide band of nodes passed the
+label gate and failed the glyph gate. At the phone's default zoom (k≈0.59) a node
+needed 51px of arc to show its script. Fix: the specimen now shares the label's
+gate, and crowding is absorbed by glyph SIZE (a `roomy` arc test picks the larger
+of two type sizes) rather than by hiding the specimen.
+
+### Google Fonts families that do NOT exist (return HTTP 400)
+`Noto Sans Old Uyghur`, `Noto Sans Tangut`, `Noto Sans Tigalari`,
+`Noto Serif Tulu Tigalari`. Removed from `index.html`.
+
+Self-hosting availability, checked against
+`https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/<Family>/hinted/ttf/<Family>-Regular.ttf`:
+- `NotoSerifTangut` → 200, available
+- `NotoSerifOldUyghur` → exists in the repo (dir listing), use SERIF not SANS
+- Tigalari → NOT in the notofonts repo at all (207 dirs, no Tigalari)
+
+Also removed 3 exactly duplicated font stylesheet links from `index.html`
+(13 links → 10).

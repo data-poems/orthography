@@ -328,6 +328,23 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
+
+  /* The specimen sheet is meant to leave the screen. Print it as a broadside:
+     no chrome, ink on paper, and never a specimen split across a page break. */
+  @media print {
+    .grain::after {
+      display: none;
+    }
+    section {
+      break-inside: auto;
+    }
+    li {
+      break-inside: avoid;
+    }
+    h2 {
+      break-after: avoid;
+    }
+  }
   .flex {
     min-height: 0;
     min-width: 0;
@@ -435,4 +452,21 @@
   [style*="fade-in"] {
     animation: none !important;
   }
+}
+
+/**
+ * Two scripts have no Google Fonts webfont, so their specimens are self-hosted
+ * from the Noto project, subset to the codepoints this atlas actually shows.
+ * Without these, Tangut and Old Uyghur render as tofu on every device that
+ * lacks system coverage — which is nearly all of them.
+ */
+@font-face {
+  font-family: "Noto Serif Tangut";
+  src: url("/manus-storage/tangut-sub_bf74322c.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Serif Old Uyghur";
+  src: url("/manus-storage/olduyghur-sub_cad54cab.woff2") format("woff2");
+  font-display: swap;
 }

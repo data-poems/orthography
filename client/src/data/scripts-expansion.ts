@@ -56,9 +56,7 @@ export const expansionScripts: ScriptNode[] = [
     iso: "Tutg",
     users: "none living",
     languages: ["Tulu", "Sanskrit", "Kannada"],
-    sample: "𑎠 𑎡 𑎢 𑎣 𑎤 𑎥",
-    sampleNote: "tuḷu, the language the script was chiefly used to write, in Tigalari.",
-    fontHint: "'Noto Serif Tulu Tigalari', serif",
+    sampleNote: "Encoded in Unicode 16.0 (2024) at U+11380, but no released font yet covers the block, so no specimen can be shown here honestly.",
     tagline: "Tigalari is a Southern Brahmic script historically used in coastal Karnataka to write Sanskrit, Tulu, and Kannada.",
     detail: [
       "The Tigalari script, also known as the Tulu script, evolved from the Grantha script around the 12th century CE. It was primarily developed and used by Tulu-speaking Brahmins, such as the Shivalli Brahmins, as well as Kannada-speaking Havyaka and Kota Brahmins in the coastal and Malnad regions of Karnataka. The script was initially adapted to write Sanskrit for religious and Vedic texts, solving the problem of accurately recording complex Sanskrit phonetics in a regional context. Over time, it was also used to write the Tulu and Kannada languages. The oldest known stone inscription in the script, found at the Sri Veeranarayana temple in Kulashekara, dates to 1159 CE.",

@@ -400,20 +400,42 @@ export default function Dendrogram({
                           n.depth <= 2 || n.origin ? 6 : 4,
                         );
                         if (spec.kind === "none") return null;
-                        if (n.span * Math.max(n.radius, 60) * k <= 30) return null;
+                        /**
+                         * The specimen is the hero of this atlas, so it shares the
+                         * label's gate rather than needing ~1.8x the arc. Any node
+                         * whose name is drawn also shows its script writing itself;
+                         * previously a whole band of nodes drew a Latin name with a
+                         * conspicuous blank above it.
+                         *
+                         * Glyph SIZE, not visibility, absorbs the crowding: where
+                         * the arc is tight the specimen sets smaller instead of
+                         * vanishing.
+                         */
+                        const arc = n.span * Math.max(n.radius + 12, 60) * k;
+                        const roomy = arc > 34;
+                        const big = n.depth <= 2 || n.origin;
+                        const size = compact
+                          ? roomy
+                            ? big
+                              ? 24
+                              : 18
+                            : big
+                              ? 18
+                              : 13.5
+                          : roomy
+                            ? big
+                              ? 20
+                              : 15
+                            : big
+                              ? 15.5
+                              : 12;
                         return (
                         <text
                           textAnchor={lt.anchor}
                           dy="-0.92em"
                           style={{
                             fontFamily: spec.font,
-                            fontSize: compact
-                              ? n.depth <= 2 || n.origin
-                                ? 24
-                                : 18
-                              : n.depth <= 2 || n.origin
-                                ? 20
-                                : 15,
+                            fontSize: size,
                             fill: st.isActive ? "var(--rubric)" : "var(--ink)",
                             fillOpacity: st.isActive ? 1 : 0.82,
                             paintOrder: "stroke",

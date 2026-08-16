@@ -6,10 +6,10 @@
  */
 import { Link } from "wouter";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import PlateNav from "@/components/PlateNav";
 import { allScripts, familyColors, familyLabels, type Family } from "@/data";
 
 const SPECIMENS = "/manus-storage/inscription-specimens-web_237d6682.png";
-const LOGO = "/manus-storage/aleph-mark-web_d69c2b44.png";
 
 function Rubric({ children }: { children: React.ReactNode }) {
   return (
@@ -33,23 +33,7 @@ export default function About() {
     <div className="grain min-h-screen bg-background">
       <header className="sticky top-0 z-20 border-b border-border bg-[var(--vellum-deep)]/95 px-4 py-2.5 backdrop-blur-sm">
         <div className="mx-auto flex max-w-5xl items-center gap-4">
-          <Link
-            href="/"
-            className="caption inline-flex items-center gap-1.5 hover:text-[var(--rubric)]">
-            <ArrowLeft size={12} /> The chart
-          </Link>
-          <div className="ml-auto flex items-baseline gap-2.5">
-            <img src={LOGO} alt="" className="h-6 w-6 self-center" />
-            <span
-              className="text-[0.92rem] uppercase leading-none"
-              style={{
-                fontFamily: "var(--font-display)",
-                letterSpacing: "0.17em",
-                fontWeight: 600,
-              }}>
-              The Tree of Writing
-            </span>
-          </div>
+          <PlateNav />
         </div>
       </header>
 
@@ -67,7 +51,7 @@ export default function About() {
                         <h1 className="max-w-[36rem] text-[2.6rem] leading-[1.04]">
               Four inventions, and everything that followed
             </h1>
-            <div className="caption mt-2.5">Plate II · specimens in stone and bone</div>
+            <div className="caption mt-2.5">Plate III · the argument</div>
           </div>
         </div>
       </div>
@@ -217,6 +201,11 @@ export default function About() {
               href="/"
               className="caption inline-flex items-center gap-1.5 border border-border px-2.5 py-1 hover:border-[var(--rubric)] hover:text-[var(--rubric)]">
               <ArrowLeft size={11} /> Return to the chart
+            </Link>
+            <Link
+              href="/specimens"
+              className="caption inline-flex items-center gap-1.5 border border-border px-2.5 py-1 hover:border-[var(--rubric)] hover:text-[var(--rubric)]">
+              The specimen sheet
             </Link>
             <a
               href="https://lukesteuber.com"

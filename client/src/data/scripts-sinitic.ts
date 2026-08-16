@@ -448,6 +448,7 @@ export const siniticScripts: ScriptNode[] = [
     id: "tangut",
     name: "Tangut",
     endonym: "𗼇𗟲",
+    fontHint: "'Noto Serif Tangut', serif",
     parent: "chinese-traditional",
     certainty: "stimulus",
     family: "sinitic",
