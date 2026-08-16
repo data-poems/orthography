@@ -28,9 +28,9 @@
 - [x] Build and typecheck pass; poster-download browser acceptance test passes
 
 ## 4. Publish to GitHub
-- [ ] Create `lukeslp/orthography` as PRIVATE
+- [x] Create `lukeslp/orthography` as PRIVATE
 - [x] Add a README describing the atlas, the data model, and the diagnostics
-- [ ] Commit the project and push
-- [ ] Confirm the pushed tree excludes node_modules and build output
+- [x] Commit the project and push (`e6da402`)
+- [x] Confirm the pushed tree excludes node_modules and build output
 
 - [ ] Checkpoint and deliver
