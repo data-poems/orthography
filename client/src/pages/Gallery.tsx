@@ -6,12 +6,13 @@
  * separated by hairlines on a shared vellum ground, the way a broadside is set.
  * Vermilion only for the running rubric, the active arrangement, and hover.
  */
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, Printer } from "lucide-react";
+import { ArrowLeft, Download, Loader2, Printer } from "lucide-react";
 import DetailLeaf from "@/components/DetailLeaf";
 import PlateNav from "@/components/PlateNav";
 import { specimenOf } from "@/lib/specimen";
+import { downloadPosterPdf } from "@/lib/poster-download";
 import { useViewport } from "@/hooks/useViewport";
 import {
   allScripts,
@@ -73,9 +74,37 @@ interface Group {
 export default function Gallery() {
   const viewport = useViewport();
   const isPhone = viewport === "phone";
+  const sheetRef = useRef<HTMLElement | null>(null);
   const [arrangement, setArrangement] = useState<Arrangement>("family");
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [downloading, setDownloading] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(() => {
+    const id = new URLSearchParams(window.location.search).get("script");
+    return id && id !== "root" && scriptById.has(id) ? id : null;
+  });
   const selected = selectedId ? scriptById.get(selectedId) : undefined;
+
+  const writeScriptToUrl = useCallback((id: string | null) => {
+    const url = new URL(window.location.href);
+    if (id) url.searchParams.set("script", id);
+    else url.searchParams.delete("script");
+    window.history.pushState({}, "", url);
+  }, []);
+  const openScript = useCallback((id: string) => {
+    setSelectedId(id);
+    writeScriptToUrl(id);
+  }, [writeScriptToUrl]);
+  const closeScript = useCallback(() => {
+    setSelectedId(null);
+    writeScriptToUrl(null);
+  }, [writeScriptToUrl]);
+  useEffect(() => {
+    const onPopState = () => {
+      const id = new URLSearchParams(window.location.search).get("script");
+      setSelectedId(id && id !== "root" && scriptById.has(id) ? id : null);
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
 
   /** Everything that can honestly be shown, and the register that cannot. */
   const { shown, absent } = useMemo(() => {
@@ -135,6 +164,16 @@ export default function Gallery() {
   }, [arrangement, shown]);
 
   const activeGloss = ARRANGEMENTS.find((a) => a.id === arrangement)!.gloss;
+
+  const downloadPoster = useCallback(async () => {
+    if (!sheetRef.current || downloading) return;
+    setDownloading(true);
+    try {
+      await downloadPosterPdf(sheetRef.current);
+    } finally {
+      setDownloading(false);
+    }
+  }, [downloading]);
 
   return (
     <div className="grain min-h-screen bg-background">
@@ -214,7 +253,10 @@ export default function Gallery() {
       </div>
 
       {/* ── The sheet ────────────────────────────────────────────────────── */}
-      <main className="mx-auto max-w-[92rem] px-5 pb-24 sm:px-8">
+      <main
+        id="specimen-sheet-export"
+        ref={sheetRef}
+        className="mx-auto max-w-[92rem] px-5 pb-24 sm:px-8">
         {groups.map((g, gi) => (
           <section key={g.key} className="pt-9 first:pt-7">
             {/* Running head for the group: rule, mark, count. */}
@@ -256,7 +298,7 @@ export default function Gallery() {
                 return (
                   <li key={s.id} className="border-b border-r border-border">
                     <button
-                      onClick={() => setSelectedId(s.id)}
+                      onClick={() => openScript(s.id)}
                       className="group relative flex h-full min-h-[10.5rem] w-full flex-col items-start gap-2.5 px-3.5 py-4 text-left sm:min-h-[11.5rem]"
                       style={{
                         background: on ? "var(--vellum-wash)" : "transparent",
@@ -349,7 +391,7 @@ export default function Gallery() {
             {absent.map((s) => (
               <li key={s.id}>
                 <button
-                  onClick={() => setSelectedId(s.id)}
+                  onClick={() => openScript(s.id)}
                   className="group flex w-full items-baseline gap-2.5 border-b border-dashed border-border pb-2 text-left">
                   <span
                     className="shrink-0 text-[1.02rem] italic leading-tight group-hover:text-[var(--rubric)]"
@@ -381,6 +423,13 @@ export default function Gallery() {
               className="caption inline-flex items-center gap-1.5 text-[9px] hover:text-[var(--rubric)] print:hidden">
               <Printer size={11} /> Print this sheet
             </button>
+            <button
+              onClick={downloadPoster}
+              disabled={downloading}
+              className="caption inline-flex items-center gap-1.5 text-[9px] hover:text-[var(--rubric)] disabled:cursor-wait disabled:text-[var(--ink-faint)] print:hidden">
+              {downloading ? <Loader2 size={11} className="animate-spin" /> : <Download size={11} />}
+              {downloading ? "Building PDF…" : "Download poster PDF"}
+            </button>
             <Link
               href="/about"
               className="caption text-[9px] hover:text-[var(--rubric)]">
@@ -403,7 +452,7 @@ export default function Gallery() {
         <>
           <button
             aria-label="Close detail"
-            onClick={() => setSelectedId(null)}
+            onClick={closeScript}
             className="fixed inset-0 z-40 bg-[oklch(0.28_0.022_55)]/20 print:hidden"
             style={{ animation: "fade-in 160ms var(--ease-out)" }}
           />
@@ -420,8 +469,8 @@ export default function Gallery() {
             }}>
             <DetailLeaf
               node={selected}
-              onClose={() => setSelectedId(null)}
-              onNavigate={(id) => setSelectedId(id)}
+              onClose={closeScript}
+              onNavigate={openScript}
               handle={isPhone}
             />
           </div>

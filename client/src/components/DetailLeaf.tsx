@@ -4,7 +4,9 @@
  * versal initial set in the script being described where Unicode permits.
  * The specimen block is the hero; prose is body text, not marketing.
  */
-import { ArrowUpRight, Network, X } from "lucide-react";
+import { ArrowUpRight, Check, Link2, Network, X } from "lucide-react";
+import { useState } from "react";
+import CharacterInventory from "@/components/CharacterInventory";
 import { specimenOf } from "@/lib/specimen";
 import {
   ancestryOf,
@@ -55,6 +57,7 @@ export default function DetailLeaf({
    */
   onShowInTree?: (id: string) => void;
 }) {
+  const [copied, setCopied] = useState(false);
   const line = ancestryOf(node.id).filter((id) => id !== "root" && id !== node.id);
   const kids = childrenOf.get(node.id) ?? [];
   const parent = node.parent ? scriptById.get(node.parent) : undefined;
@@ -102,12 +105,32 @@ export default function DetailLeaf({
               </div>
             )}
           </div>
-          <button
-            onClick={onClose}
-            aria-label="Close detail"
-            className="rail-btn -mr-1.5 mt-0.5 shrink-0">
-            <X size={handle ? 18 : 15} />
-          </button>
+          <div className="flex shrink-0 items-start gap-1">
+            <button
+              onClick={async () => {
+                const url = new URL(window.location.href);
+                url.searchParams.set("script", node.id);
+                try {
+                  await navigator.clipboard.writeText(url.toString());
+                  setCopied(true);
+                  window.setTimeout(() => setCopied(false), 1800);
+                } catch {
+                  // Embedded browsers can deny clipboard access. Keep the shareable
+                  // URL in the location bar so it remains copyable by other means.
+                  window.history.replaceState({}, "", url);
+                }
+              }}
+              aria-label={copied ? "Link copied" : `Copy a direct link to ${node.name}`}
+              className="rail-btn -mr-1.5 mt-0.5 shrink-0">
+              {copied ? <Check size={handle ? 18 : 15} /> : <Link2 size={handle ? 18 : 15} />}
+            </button>
+            <button
+              onClick={onClose}
+              aria-label="Close detail"
+              className="rail-btn -mr-1.5 mt-0.5 shrink-0">
+              <X size={handle ? 18 : 15} />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -191,6 +214,12 @@ export default function DetailLeaf({
             </div>
           ))}
         </dl>
+
+        <CharacterInventory
+          scriptId={node.id}
+          fontHint={node.fontHint}
+          defaultOpen={new URLSearchParams(window.location.search).get("inventory") === "1"}
+        />
 
         {/* Descent statement. */}
         <div className="mb-6">

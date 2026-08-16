@@ -39,7 +39,11 @@ export default function Home() {
   const isPhone = viewport === "phone";
   const isDesktop = viewport === "desktop";
 
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  /** A selected script is addressable: `/?script=devanagari`, for example. */
+  const [selectedId, setSelectedId] = useState<string | null>(() => {
+    const id = new URLSearchParams(window.location.search).get("script");
+    return id && id !== "root" && scriptById.has(id) ? id : null;
+  });
   const [filters, setFilters] = useState<Filters>({
     query: "",
     families: new Set(),
@@ -60,7 +64,9 @@ export default function Home() {
    * here" immediately, and the plate answers "how is it related" once a script
    * has been chosen.
    */
-  const [phoneMode, setPhoneMode] = useState<"index" | "plate">("index");
+  const [phoneMode, setPhoneMode] = useState<"index" | "plate">(() =>
+    new URLSearchParams(window.location.search).has("script") ? "plate" : "index",
+  );
   const [searchOpen, setSearchOpen] = useState(false);
   const shellRef = useRef<HTMLDivElement | null>(null);
   const controlsRef = useRef<{
@@ -130,10 +136,40 @@ export default function Home() {
     filters.statuses.size > 0 ||
     cutoffYear !== null;
 
+  const writeScriptToUrl = useCallback((id: string | null) => {
+    const url = new URL(window.location.href);
+    if (id) url.searchParams.set("script", id);
+    else url.searchParams.delete("script");
+    window.history.pushState({}, "", url);
+  }, []);
+
   const openScript = useCallback((id: string) => {
     setSelectedId(id);
+    writeScriptToUrl(id);
     controlsRef.current?.focus(id);
+  }, [writeScriptToUrl]);
+
+  const closeScript = useCallback(() => {
+    setSelectedId(null);
+    writeScriptToUrl(null);
+  }, [writeScriptToUrl]);
+
+  /** Browser Back/Forward follows the reader's inspection trail. */
+  useEffect(() => {
+    const onPopState = () => {
+      const id = new URLSearchParams(window.location.search).get("script");
+      setSelectedId(id && id !== "root" && scriptById.has(id) ? id : null);
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
   }, []);
+
+  /** A cold deep link should bring its script into the plate's field. */
+  useEffect(() => {
+    if (!selectedId) return;
+    const frame = requestAnimationFrame(() => controlsRef.current?.focus(selectedId));
+    return () => cancelAnimationFrame(frame);
+  }, [selectedId, viewport]);
 
   const toggleFullscreen = useCallback(async () => {
     const el = shellRef.current;
@@ -161,7 +197,7 @@ export default function Home() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        if (selectedId) setSelectedId(null);
+        if (selectedId) closeScript();
         else if (apparatusOpen) setApparatusOpen(false);
       }
       if (e.key === "/" && document.activeElement?.tagName !== "INPUT") {
@@ -175,7 +211,7 @@ export default function Home() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [selectedId, apparatusOpen]);
+  }, [selectedId, apparatusOpen, closeScript]);
 
   /* ── Apparatus rail: hairline, vertical, hugging the right edge ────── */
   const rail = (
@@ -326,7 +362,7 @@ export default function Home() {
             <ScriptIndex
               matchIds={matchIds}
               cutoffYear={cutoffYear}
-              onSelect={(id) => setSelectedId(id)}
+              onSelect={openScript}
               selectedId={selectedId}
             />
           </div>
@@ -468,7 +504,7 @@ export default function Home() {
           <>
             <button
               aria-label="Close detail"
-              onClick={() => setSelectedId(null)}
+              onClick={closeScript}
               className="fixed inset-0 z-30 bg-[oklch(0.28_0.022_55)]/25"
               style={{ animation: "fade-in 160ms var(--ease-out)" }}
             />
@@ -477,13 +513,12 @@ export default function Home() {
               style={{ animation: "sheet-up 260ms var(--ease-out)" }}>
               <DetailLeaf
                 node={selected}
-                onClose={() => setSelectedId(null)}
-                onNavigate={(id) => setSelectedId(id)}
+                onClose={closeScript}
+                onNavigate={openScript}
                 handle
                 onShowInTree={(id) => {
                   setPhoneMode("plate");
-                  setSelectedId(id);
-                  requestAnimationFrame(() => controlsRef.current?.focus(id));
+                  openScript(id);
                 }}
               />
             </div>
@@ -606,7 +641,7 @@ export default function Home() {
           style={{ animation: "leaf-in-right 240ms var(--ease-out)" }}>
           <DetailLeaf
             node={selected}
-            onClose={() => setSelectedId(null)}
+            onClose={closeScript}
             onNavigate={openScript}
           />
         </div>
