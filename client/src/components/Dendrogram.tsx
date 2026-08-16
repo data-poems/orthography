@@ -477,7 +477,7 @@ export default function Dendrogram({
 
       {/* Zoom readout, engraver's caption voice. */}
       <div className="caption pointer-events-none absolute bottom-3 right-4 text-[10px]">
-        {Math.round(k * 100)}% · {allScripts.length} scripts
+        {Math.round(k * 100)}% · {allScripts.filter((s) => s.id !== "root").length} scripts
       </div>
     </div>
   );

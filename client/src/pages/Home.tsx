@@ -163,7 +163,7 @@ export default function Home() {
         </Link>
 
         <span className="caption hidden text-[10px] lg:inline">
-          A genealogy of 127 scripts · 3400 BC – present
+          A genealogy of 126 scripts · 3400 BC – present
         </span>
 
         <div className="ml-auto flex items-center gap-1.5">

@@ -183,7 +183,7 @@ export default function MarginColumn({
         </div>
         {matchCount !== null && (
           <div className="gloss caption mt-2 text-[10px]">
-            {matchCount} of 127 scripts shown in ink
+            {matchCount} of 126 scripts shown in ink
           </div>
         )}
       </div>

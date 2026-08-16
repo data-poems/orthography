@@ -64,10 +64,10 @@ export default function About() {
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--vellum)] via-[var(--vellum)]/20 to-transparent" />
         <div className="absolute bottom-5 left-0 right-0">
           <div className="mx-auto max-w-5xl px-6">
-            <div className="caption mb-1.5">Plate I · specimens</div>
-            <h1 className="max-w-[36rem] text-[2.6rem] leading-[1.04]">
+                        <h1 className="max-w-[36rem] text-[2.6rem] leading-[1.04]">
               Four inventions, and everything that followed
             </h1>
+            <div className="caption mt-2.5">Plate II · specimens in stone and bone</div>
           </div>
         </div>
       </div>
