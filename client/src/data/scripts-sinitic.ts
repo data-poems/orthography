@@ -8,6 +8,8 @@ import type { ScriptNode } from "./types";
 export const siniticScripts: ScriptNode[] = [
   {
     id: "oracle-bone",
+    fontHint: "'Noto Serif SC', serif",
+    sampleNote: "Not separately encoded; Unicode treats these as early forms of Han characters. The bone inscriptions themselves are the specimen.",
     name: "Oracle Bone Script",
     endonym: "甲骨文",
     parent: "root",
@@ -35,6 +37,8 @@ export const siniticScripts: ScriptNode[] = [
   },
   {
     id: "seal-script",
+    fontHint: "'Noto Serif SC', serif",
+    sampleNote: "Not separately encoded in Unicode, being a calligraphic style of Han characters rather than a distinct set.",
     name: "Seal Script",
     endonym: "篆書",
     parent: "oracle-bone",
@@ -154,6 +158,8 @@ export const siniticScripts: ScriptNode[] = [
   },
   {
     id: "manyogana",
+    fontHint: "'Noto Serif JP', serif",
+    sampleNote: "Not separately encoded: man'yōgana used ordinary Han characters for their sound values, so its specimen is Han text read phonetically.",
     name: "Man'yōgana",
     endonym: "万葉仮名",
     parent: "kanji",
@@ -262,6 +268,7 @@ export const siniticScripts: ScriptNode[] = [
   },
   {
     id: "chu-nom",
+    fontHint: "'Noto Serif SC', serif",
     name: "Chữ Nôm",
     endonym: "𡨸喃",
     parent: "chinese-traditional",
@@ -372,6 +379,7 @@ export const siniticScripts: ScriptNode[] = [
   },
   {
     id: "khitan-large",
+    sampleNote: "The Khitan Large Script is not yet encoded in Unicode, unlike the Small Script.",
     name: "Khitan Large Script",
     parent: "chinese-traditional",
     certainty: "stimulus",
@@ -393,6 +401,7 @@ export const siniticScripts: ScriptNode[] = [
   },
   {
     id: "khitan-small",
+    sampleNote: "Encoded at U+18B00, but no widely available font covers the block, so the glyphs cannot be shown reliably here.",
     name: "Khitan Small Script",
     parent: "khitan-large",
     influences: ["old-uyghur"],
@@ -415,6 +424,7 @@ export const siniticScripts: ScriptNode[] = [
   },
   {
     id: "jurchen",
+    sampleNote: "Not encoded in Unicode. Known chiefly from stelae and a surviving glossary.",
     name: "Jurchen",
     parent: "khitan-small",
     certainty: "stimulus",
@@ -493,6 +503,7 @@ export const siniticScripts: ScriptNode[] = [
   },
   {
     id: "dongba",
+    sampleNote: "Not encoded in Unicode. The Naxi pictographs are still written by dongba priests, but as drawn images rather than a fixed character set.",
     name: "Dongba",
     parent: "root",
     certainty: "disputed",

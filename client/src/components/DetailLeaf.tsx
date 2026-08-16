@@ -5,6 +5,7 @@
  * The specimen block is the hero; prose is body text, not marketing.
  */
 import { ArrowUpRight, Network, X } from "lucide-react";
+import { specimenOf } from "@/lib/specimen";
 import {
   ancestryOf,
   certaintyLabels,
@@ -115,30 +116,59 @@ export default function DetailLeaf({
           handle ? "px-5 pb-10" : "px-7 pb-16"
         }`}>
         {/* Specimen block — the hero. */}
-        {node.sample ? (
-          <figure className={`specimen mb-6 py-4 ${handle ? "px-4" : "px-5"}`}>
-            <div
-              className={`break-words leading-[1.5] ${
-                handle ? "text-[1.7rem]" : "text-[2rem]"
-              }`}
-              style={{ fontFamily: node.fontHint ?? "serif" }}>
-              {node.sample}
-            </div>
-            {node.sampleNote && (
-              <figcaption className="caption-tight mt-2.5 border-t border-border pt-2 text-[10.5px] italic">
-                {node.sampleNote}
+        {/* Specimen block — the hero of the leaf. The heading states plainly what
+            is being shown: the script naming itself, an attested text, or nothing,
+            so a reader is never left guessing whether a glyph is authentic. */}
+        {(() => {
+          const spec = specimenOf(node);
+          if (spec.kind === "none") {
+            return (
+              <figure className="specimen mb-6 px-5 py-4">
+                <figcaption className="caption text-[10px]">
+                  No specimen possible
+                </figcaption>
+                <div className="mt-2 text-[1.35rem] italic leading-tight text-[var(--ink-mid)]">
+                  {node.name}
+                </div>
+                <figcaption className="caption-tight mt-2.5 border-t border-border pt-2 text-[10.5px] italic">
+                  {spec.note}
+                </figcaption>
+              </figure>
+            );
+          }
+          return (
+            <figure className={`specimen mb-6 py-4 ${handle ? "px-4" : "px-5"}`}>
+              <figcaption className="caption mb-2 text-[9.5px]">
+                {spec.kind === "autonym"
+                  ? "Written in itself"
+                  : "Attested specimen"}
               </figcaption>
-            )}
-          </figure>
-        ) : (
-          <figure className="specimen mb-6 px-5 py-4">
-            <div className="caption text-[10px]">No Unicode representation</div>
-            <figcaption className="mt-1.5 text-[13.5px] italic leading-snug text-[var(--ink-mid)]">
-              This script is not encoded in a form the browser can render, or has
-              no standard font. The glyphs survive only in facsimile.
-            </figcaption>
-          </figure>
-        )}
+              <div
+                className={`break-words leading-[1.5] ${
+                  handle ? "text-[1.7rem]" : "text-[2rem]"
+                }`}
+                style={{ fontFamily: spec.font }}>
+                {spec.text}
+              </div>
+              {/* Where the autonym leads, the letter run is still worth showing. */}
+              {spec.kind === "autonym" && node.sample && (
+                <div className="mt-3 border-t border-border pt-2.5">
+                  <div className="caption mb-1 text-[9px]">Letters</div>
+                  <div
+                    className="break-words text-[1.1rem] leading-[1.5] text-[var(--ink-mid)]"
+                    style={{ fontFamily: spec.font }}>
+                    {node.sample}
+                  </div>
+                </div>
+              )}
+              {spec.note && (
+                <figcaption className="caption-tight mt-2.5 border-t border-border pt-2 text-[10.5px] italic">
+                  {spec.note}
+                </figcaption>
+              )}
+            </figure>
+          );
+        })()}
 
         {/* Metadata table, set as a ledger. */}
         <dl className="mb-6 grid grid-cols-[auto_1fr] gap-x-5 gap-y-1.5 border-y border-border py-3">

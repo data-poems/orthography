@@ -136,3 +136,50 @@ The phone is a separate render path in `Home.tsx` (early return on
   switches to plate mode and focuses the node.
 - `MarginColumn` takes `hideSearch` on phone (header owns search) and `coarse`
   for enlarged targets and two-column chips.
+
+## Specimen policy (round 3)
+
+Audit (`node scripts/audit-specimens.mjs`) on 165 entries incl. the conceptual root:
+135 had a `sample`, 30 had none; 65 had no `endonym`.
+
+The user's requirement is that every script shows an example, ideally *the
+orthography used to spell itself*. So the display rule is:
+
+1. **Autonym first.** `endonym` — the script's own name written in itself — is the
+   specimen wherever it exists. This is the honest answer to "show me this script":
+   देवनागरी rather than a ka-kha-ga letter run.
+2. **Letter run second.** Where no autonym is attested or the script had no name
+   for itself (Brahmi, Linear B, Old Italic), the characteristic letter series or a
+   real attested word stands in, labelled as such.
+3. **Never fabricate.** Undeciphered scripts (Indus, Rongorongo, Voynich, Cretan
+   hieroglyphs, Cypro-Minoan, Proto-Elamite) and unencoded ones (Khitan, Jurchen,
+   Dongba, Afaka, shorthand) get real attested signs where Unicode has them, and
+   otherwise an explicit "not encoded / undeciphered" note instead of a glyph.
+
+`ScriptNode` therefore carries both `sample` (letter run / attested text) and
+`endonym` (autonym), plus `sampleNote` explaining what is being shown. The index
+and plate prefer the autonym; the detail leaf shows both with labels.
+
+### Result (verified)
+
+`node scripts/specimen-coverage.mjs` → 164 scripts: **120 autonym** (the script
+writing its own name), **28 attested specimen / letter run**, **16 no specimen
+possible** = 90.2% with a real specimen.
+
+The 16 with none, and why: undeciphered (proto-elamite, cretan-hieroglyphs,
+indus, rongorongo, voynich), awaiting a Unicode block (maya, zapotec, aztec,
+isthmian), unencoded (khitan-large, khitan-small, jurchen, dongba, afaka,
+shorthand, mwangwego). These render the romanised name in italic plus the note.
+
+Resolver lives in `client/src/lib/specimen.ts`: `specimenOf()` and
+`shortSpecimen()`. Used by Dendrogram (node glyphs + tooltip), ScriptIndex (rows),
+DetailLeaf (hero block). Verify new specimens with
+`python3 /home/ubuntu/verify_autonyms.py` (maps every codepoint to its block) and
+`node scripts/audit-specimens.mjs`.
+
+### Family jump rail
+
+`ScriptIndex` owns its own scroller and carries a horizontal family rail above it
+(shown only at ≥3 groups). Tapping a chip scrolls that section's running head to
+the top; an onScroll spy marks the current family and scrolls the active chip into
+view. `jumpingTo` ref suppresses the spy during the smooth-scroll animation.

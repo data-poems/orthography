@@ -9,6 +9,7 @@ import type { ScriptNode } from "./types";
 export const expansionScriptsB: ScriptNode[] = [
   {
     id: "tocharian",
+    sample: "𑀀𑀅𑀊",
     name: "Tocharian",
     parent: "gupta",
     certainty: "attested",
@@ -22,8 +23,8 @@ export const expansionScriptsB: ScriptNode[] = [
     region: "Tarim Basin, Xinjiang",
     users: "none living",
     languages: ["Tocharian A (Agnean)", "Tocharian B (Kuchean)", "Sanskrit"],
-    sampleNote: "no Unicode block has been encoded for Tocharian",
-    fontHint: "serif",
+    sampleNote: "Tocharian used a north-western variant of Brahmi, shown here; the variant itself is not separately encoded.",
+    fontHint: "'Noto Sans Brahmi', serif",
     tagline:
       "The slanting Brahmi of the Silk Road, recording two extinct Indo-European languages spoken in what is now Xinjiang.",
     detail: [

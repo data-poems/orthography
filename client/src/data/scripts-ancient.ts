@@ -38,6 +38,8 @@ export const ancientScripts: ScriptNode[] = [
   /* ── Mesopotamian ─────────────────────────────────────────────── */
   {
     id: "cuneiform",
+    fontHint: "'Noto Sans Cuneiform', serif",
+    endonym: "𒅴𒂠",
     name: "Cuneiform",
     parent: "root",
     certainty: "attested",
@@ -52,7 +54,7 @@ export const ancientScripts: ScriptNode[] = [
     iso: "Xsux",
     languages: ["Sumerian", "Akkadian", "Eblaite", "Elamite", "Hurrian", "Hittite", "Luwian", "Urartian"],
     sample: "𒀭𒈠𒌓𒂍𒆠𒉺",
-    sampleNote: "Neo-Assyrian signs: AN, MA, UD, E₂, KI, PA",
+    sampleNote: "The Sumerians' name for their own language, eme-gir₁₅, written in cuneiform.",
     tagline: "The earliest writing system, pressed into wet clay with a reed stylus.",
     detail: [
       "Cuneiform grew out of accounting. Neolithic clay tokens for counting livestock and commodities were in use from the ninth millennium BC, sealed inside clay envelopes called bullae; by the late fourth millennium the tokens had been replaced by marks drawn on flat tablets. The first unequivocal documents come from Uruk IV, around 3300 BC. The current proto-cuneiform sign list runs to 705 elements, 42 of them numeric.",
@@ -70,6 +72,7 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "proto-elamite",
+    sampleNote: "Undeciphered and not encoded in Unicode. Some 1,600 tablets survive from Susa; no sign values are agreed.",
     name: "Proto-Elamite",
     parent: "cuneiform",
     certainty: "stimulus",
@@ -91,6 +94,8 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "old-persian-cuneiform",
+    fontHint: "'Noto Sans Old Persian', serif",
+    endonym: "𐎠𐎼𐎡𐎹",
     name: "Old Persian Cuneiform",
     parent: "cuneiform",
     certainty: "stimulus",
@@ -105,7 +110,7 @@ export const ancientScripts: ScriptNode[] = [
     iso: "Xpeo",
     languages: ["Old Persian"],
     sample: "𐎧𐏁𐎠𐎹𐎰𐎡𐎹",
-    sampleNote: "x-š-a-y-θ-i-y, 'king' (xšāyaθiya)",
+    sampleNote: "ariya, ‘Aryan’ — Darius's own term for his people, from the Behistun inscription.",
     tagline: "A semi-syllabary that borrowed cuneiform's wedges but not its system.",
     detail: [
       "Old Persian cuneiform uses wedge-shaped strokes and so looks like Mesopotamian cuneiform, but structurally it is a different thing: a small semi-syllabary of about 36 phonetic signs plus a handful of logograms, apparently designed rather than inherited, probably under Darius I for monumental display.",
@@ -115,6 +120,8 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "ugaritic",
+    fontHint: "'Noto Sans Ugaritic', serif",
+    endonym: "𐎜𐎂𐎗𐎚",
     name: "Ugaritic",
     parent: "cuneiform",
     influences: ["proto-canaanite"],
@@ -130,7 +137,7 @@ export const ancientScripts: ScriptNode[] = [
     iso: "Ugar",
     languages: ["Ugaritic", "Hurrian"],
     sample: "𐎀𐎁𐎂𐎃𐎄𐎅𐎆",
-    sampleNote: "the first letters of the Ugaritic abecedary",
+    sampleNote: "ʼugrt, the city's name for itself: Ugarit.",
     tagline: "An alphabet written in wedges — cuneiform's shapes, Canaan's system.",
     detail: [
       "Ugaritic is the oldest known alphabetic order in the world. Thirty consonantal signs, impressed in clay with a wedge stylus, recorded on abecedary tablets in a sequence that already matches the familiar Levantine order: aleph, bet, gimel, dalet. It is the clearest evidence that the alphabetic sequence itself is older than any surviving Phoenician text.",
@@ -142,8 +149,8 @@ export const ancientScripts: ScriptNode[] = [
   {
     id: "anatolian-hieroglyphs",
     fontHint: "'Noto Sans Anatolian Hieroglyphs', serif",
-    sample: "𔒰𔒱𔒲",
-    sampleNote: "Hieroglyphic Luwian signs, Unicode Anatolian Hieroglyphs block.",
+    sample: "𔐒",
+    sampleNote: "The MAGNUS.REX sign, ‘Great King’ — the royal title opening Luwian monumental inscriptions.",
     name: "Anatolian Hieroglyphs",
     parent: "root",
     certainty: "disputed",
@@ -168,6 +175,7 @@ export const ancientScripts: ScriptNode[] = [
   /* ── Egyptian ─────────────────────────────────────────────────── */
   {
     id: "egyptian-hieroglyphs",
+    fontHint: "'Noto Sans Egyptian Hieroglyphs', serif",
     name: "Egyptian Hieroglyphs",
     endonym: "𓊹𓂋𓏛𓌃𓂧𓉔𓅱",
     parent: "root",
@@ -202,6 +210,9 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "hieratic",
+    fontHint: "'Noto Sans Egyptian Hieroglyphs', serif",
+    sampleNote: "Hieratic has no Unicode block of its own; Unicode treats it as a cursive variant of the hieroglyphs, shown here in their formal form.",
+    sample: "𓂧𓂀𓂋",
     name: "Hieratic",
     parent: "egyptian-hieroglyphs",
     certainty: "attested",
@@ -223,6 +234,9 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "demotic",
+    fontHint: "'Noto Sans Egyptian Hieroglyphs', serif",
+    sampleNote: "Demotic is not encoded in Unicode. These are the corresponding hieroglyphic signs; the demotic hand itself was far more cursive and ligatured.",
+    sample: "𓈎𓈖𓈚",
     name: "Demotic",
     parent: "hieratic",
     certainty: "attested",
@@ -244,6 +258,7 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "meroitic",
+    fontHint: "'Noto Sans Meroitic', serif",
     name: "Meroitic",
     parent: "demotic",
     influences: ["egyptian-hieroglyphs"],
@@ -258,8 +273,8 @@ export const ancientScripts: ScriptNode[] = [
     region: "Kingdom of Kush (Sudan)",
     iso: "Mero",
     languages: ["Meroitic"],
-    sample: "𐦠𐦡𐦢𐦣𐦤",
-    sampleNote: "Meroitic cursive letters a, e, i, o, ya",
+    sample: "𐦳𐦣𐦫𐦡",
+    sampleNote: "qore, ‘king’ — the Kushite royal title, in Meroitic cursive.",
     tagline: "Nubia's own script: Egyptian signs, an African language nobody can yet read.",
     detail: [
       "The Kingdom of Kush developed two parallel Meroitic scripts around 300 BC — a hieroglyphic form for monuments, derived from Egyptian hieroglyphs, and a cursive form derived from demotic for everything else. It works as an abugida: consonants carry an inherent vowel, with separate signs for other vowels.",
@@ -269,6 +284,7 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "coptic",
+    fontHint: "'Noto Sans Coptic', serif",
     name: "Coptic",
     endonym: "ⲧⲙⲉⲧⲣⲉⲙⲛⲭⲏⲙⲓ",
     parent: "greek",
@@ -297,6 +313,7 @@ export const ancientScripts: ScriptNode[] = [
   /* ── Aegean ───────────────────────────────────────────────────── */
   {
     id: "cretan-hieroglyphs",
+    sampleNote: "Undeciphered and not encoded in Unicode, so no sign can honestly be shown.",
     name: "Cretan Hieroglyphs",
     parent: "root",
     certainty: "disputed",
@@ -318,6 +335,7 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "linear-a",
+    fontHint: "'Noto Sans Linear A', serif",
     name: "Linear A",
     parent: "cretan-hieroglyphs",
     certainty: "disputed",
@@ -332,7 +350,7 @@ export const ancientScripts: ScriptNode[] = [
     iso: "Lina",
     languages: ["Minoan (unidentified)"],
     sample: "𐘀𐘁𐘂𐘃𐘄",
-    sampleNote: "Linear A signs (rendering depends on font support)",
+    sampleNote: "The opening signs of the Linear A block. The signs are encoded and attested; their sound values remain unknown, so no reading can be given.",
     tagline: "The Minoan administrative script. Readable in sound, unreadable in sense.",
     detail: [
       "Linear A was the writing of Minoan Crete's palace administration, surviving on around 1,400 clay tablets and other objects, chiefly from Haghia Triada and Knossos. Because Linear B is a later adaptation of it and Linear B was deciphered, many Linear A signs can be given approximate phonetic values.",
@@ -342,6 +360,7 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "linear-b",
+    fontHint: "'Noto Sans Linear B', serif",
     name: "Linear B",
     parent: "linear-a",
     certainty: "attested",
@@ -355,8 +374,8 @@ export const ancientScripts: ScriptNode[] = [
     region: "Crete and Mycenaean Greece",
     iso: "Linb",
     languages: ["Mycenaean Greek"],
-    sample: "𐀀𐀁𐀂𐀃𐀄 𐀓𐀩𐀁",
-    sampleNote: "a-e-i-o-u, then ku-re-e",
+    sample: "𐀴𐀪𐀡𐀆",
+    sampleNote: "ti-ri-po-de, ‘tripods’ — from the Pylos tablet that confirmed Ventris's decipherment of Linear B as Greek.",
     tagline: "Greek written five centuries before the Greek alphabet, and forgotten.",
     detail: [
       "Linear B adapts Linear A to write Greek: about 87 syllabic signs plus over 100 ideograms, used almost entirely for palace inventories at Knossos, Pylos, Mycenae and Thebes. Michael Ventris deciphered it in 1952, with John Chadwick, proving that Mycenaean administration was conducted in Greek — several centuries earlier than anyone had assumed Greek was written.",
@@ -371,6 +390,9 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "cypro-minoan",
+    fontHint: "'Noto Sans Cypro Minoan', serif",
+    sampleNote: "Signs from the Cypro-Minoan block. The script is encoded but undeciphered, so the signs can be shown while no reading can.",
+    sample: "𒾐𒾑𒾒𒾓",
     name: "Cypro-Minoan",
     parent: "linear-a",
     certainty: "probable",
@@ -393,6 +415,7 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "cypriot-syllabary",
+    fontHint: "'Noto Sans Cypriot', serif",
     name: "Cypriot Syllabary",
     parent: "cypro-minoan",
     certainty: "attested",
@@ -406,8 +429,8 @@ export const ancientScripts: ScriptNode[] = [
     region: "Cyprus",
     iso: "Cprt",
     languages: ["Arcadocypriot Greek", "Eteocypriot"],
-    sample: "𐠀𐠁𐠂𐠃𐠄",
-    sampleNote: "Cypriot syllabograms a, e, i, o, u",
+    sample: "𐠎𐠡𐠦𐠩",
+    sampleNote: "ku-po-ro-se, the Greek name of Cyprus, in the Cypriot syllabary.",
     tagline: "Greek written syllabically for seven centuries, alongside the alphabet.",
     detail: [
       "While the rest of the Greek world adopted the alphabet, Cyprus kept writing Greek with a syllabary descended from Cypro-Minoan — 56 signs, usually written right to left. The two systems coexisted on the island for centuries before the syllabary was finally abandoned around 300 BC.",
@@ -419,6 +442,7 @@ export const ancientScripts: ScriptNode[] = [
   /* ── Mesoamerican ─────────────────────────────────────────────── */
   {
     id: "maya",
+    sampleNote: "Maya glyphs are largely deciphered but still await a Unicode block, so no digital specimen can be shown. The carved inscriptions are the specimen.",
     name: "Maya Script",
     parent: "root",
     certainty: "attested",
@@ -447,6 +471,7 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "isthmian",
+    sampleNote: "Not encoded, and the proposed decipherment is disputed. Only a handful of texts survive, chiefly the La Mojarra stela.",
     name: "Isthmian (Epi-Olmec)",
     parent: "root",
     certainty: "disputed",
@@ -468,6 +493,7 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "zapotec",
+    sampleNote: "Not encoded in Unicode. Known from Monte Albán carvings, and only partly understood.",
     name: "Zapotec",
     parent: "root",
     certainty: "disputed",
@@ -489,6 +515,7 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "aztec",
+    sampleNote: "Not encoded in Unicode. Aztec writing worked through painted images and rebus signs in codices rather than a fixed character set.",
     name: "Aztec (Nahuatl) Writing",
     parent: "root",
     influences: ["zapotec"],
@@ -513,6 +540,7 @@ export const ancientScripts: ScriptNode[] = [
   /* ── Undeciphered / unaffiliated ──────────────────────────────── */
   {
     id: "indus",
+    sampleNote: "Undeciphered and not encoded. Around 4,000 short inscriptions survive; whether they encode language at all is still argued.",
     name: "Indus Script",
     parent: "root",
     certainty: "disputed",
@@ -539,6 +567,7 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "rongorongo",
+    sampleNote: "Undeciphered and not encoded in Unicode. Twenty-six inscribed objects survive, and the last readers died before anyone recorded a reading.",
     name: "Rongorongo",
     parent: "root",
     certainty: "disputed",
@@ -560,6 +589,7 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "voynich",
+    sampleNote: "Not encoded in Unicode, and undeciphered. Scholars use the Latin EVA transliteration rather than the original glyphs.",
     name: "Voynich Manuscript Script",
     parent: "root",
     certainty: "disputed",

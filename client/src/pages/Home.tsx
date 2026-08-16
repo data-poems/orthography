@@ -306,7 +306,7 @@ export default function Home() {
             state when you switch back to it. */}
         <main className="relative min-h-0 flex-1">
           <div
-            className={`absolute inset-0 overflow-y-auto overscroll-contain ${
+            className={`absolute inset-0 ${
               phoneMode === "index" ? "" : "pointer-events-none opacity-0"
             }`}
             aria-hidden={phoneMode !== "index"}>

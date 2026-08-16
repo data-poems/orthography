@@ -1,26 +1,22 @@
-# Refinement round — chrome, mobile, corpus
+# Round 3 — family jump rail, specimens for every script
 
-## Corpus expansion
-- [ ] Research additional documented Brahmic scripts (Northern + Southern + SE Asian)
-- [ ] Research additional Cyrillic/Latin-derived and Arabic-derived systems
-- [ ] Research additional African, Caucasian and Central Asian scripts
-- [ ] Add new entries with dates, typology, region, endonym, samples, history
-- [ ] Validate graph integrity (parents resolve, no cycles, counts update)
+## Specimens for every script (the script writing its own name)
+- [ ] Audit which of the 164 entries lack `sample`, and which lack `endonym`
+- [ ] Specimen rule: prefer the script's own name written in itself (autonym in
+      native orthography); fall back to a characteristic letter run
+- [ ] Research autonyms for scripts missing them
+- [ ] Unencoded / undeciphered scripts: honest representation (romanised name in
+      italic + a note explaining why no glyph), never a fabricated glyph
+- [ ] Verify every specimen has a loaded font and renders (no tofu)
 
-## Reduce chrome
-- [ ] Collapse the left margin column into an on-demand drawer/overlay
-- [ ] Merge zoom + fit + influence toggles into one minimal cluster
-- [ ] Strip the header to wordmark + essay link only
-- [ ] Let the plate occupy the full canvas by default
-
-## Mobile
-- [ ] Bottom sheet for detail leaf instead of side panel
-- [ ] Touch-friendly hit targets (min 44px) on nodes and controls
-- [ ] Pinch-zoom and pan tuned for touch; no scroll hijack
-- [ ] Filters/search as a compact sheet, not a persistent column
-- [ ] Essay page typography and hero at 375px
+## Family jump rail (phone index)
+- [ ] Horizontal family rail under the header: family dot, label, count
+- [ ] Tap scrolls to that section, offset for the sticky running head
+- [ ] Active family follows the scroll position
+- [ ] Rail collapses when a search narrows the corpus to one or two groups
 
 ## Verify
-- [ ] Screenshot 375, 768, 1280, 1440
-- [ ] Build clean, no console errors
+- [ ] Phone index: rail usable, specimens legible
+- [ ] Desktop: specimens correct in tree nodes and detail leaf
+- [ ] Typecheck, corpus validation, no console errors
 - [ ] Checkpoint and deliver

@@ -42,6 +42,7 @@ export const europeanScripts: ScriptNode[] = [
   },
   {
     id: "old-italic",
+    fontHint: "'Noto Sans Old Italic', serif",
     name: "Old Italic",
     parent: "greek",
     certainty: "attested",
@@ -55,8 +56,8 @@ export const europeanScripts: ScriptNode[] = [
     region: "Italy",
     iso: "Ital",
     languages: ["Etruscan", "Oscan", "Umbrian", "Faliscan", "Venetic", "Raetic", "Lepontic", "South Picene"],
-    sample: "𐌀𐌁𐌂𐌃𐌄𐌅𐌆𐌇𐌈𐌉",
-    sampleNote: "Old Italic letters a, b, c, d, e, v, z, h, θ, i",
+    sample: "𐌓𐌀𐌔𐌍𐌀",
+    sampleNote: "rasna, the Etruscans' name for themselves — written right-to-left in the Etruscan alphabet.",
     tagline: "The Euboean Greek alphabet, reshaped across pre-Roman Italy.",
     detail: [
       "The 'red' or Euboean form of the Greek alphabet reached Italy through Greek colonies at Cumae and Pithekoussai and was taken up by the Etruscans in the seventh century BC, then by their neighbours: Oscan, Umbrian, Faliscan, Venetic, Raetic, Lepontic and South Picene all had their own varieties. Most were written right to left.",
@@ -66,6 +67,7 @@ export const europeanScripts: ScriptNode[] = [
   },
   {
     id: "latin",
+    endonym: "scriptura Latina",
     name: "Latin",
     parent: "old-italic",
     certainty: "attested",
@@ -81,8 +83,8 @@ export const europeanScripts: ScriptNode[] = [
     users: "~2.6 billion (36% of humanity, 2020)",
     languages: ["most European languages", "Vietnamese", "Turkish", "Indonesian", "Swahili", "and thousands more"],
     sample: "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z",
-    sampleNote: "the 26-letter modern basic alphabet",
-    fontHint: "'Cormorant Garamond', serif",
+    sampleNote: "The Latin script writing its own name in Latin. You are reading it in this sentence too.",
+    fontHint: "'EB Garamond', serif",
     tagline: "The most widely used script in history, by a very wide margin.",
     detail: [
       "The Latin alphabet is the Greek alphabet of Cumae, altered by the Etruscans and altered again by the Romans. Its early form had 21 letters; Y and Z were re-borrowed from Greek in the first century BC to write Greek loanwords, giving 23. The remaining three arrived late: W began as a doubled V for the /w/ of Old English in the seventh century and became common by the later eleventh, displacing the runic letter wynn; U was separated from V as a distinct letter in the sixteenth century; and J, originally a swash form of word-final I, was pressed into service for the consonant in the seventeenth century but was not universally treated as a separate letter in alphabetical order until the nineteenth.",
@@ -159,6 +161,8 @@ export const europeanScripts: ScriptNode[] = [
   },
   {
     id: "gothic-alphabet",
+    fontHint: "'Noto Sans Gothic', serif",
+    endonym: "𐌲𐌿𐍄𐌹𐍃𐌺𐍉 𐍂𐌰𐌶𐌳𐌰",
     name: "Gothic",
     parent: "greek",
     influences: ["runic", "latin"],
@@ -174,7 +178,7 @@ export const europeanScripts: ScriptNode[] = [
     iso: "Goth",
     languages: ["Gothic"],
     sample: "𐌰𐌱𐌲𐌳𐌴𐌶𐌷𐌸",
-    sampleNote: "ahsa, bairkan, giba, dags, aihvus…",
+    sampleNote: "gutisko razda, ‘the Gothic language’ — in the alphabet Wulfila devised to translate the Bible.",
     tagline: "Designed by a bishop in the fourth century to translate the Bible.",
     detail: [
       "The Gothic alphabet was created around AD 350 by Wulfila, bishop of the Goths, specifically to translate the Bible into Gothic. It is built mainly on Greek uncials, with several letters from Latin and a couple apparently from runes, and it replaced runic writing among the Goths — reportedly in part because Wulfila wished to distance the new Christian scripture from pagan associations.",
@@ -312,9 +316,10 @@ export const europeanScripts: ScriptNode[] = [
   },
   {
     id: "old-permic",
+    endonym: "𐍐𐍑𐍣𐍠",
     fontHint: "'Noto Sans Old Permic', serif",
     sample: "𐍐𐍑𐍒",
-    sampleNote: "Anbur letters an, bur, gai.",
+    sampleNote: "abur, the traditional name of the script, from the names of its first two letters.",
     name: "Old Permic (Abur)",
     parent: "cyrillic",
     certainty: "attested",
@@ -337,6 +342,8 @@ export const europeanScripts: ScriptNode[] = [
   },
   {
     id: "deseret",
+    fontHint: "'Noto Sans Deseret', serif",
+    endonym: "𐐔𐐯𐑅𐐨𐑉𐐯𐐻",
     name: "Deseret",
     parent: "latin",
     certainty: "stimulus",
@@ -351,7 +358,7 @@ export const europeanScripts: ScriptNode[] = [
     iso: "Dsrt",
     languages: ["English"],
     sample: "𐐔𐐯𐑅𐐨𐑉𐐯𐐻",
-    sampleNote: "'Deseret' written in the Deseret alphabet",
+    sampleNote: "Deseret, the Book of Mormon word for honeybee, written in the Deseret alphabet.",
     tagline: "A phonemic replacement for English spelling, sponsored by Brigham Young.",
     detail: [
       "The Deseret alphabet was developed in the 1850s by a committee at the University of Deseret under Brigham Young's patronage, to give English a strictly phonemic orthography — 38 letters, one per sound, no silent letters, no case ambiguity. Its stated aims were to make literacy easier for the many non-English-speaking Mormon converts and to shorten the time required to learn to read.",
@@ -362,6 +369,8 @@ export const europeanScripts: ScriptNode[] = [
   },
   {
     id: "shavian",
+    fontHint: "'Noto Sans Shavian', serif",
+    endonym: "𐑖𐑱𐑝𐑾𐑯 𐑨𐑤𐑓𐑩𐑚𐑧𐑑",
     name: "Shavian",
     parent: "latin",
     certainty: "stimulus",
@@ -376,7 +385,7 @@ export const europeanScripts: ScriptNode[] = [
     iso: "Shaw",
     languages: ["English"],
     sample: "𐑖𐑱𐑝𐑾𐑯",
-    sampleNote: "'Shavian' in Shavian",
+    sampleNote: "Shavian alphabet, written in Shavian — the script Shaw's will paid for.",
     tagline: "Bernard Shaw left money in his will for a better English alphabet.",
     detail: [
       "George Bernard Shaw, who considered English orthography a national embarrassment, left funds in his will for a competition to design a replacement. Ronald Kingsley Read's winning design was published in 1960: 40 letters, no case, with related sounds given visually related shapes and voiced/voiceless pairs distinguished by rotation.",
@@ -387,6 +396,8 @@ export const europeanScripts: ScriptNode[] = [
   },
   {
     id: "ipa",
+    fontHint: "'EB Garamond', serif",
+    endonym: "ˌɪntəˈnæʃənəl fəˈnɛtɪk",
     name: "International Phonetic Alphabet",
     parent: "latin",
     influences: ["greek"],
@@ -401,7 +412,7 @@ export const europeanScripts: ScriptNode[] = [
     region: "Worldwide (scholarly)",
     languages: ["all languages, as notation"],
     sample: "[ð ə ˈɪ n t ə ˈn æ ʃ ə n ə l]",
-    sampleNote: "a narrow transcription of 'the international'",
+    sampleNote: "The IPA transcribing its own name. Unusually among scripts, it spells sound rather than words, so its autonym is a pronunciation.",
     tagline: "One symbol per speech sound, for every language on earth.",
     detail: [
       "The International Phonetic Association published the first version of its alphabet in 1888, aiming at a notation in which one symbol represented one speech sound in any language. Its base is Latin, extended with Greek letters, rotated and reversed Latin forms, and a systematic apparatus of diacritics for length, tone, nasalisation and voice quality.",
@@ -411,6 +422,8 @@ export const europeanScripts: ScriptNode[] = [
   },
   {
     id: "braille",
+    fontHint: "'Noto Sans Symbols 2', serif",
+    endonym: "⠃⠗⠁⠊⠇⠇⠑",
     name: "Braille",
     parent: "latin",
     certainty: "stimulus",
@@ -426,7 +439,7 @@ export const europeanScripts: ScriptNode[] = [
     users: "millions, across most languages",
     languages: ["adapted for nearly every written language"],
     sample: "⠃⠗⠁⠊⠇⠇⠑",
-    sampleNote: "'braille' in Grade 1 English braille",
+    sampleNote: "braille, written in braille. On paper these are raised dots; on screen only their pattern survives.",
     tagline: "A tactile six-dot cell, devised by a fifteen-year-old in 1824.",
     detail: [
       "Louis Braille, blinded at three and a student at the Royal Institute for Blind Youth in Paris, devised his system in 1824 at the age of fifteen. He built it on Charles Barbier's military night-writing but reduced the cell to six dots in two columns of three — small enough to be read under a single fingertip, which was the decisive innovation.",

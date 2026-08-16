@@ -8,6 +8,9 @@ import type { ScriptNode } from "./types";
 export const semiticScripts: ScriptNode[] = [
   {
     id: "proto-sinaitic",
+    fontHint: "'Noto Sans Phoenician', serif",
+    sampleNote: "Proto-Sinaitic is not encoded in Unicode. These are the Phoenician letters aleph, beth, gimel — the direct descendants of its ox-head, house and throw-stick signs.",
+    sample: "𐤀𐤁𐤂",
     name: "Proto-Sinaitic",
     parent: "hieratic",
     certainty: "probable",
@@ -38,6 +41,9 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "proto-canaanite",
+    fontHint: "'Noto Sans Phoenician', serif",
+    sampleNote: "Not encoded in Unicode. Shown in Phoenician, the standardised form this early Canaanite writing settled into.",
+    sample: "𐤀𐤅𐤈",
     name: "Proto-Canaanite",
     parent: "proto-sinaitic",
     certainty: "attested",
@@ -59,6 +65,7 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "phoenician",
+    fontHint: "'Noto Sans Phoenician', serif",
     name: "Phoenician",
     endonym: "𐤃𐤁𐤓𐤉𐤌 𐤊𐤍𐤏𐤍𐤉𐤌",
     parent: "proto-canaanite",
@@ -93,9 +100,10 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "paleo-hebrew",
+    endonym: "𐤏𐤁𐤓𐤉𐤕",
     fontHint: "'Noto Sans Phoenician', serif",
     sample: "𐤀𐤁𐤂",
-    sampleNote: "Phoenician-form aleph, beth, gimel as used for Hebrew.",
+    sampleNote: "ʿbryt, ‘Hebrew’ — in the Paleo-Hebrew letters used before the Aramaic square script replaced them.",
     name: "Paleo-Hebrew",
     parent: "phoenician",
     certainty: "attested",
@@ -118,6 +126,7 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "samaritan",
+    fontHint: "'Noto Sans Samaritan', serif",
     name: "Samaritan",
     endonym: "𐡀𐡁𐡂𐡃",
     parent: "paleo-hebrew",
@@ -144,6 +153,7 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "ancient-south-arabian",
+    fontHint: "'Noto Sans Old South Arabian', serif",
     name: "Ancient South Arabian",
     parent: "proto-sinaitic",
     certainty: "probable",
@@ -260,6 +270,7 @@ export const semiticScripts: ScriptNode[] = [
   /* ── Aramaic and its descendants ─────────────────────────────── */
   {
     id: "aramaic",
+    fontHint: "'Noto Sans Imperial Aramaic', serif",
     name: "Aramaic",
     endonym: "𐡀𐡓𐡌𐡉𐡀",
     parent: "phoenician",
@@ -355,6 +366,7 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "mandaic",
+    fontHint: "'Noto Sans Mandaic', serif",
     name: "Mandaic",
     endonym: "ࡀࡁࡂࡃ",
     parent: "aramaic",
@@ -732,6 +744,7 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "old-turkic",
+    fontHint: "'Noto Sans Old Turkic', serif",
     name: "Old Turkic (Orkhon)",
     parent: "aramaic",
     certainty: "disputed",

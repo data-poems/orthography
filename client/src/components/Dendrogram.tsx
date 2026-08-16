@@ -17,6 +17,7 @@ import {
   type ScriptNode,
 } from "@/data";
 import { buildLayout, influenceArcs, labelTransform } from "@/lib/tree-layout";
+import { shortSpecimen, specimenOf } from "@/lib/specimen";
 
 export interface DendrogramProps {
   selectedId: string | null;
@@ -393,12 +394,19 @@ export default function Dendrogram({
                     <g transform={lt.transform} style={{ pointerEvents: "none" }}>
                       {/* Specimen glyph: the script writes its own name in the
                           plate. Only where the sector is wide enough to hold it. */}
-                      {n.data.sample && n.span * Math.max(n.radius, 60) * k > 30 && (
+                      {(() => {
+                        const spec = shortSpecimen(
+                          n.data,
+                          n.depth <= 2 || n.origin ? 6 : 4,
+                        );
+                        if (spec.kind === "none") return null;
+                        if (n.span * Math.max(n.radius, 60) * k <= 30) return null;
+                        return (
                         <text
                           textAnchor={lt.anchor}
                           dy="-0.92em"
                           style={{
-                            fontFamily: n.data.fontHint ?? "serif",
+                            fontFamily: spec.font,
                             fontSize: compact
                               ? n.depth <= 2 || n.origin
                                 ? 24
@@ -413,9 +421,10 @@ export default function Dendrogram({
                             strokeWidth: 3.4,
                             strokeLinejoin: "round",
                           }}>
-                          {n.data.sample.slice(0, n.depth <= 2 ? 6 : 4)}
+                          {spec.text}
                         </text>
-                      )}
+                        );
+                      })()}
                       <text
                         textAnchor={lt.anchor}
                         dy="0.32em"
@@ -516,21 +525,33 @@ export default function Dendrogram({
             <span style={{ fontFamily: "var(--font-display)" }} className="text-[15px] font-semibold leading-tight">
               {tip.node.name}
             </span>
-            {tip.node.endonym && (
-              <span className="text-[13px] text-[var(--ink-faint)]">{tip.node.endonym}</span>
-            )}
           </div>
           <div className="caption mt-1">{tip.node.period}</div>
           <p className="mt-1.5 text-[13.5px] leading-snug text-[var(--ink-mid)]">
             {tip.node.tagline}
           </p>
-          {tip.node.sample && (
-            <div
-              className="mt-2 truncate text-[19px] leading-tight"
-              style={{ fontFamily: tip.node.fontHint ?? "serif" }}>
-              {tip.node.sample}
-            </div>
-          )}
+          {(() => {
+            const spec = specimenOf(tip.node);
+            if (spec.kind === "none") {
+              return (
+                <div className="caption mt-2 text-[9.5px] italic">
+                  No specimen — unencoded or undeciphered
+                </div>
+              );
+            }
+            return (
+              <div className="mt-2 border-t border-border pt-2">
+                <div className="caption text-[9px]">
+                  {spec.kind === "autonym" ? "Written in itself" : "Specimen"}
+                </div>
+                <div
+                  className="mt-1 truncate text-[19px] leading-tight"
+                  style={{ fontFamily: spec.font }}>
+                  {spec.text}
+                </div>
+              </div>
+            );
+          })()}
           <div className="caption mt-2 text-[10px]">
             {scriptById.get(tip.node.parent ?? "")?.name
               ? `from ${scriptById.get(tip.node.parent!)!.name}`

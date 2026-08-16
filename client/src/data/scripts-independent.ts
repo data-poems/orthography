@@ -135,9 +135,10 @@ export const independentScripts: ScriptNode[] = [
   },
   {
     id: "bamum",
+    endonym: "ꚠꚡꚢꚣ",
     fontHint: "'Noto Sans Bamum', serif",
     sample: " 0 1 2",
-    sampleNote: "Bamum letters from the a-ka-u-ku syllabary.",
+    sampleNote: "a-ka-u-ku, the traditional name of the script, from the sounds of its first four characters.",
     name: "Bamum",
     parent: "root",
     certainty: "stimulus",
@@ -162,9 +163,10 @@ export const independentScripts: ScriptNode[] = [
   },
   {
     id: "pahawh-hmong",
+    endonym: "𖬖𖬲𖬵 𖬄𖬲𖬟 𖬌𖬣𖬵",
     fontHint: "'Noto Sans Pahawh Hmong', serif",
     sample: "𖬑𖬒𖬓",
-    sampleNote: "Pahawh Hmong vowels and consonants.",
+    sampleNote: "Phajhauj Hmoob, ‘Hmong writing’ — in the script Shong Lue Yang said was revealed to him.",
     name: "Pahawh Hmong",
     parent: "root",
     certainty: "stimulus",
@@ -189,6 +191,7 @@ export const independentScripts: ScriptNode[] = [
   },
   {
     id: "mwangwego",
+    sampleNote: "Devised in 1979 and still in use, but not yet released in Unicode. Its native name is musitu wa Mwangwego.",
     name: "Mwangwego",
     parent: "root",
     certainty: "stimulus",
@@ -210,6 +213,8 @@ export const independentScripts: ScriptNode[] = [
   },
   {
     id: "osage",
+    fontHint: "'Noto Sans Osage', serif",
+    endonym: "𐓏𐓘𐓻𐓘𐓻𐓟 𐒻𐓟",
     name: "Osage",
     parent: "latin",
     certainty: "stimulus",
@@ -225,7 +230,7 @@ export const independentScripts: ScriptNode[] = [
     users: "a few hundred learners",
     languages: ["Osage"],
     sample: "𐒰 𐒱 𐒲 𐒳",
-    sampleNote: "Osage letters (font support is limited)",
+    sampleNote: "Wazhazhe ie, ‘the Osage language’ — in the orthography the Nation adopted in 2006.",
     tagline: "A twenty-first-century alphabet, created so a language could be revived on its own terms.",
     detail: [
       "Herman Mongrain Lookout developed the Osage script from 2006 for the Osage Nation's language revitalisation programme. Osage had been written in various ad hoc Latin orthographies; a purpose-built alphabet, visually distinct from English, was intended to give the language its own identity and to avoid English spelling interference among learners.",
@@ -236,6 +241,7 @@ export const independentScripts: ScriptNode[] = [
   },
   {
     id: "afaka",
+    sampleNote: "Not encoded in Unicode. Devised in 1910 by Afaka Atumisi for Ndyuka, and known from a small body of manuscripts.",
     name: "Afaka",
     parent: "root",
     certainty: "stimulus",
@@ -258,6 +264,7 @@ export const independentScripts: ScriptNode[] = [
   },
   {
     id: "shorthand",
+    sampleNote: "Pitman and Gregg shorthand are not encoded in Unicode. Both are systems of abstract strokes whose shapes depend on size and position on the line.",
     name: "Shorthand (Pitman & Gregg)",
     parent: "latin",
     certainty: "stimulus",
