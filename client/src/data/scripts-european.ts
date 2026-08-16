@@ -25,7 +25,7 @@ export const europeanScripts: ScriptNode[] = [
     languages: ["Greek", "Ancient Greek", "Bactrian (historically)", "Coptic (via adaptation)"],
     sample: "Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π",
     sampleNote: "alpha to pi, in the Euclidean order fixed at Athens in 403 BC",
-    fontHint: "'GFS Didot', 'Noto Serif', serif",
+    fontHint: "'EB Garamond', serif",
     tagline: "The first script to write vowels as letters in their own right.",
     detail: [
       "The Greeks took the Phoenician alphabet in the ninth or eighth century BC — most specialists favour the early eighth, perhaps on Euboea. The earliest fragments, of 770–750 BC, match Phoenician letterforms of about 800–750 BC. The oldest substantial texts are the Dipylon inscription from Athens and the Cup of Nestor from Pithekoussai, both late eighth century. Crucially, this happened after Linear B had been lost for four centuries: Greek literacy restarts from zero, borrowing from abroad.",
@@ -296,7 +296,7 @@ export const europeanScripts: ScriptNode[] = [
     languages: ["Russian", "Ukrainian", "Bulgarian", "Serbian", "Belarusian", "Macedonian", "Kazakh", "Mongolian", "and ~50 more"],
     sample: "А Б В Г Д Е Ж З И Й К Л М Н О П",
     sampleNote: "the modern Russian order, a to p",
-    fontHint: "'Noto Serif', serif",
+    fontHint: "'EB Garamond', serif",
     tagline: "Named for Cyril, but built by his students at Preslav after his death.",
     detail: [
       "Cyrillic was developed between about 893 and 940 at the Preslav Literary School in the First Bulgarian Empire, under Tsar Simeon I, by disciples of Cyril and Methodius — Clement of Ohrid, Naum of Preslav, Constantine of Preslav, John the Exarch and others. It takes its letterforms from Greek uncials and borrows from Glagolitic for the specifically Slavic sounds, and it is named in homage to Cyril rather than by him. The oldest dated Cyrillic inscription comes from Krepcha in Bulgaria, dated 921; Cyrillic had overtaken Glagolitic by the twelfth century.",
@@ -312,6 +312,9 @@ export const europeanScripts: ScriptNode[] = [
   },
   {
     id: "old-permic",
+    fontHint: "'Noto Sans Old Permic', serif",
+    sample: "𐍐𐍑𐍒",
+    sampleNote: "Anbur letters an, bur, gai.",
     name: "Old Permic (Abur)",
     parent: "cyrillic",
     certainty: "attested",

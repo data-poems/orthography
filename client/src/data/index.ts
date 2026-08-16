@@ -10,6 +10,8 @@ import { europeanScripts } from "./scripts-european";
 import { brahmicScripts } from "./scripts-brahmic";
 import { siniticScripts } from "./scripts-sinitic";
 import { independentScripts } from "./scripts-independent";
+import { expansionScripts } from "./scripts-expansion";
+import { expansionScriptsB } from "./scripts-expansion-b";
 
 export * from "./types";
 
@@ -20,6 +22,8 @@ export const allScripts: ScriptNode[] = [
   ...brahmicScripts,
   ...siniticScripts,
   ...independentScripts,
+  ...expansionScriptsB,
+  ...expansionScripts,
 ];
 
 export const scriptById = new Map<string, ScriptNode>(
@@ -146,4 +150,3 @@ export const certaintyLabels: Record<string, string> = {
   disputed: "Disputed descent",
   stimulus: "Stimulus diffusion — the idea, not the forms",
 };
-

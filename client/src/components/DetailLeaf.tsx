@@ -4,7 +4,7 @@
  * versal initial set in the script being described where Unicode permits.
  * The specimen block is the hero; prose is body text, not marketing.
  */
-import { ArrowUpRight, X } from "lucide-react";
+import { ArrowUpRight, Network, X } from "lucide-react";
 import {
   ancestryOf,
   certaintyLabels,
@@ -40,10 +40,19 @@ export default function DetailLeaf({
   node,
   onClose,
   onNavigate,
+  handle = false,
+  onShowInTree,
 }: {
   node: ScriptNode;
   onClose: () => void;
   onNavigate: (id: string) => void;
+  /** Phone sheet: show a drag handle and tighten the gutters. */
+  handle?: boolean;
+  /**
+   * Phone only: leave the index and open the plate with this script focused, so
+   * a reader who arrived by list can still see where it sits in the genealogy.
+   */
+  onShowInTree?: (id: string) => void;
 }) {
   const line = ancestryOf(node.id).filter((id) => id !== "root" && id !== node.id);
   const kids = childrenOf.get(node.id) ?? [];
@@ -52,10 +61,20 @@ export default function DetailLeaf({
   return (
     <aside
       key={node.id}
-      className="leaf-enter grain pricked relative flex h-full w-full flex-col border-l border-border bg-card"
+      className={`grain pricked relative flex h-full w-full flex-col bg-card ${
+        handle ? "" : "leaf-enter border-l border-border"
+      }`}
       aria-label={`${node.name} — detail`}>
+      {handle && (
+        <div className="flex shrink-0 justify-center pb-1 pt-2.5">
+          <span className="h-1 w-10 rounded-full bg-[var(--ink-faint)]/35" />
+        </div>
+      )}
       {/* Head band */}
-      <header className="relative shrink-0 border-b border-border px-7 pb-4 pt-5">
+      <header
+        className={`relative shrink-0 border-b border-border ${
+          handle ? "px-5 pb-3 pt-2" : "px-7 pb-4 pt-5"
+        }`}>
         <div className="flex items-start justify-between gap-3">
           <div>
             <div className="caption flex items-center gap-2">
@@ -66,10 +85,17 @@ export default function DetailLeaf({
               {familyLabels[node.family]}
               {node.iso && <span className="text-[var(--ink-faint)]">· {node.iso}</span>}
             </div>
-            <h2 className="mt-1.5 text-[2rem] leading-[1.05]">{node.name}</h2>
+            <h2
+              className={`mt-1.5 leading-[1.05] ${
+                handle ? "text-[1.6rem]" : "text-[2rem]"
+              }`}>
+              {node.name}
+            </h2>
             {node.endonym && (
               <div
-                className="mt-0.5 text-[1.15rem] text-[var(--ink-mid)]"
+                className={`mt-0.5 text-[var(--ink-mid)] ${
+                  handle ? "text-[1rem]" : "text-[1.15rem]"
+                }`}
                 style={{ fontFamily: node.fontHint ?? "serif" }}>
                 {node.endonym}
               </div>
@@ -78,18 +104,23 @@ export default function DetailLeaf({
           <button
             onClick={onClose}
             aria-label="Close detail"
-            className="apparatus mt-1 shrink-0">
-            <X size={14} />
+            className="rail-btn -mr-1.5 mt-0.5 shrink-0">
+            <X size={handle ? 18 : 15} />
           </button>
         </div>
       </header>
 
-      <div className="quire-scroll ruled min-h-0 flex-1 overflow-y-auto px-7 pb-16 pt-5">
+      <div
+        className={`quire-scroll ruled min-h-0 flex-1 overflow-y-auto pt-5 ${
+          handle ? "px-5 pb-10" : "px-7 pb-16"
+        }`}>
         {/* Specimen block — the hero. */}
         {node.sample ? (
-          <figure className="specimen mb-6 px-5 py-4">
+          <figure className={`specimen mb-6 py-4 ${handle ? "px-4" : "px-5"}`}>
             <div
-              className="break-words text-[2rem] leading-[1.5]"
+              className={`break-words leading-[1.5] ${
+                handle ? "text-[1.7rem]" : "text-[2rem]"
+              }`}
               style={{ fontFamily: node.fontHint ?? "serif" }}>
               {node.sample}
             </div>
@@ -120,7 +151,11 @@ export default function DetailLeaf({
             ...(node.users ? ([["Users", node.users]] as [string, string][]) : []),
             ["Languages", node.languages.join(", ")],
           ].map(([k, v]) => (
-            <div key={k} className="col-span-2 grid grid-cols-[6.2rem_1fr] gap-x-5">
+            <div
+              key={k}
+              className={`col-span-2 grid gap-x-5 ${
+                handle ? "grid-cols-[5.2rem_1fr]" : "grid-cols-[6.2rem_1fr]"
+              }`}>
               <dt className="caption pt-[3px]">{k}</dt>
               <dd className="text-[14.5px] leading-snug text-[var(--ink-mid)]">{v}</dd>
             </div>
@@ -184,7 +219,11 @@ export default function DetailLeaf({
             {node.tagline}
           </p>
           {node.detail.map((para, i) => (
-            <p key={i} className="mb-3.5 text-[16.5px] leading-[1.66]">
+            <p
+              key={i}
+              className={`mb-3.5 leading-[1.66] ${
+                handle ? "text-[15.5px]" : "text-[16.5px]"
+              }`}>
               {i === 0 && <Versal node={node} />}
               {para}
             </p>
@@ -197,7 +236,13 @@ export default function DetailLeaf({
             <div className="caption mb-2">Noted</div>
             <dl className="grid gap-1.5">
               {node.facts.map((f) => (
-                <div key={f.label} className="grid grid-cols-[8.5rem_1fr] gap-x-4">
+                <div
+                  key={f.label}
+                  className={
+                    handle
+                      ? "grid gap-y-0.5"
+                      : "grid grid-cols-[8.5rem_1fr] gap-x-4"
+                  }>
                   <dt className="caption-tight pt-[1px] text-[10.5px] uppercase tracking-[0.09em]">
                     {f.label}
                   </dt>
@@ -219,7 +264,9 @@ export default function DetailLeaf({
                 <button
                   key={c.id}
                   onClick={() => onNavigate(c.id)}
-                  className="group flex items-center gap-1.5 border-b border-[var(--ink)]/25 px-1 py-0.5 text-[14px] transition-colors hover:border-[var(--rubric)]"
+                  className={`group flex items-center gap-1.5 border-b border-[var(--ink)]/25 px-1 text-[14px] transition-colors hover:border-[var(--rubric)] ${
+                    handle ? "py-1.5" : "py-0.5"
+                  }`}
                   style={{ transition: "all 160ms var(--ease-out)" }}>
                   <span
                     className="h-1.5 w-1.5 rounded-full"
@@ -242,6 +289,27 @@ export default function DetailLeaf({
           </a>
         )}
       </div>
+
+      {/* Phone: a fixed foot action, so "where is this in the tree" is always
+          one tap away rather than something to scroll for. */}
+      {onShowInTree && (
+        <div className="shrink-0 border-t border-border bg-[var(--vellum)] px-5 py-2.5">
+          <button
+            onClick={() => onShowInTree(node.id)}
+            className="flex h-11 w-full items-center justify-center gap-2 rounded-[2px] border border-[var(--rubric)]/45 bg-[oklch(0.512_0.176_32/0.055)] active:scale-[0.98]"
+            style={{ transition: "transform 160ms var(--ease-out)" }}>
+            <Network size={15} className="text-[var(--rubric)]" />
+            <span
+              className="text-[10.5px] uppercase text-[var(--rubric)]"
+              style={{
+                fontFamily: "var(--font-mono)",
+                letterSpacing: "0.16em",
+              }}>
+              Show in the plate
+            </span>
+          </button>
+        </div>
+      )}
     </aside>
   );
 }

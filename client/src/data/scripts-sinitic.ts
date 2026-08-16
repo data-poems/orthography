@@ -291,6 +291,9 @@ export const siniticScripts: ScriptNode[] = [
   },
   {
     id: "sawndip",
+    fontHint: "'Noto Serif SC', serif",
+    sample: "任麻嫄",
+    sampleNote: "Sawndip characters built from Han components.",
     name: "Sawndip",
     endonym: "𭨡倱",
     parent: "chinese-traditional",
@@ -359,7 +362,7 @@ export const siniticScripts: ScriptNode[] = [
     languages: ["Mandarin Chinese", "Taiwanese Hokkien"],
     sample: "ㄅ ㄆ ㄇ ㄈ ㄉ ㄊ ㄋ ㄌ",
     sampleNote: "b, p, m, f, d, t, n, l — the sequence that names the system",
-    fontHint: "'Noto Sans TC', sans-serif",
+    fontHint: "'Noto Serif TC', serif",
     tagline: "A phonetic notation built from fragments of ancient characters.",
     detail: [
       "Bopomofo was adopted in 1918 by the Republic of China's Commission on the Unification of Pronunciation as a phonetic notation for Mandarin. Its 37 symbols are taken from simple or archaic Chinese characters — ㄅ from 勺, ㄆ from 攵 — so it looks Chinese while functioning as an onset-rime semi-syllabary.",

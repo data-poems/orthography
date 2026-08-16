@@ -141,6 +141,9 @@ export const ancientScripts: ScriptNode[] = [
   },
   {
     id: "anatolian-hieroglyphs",
+    fontHint: "'Noto Sans Anatolian Hieroglyphs', serif",
+    sample: "𔒰𔒱𔒲",
+    sampleNote: "Hieroglyphic Luwian signs, Unicode Anatolian Hieroglyphs block.",
     name: "Anatolian Hieroglyphs",
     parent: "root",
     certainty: "disputed",

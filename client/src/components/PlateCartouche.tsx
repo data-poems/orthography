@@ -1,10 +1,13 @@
 /**
  * STYLE REMINDER — Scriptorium Vellum
  * The plate's own titling block, as an engraved corpus would carry it: plate
- * number, title, a rule, and the four inventions listed as the key. Sits in the
- * dead upper-left corner of the canvas where no branch reaches.
+ * mark, title, a rule, and the four inventions listed as the key. It carries the
+ * wordmark itself, so the page needs no header band at all.
  */
+import { Link } from "wouter";
 import { scriptById } from "@/data";
+
+const LOGO = "/manus-storage/aleph-mark-web_d69c2b44.png";
 
 const FOUR = [
   { id: "cuneiform", place: "Mesopotamia", year: "c. 3400 BC" },
@@ -16,17 +19,34 @@ const FOUR = [
 export default function PlateCartouche({
   onSelect,
   activeId,
+  corpusCount,
 }: {
   onSelect: (id: string) => void;
   activeId: string | null;
+  corpusCount: number;
 }) {
   return (
-    <div className="pointer-events-none absolute left-6 top-5 max-w-[19rem]">
+    <div className="pointer-events-none absolute left-7 top-6 max-w-[19.5rem]">
       <div
-        className="settle"
+        className="settle pointer-events-auto"
         style={{ ["--delay" as string]: "260ms" }}>
-        <div className="caption mb-1 text-[10px]">Plate I · radial genealogy</div>
-        <h1 className="text-[1.72rem] leading-[1.06]">
+        {/* Wordmark set as the plate's own signature, not a header bar. */}
+        <Link href="/about" className="group mb-3 flex items-center gap-2.5">
+          <img src={LOGO} alt="" className="h-6 w-6 shrink-0" />
+          <span
+            className="text-[0.72rem] uppercase leading-none group-hover:text-[var(--rubric)]"
+            style={{
+              fontFamily: "var(--font-mono)",
+              letterSpacing: "0.2em",
+              transition: "color 160ms var(--ease-out)",
+            }}>
+            The Tree of Writing
+          </span>
+        </Link>
+        <div className="caption mb-1 text-[10px]">
+          Plate I · radial genealogy · {corpusCount} scripts
+        </div>
+        <h1 className="text-[1.78rem] leading-[1.06]">
           The descent of the
           <br />
           world's writing systems
@@ -76,6 +96,11 @@ export default function PlateCartouche({
           Whether Egypt invented or inherited the idea is still argued. Everything
           on the outer rings was learned from something already written.
         </p>
+        <Link
+          href="/about"
+          className="caption mt-3 inline-flex items-center gap-1.5 border-b border-border pb-0.5 text-[10px] hover:border-[var(--rubric)] hover:text-[var(--rubric)]">
+          Read the essay
+        </Link>
       </div>
     </div>
   );

@@ -135,6 +135,9 @@ export const independentScripts: ScriptNode[] = [
   },
   {
     id: "bamum",
+    fontHint: "'Noto Sans Bamum', serif",
+    sample: " 0 1 2",
+    sampleNote: "Bamum letters from the a-ka-u-ku syllabary.",
     name: "Bamum",
     parent: "root",
     certainty: "stimulus",
@@ -159,6 +162,9 @@ export const independentScripts: ScriptNode[] = [
   },
   {
     id: "pahawh-hmong",
+    fontHint: "'Noto Sans Pahawh Hmong', serif",
+    sample: "𖬑𖬒𖬓",
+    sampleNote: "Pahawh Hmong vowels and consonants.",
     name: "Pahawh Hmong",
     parent: "root",
     certainty: "stimulus",

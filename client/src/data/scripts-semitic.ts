@@ -93,6 +93,9 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "paleo-hebrew",
+    fontHint: "'Noto Sans Phoenician', serif",
+    sample: "𐤀𐤁𐤂",
+    sampleNote: "Phoenician-form aleph, beth, gimel as used for Hebrew.",
     name: "Paleo-Hebrew",
     parent: "phoenician",
     certainty: "attested",
@@ -166,6 +169,9 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "ancient-north-arabian",
+    fontHint: "'Noto Sans Old North Arabian', serif",
+    sample: "𐪀𐪁𐪂",
+    sampleNote: "Old North Arabian letters.",
     name: "Ancient North Arabian",
     parent: "proto-sinaitic",
     certainty: "probable",
@@ -206,7 +212,7 @@ export const semiticScripts: ScriptNode[] = [
     languages: ["Ge'ez", "Amharic", "Tigrinya", "Tigre", "Harari", "Gurage", "Bilen"],
     sample: "ሀሁሂሃሄህሆ ለሉሊላሌልሎ",
     sampleNote: "the hä-series and lä-series in all seven vowel orders",
-    fontHint: "'Noto Sans Ethiopic', serif",
+    fontHint: "'Noto Serif Ethiopic', serif",
     tagline: "An abugida invented in fourth-century Aksum, still written every day.",
     detail: [
       "Ge'ez, called fidäl, began as a consonantal abjad derived from Ancient South Arabian — 26 letters against South Arabian's 29, with 24 direct correspondences. The earliest Semitic inscriptions in Eritrea date to the ninth century BC; the oldest known Ge'ez text is the Hawulti obelisk at Matara in Eritrea. Where South Arabian was boustrophedon, Old Ge'ez settled on right-to-left, and modern Ge'ez runs left to right.",
@@ -304,7 +310,7 @@ export const semiticScripts: ScriptNode[] = [
     languages: ["Hebrew", "Yiddish", "Ladino", "Judeo-Arabic", "Judeo-Persian", "Aramaic"],
     sample: "אבגדהוזחטיכלמנסעפצקרשת",
     sampleNote: "the 22 letters, aleph to tav",
-    fontHint: "'Noto Serif Hebrew', 'Frank Ruehl', serif",
+    fontHint: "'Noto Serif Hebrew', serif",
     tagline: "The Aramaic square script, adopted for Hebrew and never given up.",
     detail: [
       "The modern Hebrew alphabet is a stylised form of Imperial Aramaic, which Jewish tradition acknowledged by calling it Ktav Ashuri, \"Assyrian script,\" since its origins in Mesopotamia were known. Twenty-two letters, no case, right to left, with five letters taking distinct final forms. Jews began using it after the Babylonian exile, adopted the square form during the third century BC, and had settled on it entirely by the first century BC.",
@@ -374,6 +380,9 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "palmyrene",
+    fontHint: "'Noto Sans Palmyrene', serif",
+    sample: "𐡠𐡡𐡢",
+    sampleNote: "Palmyrene aleph, beth, gimel.",
     name: "Palmyrene",
     parent: "aramaic",
     certainty: "attested",
@@ -396,6 +405,9 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "nabataean",
+    fontHint: "'Noto Sans Nabataean', serif",
+    sample: "𐢀𐢁𐢂",
+    sampleNote: "Nabataean aleph, beth, gimel.",
     name: "Nabataean",
     parent: "aramaic",
     certainty: "attested",
@@ -496,7 +508,7 @@ export const semiticScripts: ScriptNode[] = [
     languages: ["Urdu", "Punjabi (Shahmukhi)", "Kashmiri", "Saraiki"],
     sample: "اردو ٹ ڈ ڑ ں ھ",
     sampleNote: "'Urdu', then the retroflex and other South Asian additions",
-    fontHint: "'Noto Nastaliq Urdu', serif",
+    fontHint: "'Noto Nastaliq Urdu', 'Noto Naskh Arabic', serif",
     tagline: "Perso-Arabic with retroflexes, set on a diagonal baseline.",
     detail: [
       "Urdu adds letters to the Perso-Arabic inventory for sounds specific to South Asia: the retroflex consonants ٹ ڈ ڑ (marked with a superscript ṭoʼe), the nasal ں, the aspiration marker do-cašmī he ھ, and a set of vowel conventions. The result is a 38-letter alphabet.",
@@ -534,6 +546,9 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "hanifi-rohingya",
+    fontHint: "'Noto Sans Hanifi Rohingya', serif",
+    sample: "𐴀𐴁𐴂",
+    sampleNote: "Hanifi Rohingya letters a, ba, pa.",
     name: "Hanifi Rohingya",
     parent: "arabic",
     certainty: "attested",
@@ -557,6 +572,9 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "pahlavi",
+    fontHint: "'Noto Sans Inscriptional Pahlavi', serif",
+    sample: "𐭠𐭡𐭢",
+    sampleNote: "Inscriptional Pahlavi aleph, beth, gimel.",
     name: "Pahlavi",
     parent: "aramaic",
     certainty: "attested",
@@ -579,6 +597,9 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "avestan",
+    fontHint: "'Noto Sans Avestan', serif",
+    sample: "𐬀𐬁𐬂",
+    sampleNote: "Avestan letters a, aa, ao.",
     name: "Avestan",
     parent: "pahlavi",
     certainty: "attested",
@@ -602,6 +623,9 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "sogdian",
+    fontHint: "'Noto Sans Sogdian', serif",
+    sample: "𐼰𐼱𐼲",
+    sampleNote: "Sogdian aleph, beth, gimel.",
     name: "Sogdian",
     parent: "aramaic",
     certainty: "attested",
@@ -624,6 +648,9 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "old-uyghur",
+    fontHint: "'Noto Sans Old Uyghur', serif",
+    sample: "𐽰𐽱𐽲",
+    sampleNote: "Old Uyghur aleph, beth, gimel.",
     name: "Old Uyghur",
     parent: "sogdian",
     certainty: "attested",
@@ -679,6 +706,9 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "manchu",
+    fontHint: "'Noto Sans Mongolian', serif",
+    sample: "ᠠᠡᠢ",
+    sampleNote: "Manchu vowels a, e, i, written vertically.",
     name: "Manchu",
     parent: "mongolian",
     certainty: "attested",
@@ -727,6 +757,9 @@ export const semiticScripts: ScriptNode[] = [
   },
   {
     id: "kharosthi",
+    fontHint: "'Noto Sans Kharoshthi', serif",
+    sample: "𐨐𐨑𐨒",
+    sampleNote: "Kharoṣṭhī letters ka, kha, ga.",
     name: "Kharosthi",
     parent: "aramaic",
     certainty: "probable",

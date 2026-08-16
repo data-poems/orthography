@@ -62,6 +62,9 @@ export const brahmicScripts: ScriptNode[] = [
   },
   {
     id: "siddham",
+    fontHint: "'Noto Sans Siddham', serif",
+    sample: "𑖀𑖁𑖂",
+    sampleNote: "Siddhaṃ letters a, aa, i.",
     name: "Siddham",
     endonym: "𑖭𑖰𑖟𑖿𑖠𑖽",
     parent: "gupta",
@@ -86,6 +89,9 @@ export const brahmicScripts: ScriptNode[] = [
   },
   {
     id: "sharada",
+    fontHint: "'Noto Sans Sharada', serif",
+    sample: "𑆀𑆃𑆄",
+    sampleNote: "Sharada signs and letter a.",
     name: "Sharada",
     parent: "gupta",
     certainty: "attested",
@@ -305,6 +311,9 @@ export const brahmicScripts: ScriptNode[] = [
   },
   {
     id: "phags-pa",
+    fontHint: "'Noto Sans Phags Pa', serif",
+    sample: "ꡀꡁꡂ",
+    sampleNote: "ʼPhags-pa letters ka, kha, ga.",
     name: "ʼPhags-pa",
     parent: "tibetan",
     certainty: "attested",
@@ -625,6 +634,9 @@ export const brahmicScripts: ScriptNode[] = [
   },
   {
     id: "kawi",
+    fontHint: "'Noto Sans Kawi', serif",
+    sample: "𑼄𑼅𑼆",
+    sampleNote: "Kawi letters a, aa, i.",
     name: "Kawi (Old Javanese)",
     parent: "pallava",
     certainty: "attested",
@@ -726,6 +738,9 @@ export const brahmicScripts: ScriptNode[] = [
   },
   {
     id: "cham",
+    fontHint: "'Noto Sans Cham', serif",
+    sample: "ꨀꨁꨂ",
+    sampleNote: "Cham letters a, i, u.",
     name: "Cham",
     parent: "pallava",
     certainty: "attested",
@@ -812,6 +827,9 @@ export const brahmicScripts: ScriptNode[] = [
   },
   {
     id: "pollard-miao",
+    fontHint: "'Noto Sans Miao', serif",
+    sample: "ᛰ0ᛰ1ᛰ2",
+    sampleNote: "Miao letters.",
     name: "Pollard (Miao)",
     parent: "canadian-syllabics",
     influences: ["latin"],

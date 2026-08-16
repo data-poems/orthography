@@ -64,17 +64,21 @@ function Chip({
   onClick,
   children,
   swatch,
+  coarse,
 }: {
   on: boolean;
   onClick: () => void;
   children: React.ReactNode;
   swatch?: string;
+  coarse?: boolean;
 }) {
   return (
     <button
       onClick={onClick}
       aria-pressed={on}
-      className="flex w-full items-center gap-2 border-l-2 py-[3px] pl-2 pr-1 text-left text-[13px] leading-tight"
+      className={`flex w-full items-center gap-2 border-l-2 pl-2 pr-1 text-left leading-tight ${
+        coarse ? "min-h-[38px] py-2 text-[14px]" : "py-[3px] text-[13px]"
+      }`}
       style={{
         borderColor: on ? "var(--rubric)" : "transparent",
         color: on ? "var(--ink)" : "var(--ink-faint)",
@@ -118,16 +122,24 @@ export default function MarginColumn({
   showLabels,
   setShowLabels,
   matchCount,
+  corpusCount = 164,
+  coarse = false,
+  hideSearch = false,
 }: {
   filters: Filters;
-  setFilters: (f: Filters) => void;
+  setFilters: React.Dispatch<React.SetStateAction<Filters>>;
   cutoffYear: number | null;
-  setCutoffYear: (y: number | null) => void;
+  setCutoffYear: React.Dispatch<React.SetStateAction<number | null>>;
   showInfluences: boolean;
   setShowInfluences: (v: boolean) => void;
   showLabels: boolean;
   setShowLabels: (v: boolean) => void;
   matchCount: number | null;
+  corpusCount?: number;
+  /** Coarse pointer: enlarge hit targets and lay chips out in two columns. */
+  coarse?: boolean;
+  /** The phone header owns the search field, so the panel omits its own. */
+  hideSearch?: boolean;
 }) {
   const toggle = <T,>(set: Set<T>, v: T) => {
     const next = new Set(set);
@@ -151,7 +163,8 @@ export default function MarginColumn({
 
   return (
     <div className="quire-scroll flex h-full flex-col overflow-y-auto">
-      {/* Search */}
+      {/* Search — omitted on a phone, where the header carries it. */}
+      {!hideSearch ? (
       <div className="px-4 pb-3.5 pt-4">
         <div className="mb-1.5 flex items-baseline gap-2">
           <label className="caption" htmlFor="script-search">
@@ -183,10 +196,17 @@ export default function MarginColumn({
         </div>
         {matchCount !== null && (
           <div className="gloss caption mt-2 text-[10px]">
-            {matchCount} of 126 scripts shown in ink
+            {matchCount} of {corpusCount} scripts shown in ink
           </div>
         )}
       </div>
+      ) : (
+        matchCount !== null && (
+          <div className="gloss caption px-4 pb-1 pt-3 text-[10px]">
+            {matchCount} of {corpusCount} scripts shown in ink
+          </div>
+        )
+      )}
 
       {/* Timeline scrub */}
       <Section label="Trace to a year">
@@ -201,7 +221,7 @@ export default function MarginColumn({
             setCutoffYear(v >= YEAR_MAX ? null : v);
           }}
           aria-label="Timeline cutoff year"
-          className="w-full accent-[var(--rubric)]"
+          className={`w-full accent-[var(--rubric)] ${coarse ? "h-6" : ""}`}
         />
         <div className="mt-1 flex items-baseline justify-between">
           <span
@@ -224,10 +244,11 @@ export default function MarginColumn({
 
       {/* Families — doubles as the legend */}
       <Section label="Branch · legend">
-        <div className="grid gap-px">
+        <div className={`grid gap-px ${coarse ? "grid-cols-2 gap-x-2" : ""}`}>
           {FAMILY_ORDER.map((f) => (
             <Chip
               key={f}
+              coarse={coarse}
               on={filters.families.size === 0 || filters.families.has(f)}
               swatch={familyColors[f]}
               onClick={() =>
@@ -241,10 +262,11 @@ export default function MarginColumn({
 
       {/* Typology */}
       <Section label="Structural type">
-        <div className="grid gap-px">
+        <div className={`grid gap-px ${coarse ? "grid-cols-2 gap-x-2" : ""}`}>
           {TYPOLOGY_ORDER.map((t) => (
             <Chip
               key={t}
+              coarse={coarse}
               on={filters.typologies.size === 0 || filters.typologies.has(t)}
               onClick={() =>
                 setFilters({ ...filters, typologies: toggle(filters.typologies, t) })
@@ -257,10 +279,11 @@ export default function MarginColumn({
 
       {/* Vitality */}
       <Section label="Vitality today">
-        <div className="grid gap-px">
+        <div className={`grid gap-px ${coarse ? "grid-cols-2 gap-x-2" : ""}`}>
           {STATUS_ORDER.map((s) => (
             <Chip
               key={s}
+              coarse={coarse}
               on={filters.statuses.size === 0 || filters.statuses.has(s)}
               onClick={() =>
                 setFilters({ ...filters, statuses: toggle(filters.statuses, s) })
@@ -330,10 +353,13 @@ export default function MarginColumn({
       {/* Display */}
       <Section label="Display">
         <div className="grid gap-px">
-          <Chip on={showLabels} onClick={() => setShowLabels(!showLabels)}>
+          <Chip coarse={coarse} on={showLabels} onClick={() => setShowLabels(!showLabels)}>
             Script names
           </Chip>
-          <Chip on={showInfluences} onClick={() => setShowInfluences(!showInfluences)}>
+          <Chip
+            coarse={coarse}
+            on={showInfluences}
+            onClick={() => setShowInfluences(!showInfluences)}>
             Secondary influence chords
           </Chip>
         </div>
@@ -358,8 +384,9 @@ export default function MarginColumn({
 
       <div className="mt-auto border-t border-border px-4 py-3.5">
         <p className="gloss text-[12.5px] italic leading-snug text-[var(--ink-faint)]">
-          Drag to pan, scroll to zoom. Hover a node to illuminate its descent to
-          the point of invention; click to open the leaf.
+          {coarse
+            ? "Drag to pan, pinch to zoom. Tap a node to illuminate its descent to the point of invention and open the leaf."
+            : "Drag to pan, scroll to zoom. Hover a node to illuminate its descent to the point of invention; click to open the leaf."}
         </p>
       </div>
     </div>

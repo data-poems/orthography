@@ -147,6 +147,60 @@
   .apparatus:active {
     transform: scale(0.97);
   }
+  /**
+   * The apparatus rail: a hairline instrument stack sitting on the leaf. Reads
+   * as an engraver's tool mark, not a button — no fill until touched, a single
+   * ruled edge, and a hit area large enough for a thumb.
+   */
+  .rail-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    min-height: 2rem;
+    border: 0;
+    background: oklch(0.941 0.017 84 / 0.72);
+    color: var(--ink-mid);
+    backdrop-filter: blur(3px);
+    box-shadow: inset 0 0 0 1px oklch(0.28 0.022 55 / 0.14);
+    transition: all 150ms var(--ease-out);
+  }
+  .rail-btn:hover {
+    color: var(--rubric);
+    background: oklch(0.941 0.017 84 / 0.94);
+    box-shadow: inset 0 0 0 1px oklch(0.512 0.176 32 / 0.4);
+  }
+  .rail-btn:active {
+    transform: scale(0.94);
+  }
+  @media (pointer: coarse) {
+    .rail-btn {
+      min-width: 2.75rem;
+      min-height: 2.75rem;
+    }
+  }
+  /**
+   * Phone control: a properly sized touch target (44px, Apple's minimum) with a
+   * ruled edge rather than a filled pill, so the foot bar still reads as ruled
+   * apparatus rather than an app toolbar.
+   */
+  .phone-btn {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--vellum-deep);
+    color: var(--ink-mid);
+    transition: transform 160ms var(--ease-out), color 160ms var(--ease-out);
+  }
+  .phone-btn:active {
+    transform: scale(0.96);
+    color: var(--rubric);
+  }
   /* Marginal glosses: a hairline hangs off the gutter, as a manuscript note. */
   .gloss {
     position: relative;
@@ -332,5 +386,53 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+}
+
+/* Sheets and summoned leaves. Defined outside the reduced-motion guard so the
+   panels are always positioned correctly; the motion itself is short. */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes sheet-up {
+  from {
+    transform: translateY(14px);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes leaf-in {
+  from {
+    transform: translateX(-16px);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes leaf-in-right {
+  from {
+    transform: translateX(16px);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [style*="sheet-up"],
+  [style*="leaf-in"],
+  [style*="fade-in"] {
+    animation: none !important;
   }
 }

@@ -20,7 +20,7 @@ import { buildLayout, influenceArcs, labelTransform } from "@/lib/tree-layout";
 
 export interface DendrogramProps {
   selectedId: string | null;
-  onSelect: (id: string | null) => void;
+  onSelect: (id: string) => void;
   /** Ids that pass the current filters. Non-matches fade to ghost ink. */
   matchIds: Set<string>;
   /** Timeline cutoff year; nodes originating later are dimmed. */
@@ -28,6 +28,8 @@ export interface DendrogramProps {
   showInfluences: boolean;
   showLabels: boolean;
   animate: boolean;
+  /** Phone: enlarge hit targets, drop hover annotation, tighten the fit. */
+  compact?: boolean;
 }
 
 export interface DendrogramHandle {
@@ -43,6 +45,7 @@ export default function Dendrogram({
   showInfluences,
   showLabels,
   animate,
+  compact = false,
   registerControls,
 }: DendrogramProps & {
   registerControls?: (c: {
@@ -77,7 +80,7 @@ export default function Dendrogram({
     const g = gRef.current;
     if (!svg || !g) return;
     const z = zoom<SVGSVGElement, unknown>()
-      .scaleExtent([0.14, 6])
+      .scaleExtent([0.12, 7])
       .on("zoom", (ev: D3ZoomEvent<SVGSVGElement, unknown>) => {
         g.setAttribute("transform", ev.transform.toString());
         setK(ev.transform.k);
@@ -89,16 +92,15 @@ export default function Dendrogram({
 
     const fit = () => {
       const r = svg.getBoundingClientRect();
-      // Fit the real bounding box, leaving room at the outer edge for labels
-      // that radiate past the last ring.
-      const { minX, maxX, minY, maxY } = layout.bbox;
-      const pad = 132;
-      const scale = Math.min(
-        r.width / (maxX - minX + pad * 2),
-        r.height / (maxY - minY + pad * 2),
-      );
-      const cx = (minX + maxX) / 2;
-      const cy = (minY + maxY) / 2;
+      // The plate is radial and the root sits at the origin, so the view is
+      // centred on the origin rather than on the bounding box: centring on the
+      // box would push the root off-centre whenever one side runs longer, which
+      // reads as a broken plate rather than an asymmetric one.
+      const labelPad = compact ? 54 : 148;
+      const reach = layout.extent + labelPad;
+      const scale = Math.min(r.width / (reach * 2), r.height / (reach * 2));
+      const cx = 0;
+      const cy = 0;
       const t = zoomIdentity
         .translate(r.width / 2 - cx * scale, r.height / 2 - cy * scale)
         .scale(scale);
@@ -113,9 +115,12 @@ export default function Dendrogram({
         const n = layout.byId.get(id);
         if (!n) return;
         const r = svg.getBoundingClientRect();
-        const target = 0.95;
+        // On a phone the leaf covers the lower half of the screen, so the
+        // focused node is pulled into the upper third instead of the centre.
+        const target = compact ? 0.8 : 0.95;
+        const anchorY = compact ? r.height * 0.26 : r.height / 2;
         const t = zoomIdentity
-          .translate(r.width / 2 - n.x * target, r.height / 2 - n.y * target)
+          .translate(r.width / 2 - n.x * target, anchorY - n.y * target)
           .scale(target);
         sel.transition().duration(520).call(z.transform, t);
       },
@@ -126,7 +131,7 @@ export default function Dendrogram({
     });
 
     return () => ro.disconnect();
-  }, [layout, registerControls]);
+  }, [layout, registerControls, compact]);
 
   /* ── Per-node visual state ──────────────────────────────────── */
   const stateOf = (n: ScriptNode) => {
@@ -150,7 +155,10 @@ export default function Dendrogram({
    * dense Brahmic fan thins out until you zoom in.
    */
   const labelFits = (n: { span: number; radius: number }) =>
-    n.span * Math.max(n.radius, 60) * k > 14;
+    // Measured at the radius where the label actually sits, not at the node —
+    // otherwise first-ring labels are judged on a much shorter arc than they get.
+    n.span * Math.max(n.radius + (compact ? 12 : 14), 60) * k >
+    (compact ? 17 : 14);
 
   return (
     <div className="relative h-full w-full overflow-hidden">
@@ -178,7 +186,7 @@ export default function Dendrogram({
 
         <g ref={gRef}>
           {/* Ruling rings: the concentric guides a scribe would prick out. */}
-          {[150, 300, 448, 592, 734, 872, 1008].map((r, i) => (
+          {[132, 236, 332, 424, 512, 596, 678, 758, 836, 912, 986, 1058].map((r, i) => (
             <g key={r}>
               <circle
                 r={r}
@@ -198,7 +206,22 @@ export default function Dendrogram({
                   fill: "var(--ink-faint)",
                   opacity: 0.55,
                 }}>
-                {i === 0 ? "I · INVENTED" : `${["", "II", "III", "IV", "V", "VI", "VII"][i]}`}
+                {i === 0
+                  ? "I · INVENTED"
+                  : [
+                      "",
+                      "II",
+                      "III",
+                      "IV",
+                      "V",
+                      "VI",
+                      "VII",
+                      "VIII",
+                      "IX",
+                      "X",
+                      "XI",
+                      "XII",
+                    ][i]}
               </text>
             </g>
           ))}
@@ -233,8 +256,11 @@ export default function Dendrogram({
               const stroke = lit
                 ? "var(--rubric)"
                 : familyColors[l.target.data.family];
-              const dash =
-                l.certainty === "stimulus"
+              // An origin node's stem is a long open dash: it is a reach outward
+              // for legibility, not a claim of transmission.
+              const dash = l.target.origin
+                ? "2 7"
+                : l.certainty === "stimulus"
                   ? "1 5"
                   : l.certainty === "disputed"
                     ? "5 4"
@@ -244,7 +270,9 @@ export default function Dendrogram({
               // Ink weight follows how much of the tree hangs below this line:
               // a trunk carrying 30 descendants is drawn like a trunk.
               const load = l.target.leaves;
-              const trunk = Math.min(1.1 + Math.log2(load + 1) * 0.72, 4.6);
+              const trunk = l.target.origin
+                ? 0.85
+                : Math.min(1.1 + Math.log2(load + 1) * 0.72, 4.6);
               const weight = lit ? trunk + 1.1 : trunk;
               return (
                 <path
@@ -252,7 +280,13 @@ export default function Dendrogram({
                   d={l.path}
                   stroke={stroke}
                   strokeWidth={weight}
-                  strokeOpacity={lit ? 1 : st.opacity * Math.min(0.42 + load * 0.035, 0.86)}
+                  strokeOpacity={
+                    lit
+                      ? 1
+                      : l.target.origin
+                        ? st.opacity * 0.42
+                        : st.opacity * Math.min(0.42 + load * 0.035, 0.86)
+                  }
                   strokeDasharray={dash}
                   strokeLinecap="round"
                   className={animate ? "draw-in" : undefined}
@@ -276,7 +310,7 @@ export default function Dendrogram({
               const hasKids = descendantsOf(n.data.id).length > 0;
               // Node size follows the weight of what descends from it.
               const base =
-                n.depth === 1
+                n.depth === 1 || n.origin
                   ? 6.4
                   : hasKids
                     ? Math.min(3.6 + Math.log2(n.leaves + 1) * 0.72, 6)
@@ -298,23 +332,24 @@ export default function Dendrogram({
                   style={{ opacity: st.opacity, transition: "opacity 140ms var(--ease-out)" }}>
                   <g transform={`rotate(${(n.angle * 180) / Math.PI - 90}) translate(${n.radius},0)`}>
                     <circle
-                      r={Math.max(r + 7, 11)}
+                      r={compact ? Math.max(r + 13, 20) : Math.max(r + 7, 11)}
                       fill="transparent"
                       style={{ cursor: "pointer" }}
                       onMouseEnter={(e) => {
+                        if (compact) return;
                         setHoverId(n.data.id);
                         setTip({ x: e.clientX, y: e.clientY, node: n.data });
                       }}
-                      onMouseMove={(e) =>
-                        setTip({ x: e.clientX, y: e.clientY, node: n.data })
-                      }
+                      onMouseMove={(e) => {
+                        if (compact) return;
+                        setTip({ x: e.clientX, y: e.clientY, node: n.data });
+                      }}
                       onMouseLeave={() => {
+                        if (compact) return;
                         setHoverId(null);
                         setTip(null);
                       }}
-                      onClick={() =>
-                        onSelect(selectedId === n.data.id ? null : n.data.id)
-                      }
+                      onClick={() => onSelect(n.data.id)}
                       tabIndex={-1}
                       aria-label={n.data.name}
                     />
@@ -322,7 +357,9 @@ export default function Dendrogram({
                       r={r}
                       fill={living ? fam : "var(--vellum)"}
                       stroke={st.isActive ? "var(--rubric)" : fam}
-                      strokeWidth={st.isSelected ? 2.6 : n.depth <= 2 ? 2 : 1.5}
+                      strokeWidth={
+                        st.isSelected ? 2.6 : n.depth <= 2 || n.origin ? 2 : 1.5
+                      }
                       style={{
                         transition:
                           "r 140ms var(--ease-out), stroke 140ms var(--ease-out)",
@@ -339,6 +376,18 @@ export default function Dendrogram({
                         style={{ pointerEvents: "none" }}
                       />
                     )}
+                    {/* An independent invention is ringed: a separate origin,
+                        set apart from the lines of descent. */}
+                    {n.origin && (
+                      <circle
+                        r={r + 4.5}
+                        fill="none"
+                        stroke={st.isActive ? "var(--rubric)" : fam}
+                        strokeWidth={0.7}
+                        strokeOpacity={0.6}
+                        style={{ pointerEvents: "none" }}
+                      />
+                    )}
                   </g>
                   {showLabel && (
                     <g transform={lt.transform} style={{ pointerEvents: "none" }}>
@@ -350,7 +399,13 @@ export default function Dendrogram({
                           dy="-0.92em"
                           style={{
                             fontFamily: n.data.fontHint ?? "serif",
-                            fontSize: n.depth <= 2 ? 20 : 15,
+                            fontSize: compact
+                              ? n.depth <= 2 || n.origin
+                                ? 24
+                                : 18
+                              : n.depth <= 2 || n.origin
+                                ? 20
+                                : 15,
                             fill: st.isActive ? "var(--rubric)" : "var(--ink)",
                             fillOpacity: st.isActive ? 1 : 0.82,
                             paintOrder: "stroke",
@@ -368,7 +423,17 @@ export default function Dendrogram({
                           fontFamily: st.isActive
                             ? "var(--font-display)"
                             : "var(--font-body)",
-                          fontSize: n.depth <= 2 ? 15.5 : n.depth === 3 ? 13 : 12,
+                          fontSize: compact
+                            ? n.depth <= 2
+                              ? 19
+                              : n.depth === 3
+                                ? 16
+                                : 14.5
+                            : n.depth <= 2
+                              ? 15.5
+                              : n.depth === 3
+                                ? 13
+                                : 12,
                           fontWeight: st.isActive || n.depth <= 2 ? 600 : 500,
                           fill: st.isActive ? "var(--rubric)" : "var(--ink)",
                           paintOrder: "stroke",
@@ -436,7 +501,7 @@ export default function Dendrogram({
       </svg>
 
       {/* Hover annotation — a marginal note, not a chrome tooltip. */}
-      {tip && (
+      {tip && !compact && (
         <div
           className="pointer-events-none fixed z-40 max-w-[19rem] border border-border bg-card px-3 py-2 shadow-[0_10px_28px_-16px_oklch(0.28_0.022_55/0.6)]"
           style={{
@@ -476,7 +541,10 @@ export default function Dendrogram({
       )}
 
       {/* Zoom readout, engraver's caption voice. */}
-      <div className="caption pointer-events-none absolute bottom-3 right-4 text-[10px]">
+      <div
+        className={`caption pointer-events-none absolute text-[10px] ${
+          compact ? "bottom-2 right-3" : "bottom-3 right-4"
+        }`}>
         {Math.round(k * 100)}% · {allScripts.filter((s) => s.id !== "root").length} scripts
       </div>
     </div>
