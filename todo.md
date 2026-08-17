@@ -47,4 +47,9 @@
 - [x] Add route visibility, source-aware legends, and route detail annotations
 - [x] Verify desktop, tablet, and phone; checkpoint and push
 
+## 7. Route evidence filter
+- [x] Add a compact evidence-status control for attested, proposed, and adapted routes
+- [x] Filter map paths and clear an annotation when its route becomes hidden
+- [x] Verify keyboard, desktop, tablet, and phone behavior; checkpoint and push
+
 - [ ] Checkpoint and deliver

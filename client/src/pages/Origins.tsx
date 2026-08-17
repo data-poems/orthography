@@ -19,6 +19,11 @@ import { useViewport } from "@/hooks/useViewport";
 const families = Array.from(
   new Set(allScripts.filter((script) => script.id !== "root").map((script) => script.family)),
 ) as Family[];
+const routeEvidenceOptions: { id: RouteEvidence; label: string; gloss: string }[] = [
+  { id: "attested", label: "Attested", gloss: "documented transmission" },
+  { id: "probable", label: "Proposed", gloss: "qualified proposal" },
+  { id: "adaptation", label: "Adapted", gloss: "cultural adaptation" },
+];
 
 export default function Origins() {
   const viewport = useViewport();
@@ -27,6 +32,9 @@ export default function Origins() {
   const [query, setQuery] = useState("");
   const [family, setFamily] = useState<Family | "all">("all");
   const [showRoutes, setShowRoutes] = useState(true);
+  const [routeEvidence, setRouteEvidence] = useState<Set<RouteEvidence>>(
+    () => new Set(routeEvidenceOptions.map((option) => option.id)),
+  );
   const [activeRouteId, setActiveRouteId] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(() => {
     const id = new URLSearchParams(window.location.search).get("script");
@@ -63,6 +71,11 @@ export default function Origins() {
     const frame = requestAnimationFrame(() => controlsRef.current?.focus(selectedId));
     return () => cancelAnimationFrame(frame);
   }, [selectedId, viewport]);
+  useEffect(() => {
+    if (!activeRouteId) return;
+    const route = transmissionRoutes.find((candidate) => candidate.id === activeRouteId);
+    if (route && !routeEvidence.has(route.evidence)) setActiveRouteId(null);
+  }, [activeRouteId, routeEvidence]);
 
   const visibleIds = useMemo(() => {
     const needle = query.trim().toLowerCase();
@@ -81,6 +94,14 @@ export default function Origins() {
   const filtered = query.trim() !== "" || family !== "all";
   const activeRoute = activeRouteId ? transmissionRoutes.find((route) => route.id === activeRouteId) : undefined;
   const routeLegend: Record<RouteEvidence, string> = { attested: "solid", probable: "dashed", adaptation: "dotted" };
+  const toggleRouteEvidence = (evidence: RouteEvidence) => {
+    setRouteEvidence((current) => {
+      const next = new Set(current);
+      if (next.has(evidence)) next.delete(evidence);
+      else next.add(evidence);
+      return next;
+    });
+  };
   return (
     <div className="atlas-leaf grain flex min-h-screen flex-col bg-background">
       <header className="sticky top-0 z-30 border-b border-border bg-[var(--vellum-deep)]/95 px-4 py-2.5 backdrop-blur-sm">
@@ -141,6 +162,7 @@ export default function Origins() {
             selectedId={selectedId}
             onSelect={openScript}
             showRoutes={showRoutes}
+            routeEvidence={routeEvidence}
             activeRouteId={activeRouteId}
             onRouteSelect={(id) => setActiveRouteId((current) => current === id ? null : id)}
             registerControls={(controls) => { controlsRef.current = controls; }}
@@ -153,6 +175,7 @@ export default function Origins() {
               <span><i className="mr-1 inline-block h-2 w-2 rounded-full border border-dashed border-[var(--ink)] align-[1px]" />broad</span>
             </div>
             {showRoutes && <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 border-t border-border/70 pt-1.5 text-[0.68rem] text-[var(--ink-mid)]"><span><i className="mr-1 inline-block w-3 border-t border-[var(--ink-mid)] align-[3px]" />attested route</span><span><i className="mr-1 inline-block w-3 border-t border-dashed border-[var(--ink-mid)] align-[3px]" />qualified proposal</span><span><i className="mr-1 inline-block w-3 border-t border-dotted border-[var(--ink-mid)] align-[3px]" />cultural adaptation</span></div>}
+            {showRoutes && <div className="mt-1.5 border-t border-border/70 pt-1.5"><div className="caption mb-1 text-[8px]">Route evidence</div><div className="flex flex-wrap"><span className="sr-only">Filter historical routes by evidence</span>{routeEvidenceOptions.map((option) => <button key={option.id} onClick={() => toggleRouteEvidence(option.id)} aria-pressed={routeEvidence.has(option.id)} title={option.gloss} className={`apparatus px-1.5 py-1 text-[8px] ${routeEvidence.has(option.id) ? "text-[var(--rubric)]" : "line-through opacity-45"}`}>{option.label}</button>)}</div></div>}
             <p className="mt-1.5 text-[0.72rem] italic leading-snug text-[var(--ink-faint)]">Clusters carry a count at overview; tap one to separate its records. Drag to inspect dense areas; a point is a historical reference, not a boundary.</p>
           </div>
           <div className="absolute right-3 top-3 z-10 flex flex-col gap-1">

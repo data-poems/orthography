@@ -24,6 +24,18 @@ try {
   );
   await page.getByText("Mediterranean alphabet corridor", { exact: true }).last().waitFor();
 
+  const proposal = page.getByRole("button", { name: /Aramaic–Brahmi proposal/i });
+  await proposal.evaluate((element) =>
+    element.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true })),
+  );
+  await page.getByText("Aramaic–Brahmi proposal", { exact: true }).last().waitFor();
+  await page.getByRole("button", { name: "Proposed" }).click();
+  await page.waitForTimeout(80);
+  if (await proposal.count()) throw new Error("The proposed route remained visible after filtering.");
+  if (await page.getByText("Aramaic–Brahmi proposal", { exact: true }).count()) {
+    throw new Error("The filtered route annotation remained open.");
+  }
+
   const cluster = page.getByRole("button", { name: /historical script origins.*separate/i }).first();
   await cluster.waitFor();
   const mapLayer = page.locator("svg > g").last();
@@ -34,7 +46,7 @@ try {
 
   if (!after || after === before) throw new Error("Cluster activation did not change the map transform.");
   if (messages.length) throw new Error(messages.join("\n"));
-  console.log("PASS: route annotation opens and a dense cluster expands through zoom.");
+  console.log("PASS: route filtering clears an ineligible annotation and a dense cluster expands through zoom.");
 } finally {
   await browser.close();
 }

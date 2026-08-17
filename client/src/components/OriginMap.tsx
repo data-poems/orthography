@@ -70,6 +70,7 @@ export default function OriginMap({
   selectedId,
   onSelect,
   showRoutes = true,
+  routeEvidence,
   activeRouteId,
   onRouteSelect,
   registerControls,
@@ -79,6 +80,7 @@ export default function OriginMap({
   selectedId: string | null;
   onSelect: (id: string) => void;
   showRoutes?: boolean;
+  routeEvidence: Set<RouteEvidence>;
   activeRouteId?: string | null;
   onRouteSelect?: (id: string) => void;
   registerControls?: (handle: OriginMapHandle) => void;
@@ -285,7 +287,7 @@ export default function OriginMap({
         <g ref={layerRef}>
           <path d={layout.graticulePath} fill="none" stroke="var(--ink)" strokeOpacity="0.08" strokeWidth="0.6" strokeDasharray="1.5 5" />
           <path d={layout.countriesPath} fill="var(--vellum-deep)" fillOpacity="0.74" stroke="var(--ink)" strokeOpacity="0.28" strokeWidth="0.72" filter="url(#map-inkbite)" />
-          {showRoutes && layout.routes.map((route) => {
+          {showRoutes && layout.routes.filter((route) => routeEvidence.has(route.evidence)).map((route) => {
             const style = routeStyle[route.evidence];
             const activeRoute = activeRouteId === route.id;
             return (
