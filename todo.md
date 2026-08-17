@@ -52,4 +52,8 @@
 - [x] Filter map paths and clear an annotation when its route becomes hidden
 - [x] Verify keyboard, desktop, tablet, and phone behavior; checkpoint and push
 
+## 8. Private repository confirmation
+- [x] Confirm `lukeslp/orthography` remains private and `main` matches the local atlas
+- [ ] Commit and push the repository-confirmation record before starting the separate sign-language project
+
 - [ ] Checkpoint and deliver
