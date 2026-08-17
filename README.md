@@ -7,7 +7,7 @@ An interactive atlas of **164 documented writing systems**. The project traces p
 | **Plate I — Radial Genealogy** | A zoomable radial tree; lineage certainty, date filtering, search, and node-level detail. |
 | **Plate II — Specimen Sheet** | A poster-like gallery of 148 Unicode-renderable examples, arrangeable by descent, date, or typology. |
 | **Plate III — Essay** | A companion account of independent invention, descent, orthographic structure, material history, and undeciphered systems. |
-| **Plate IV — Geographic Origins** | A searchable historical atlas locating 160 scripts at a documented site, regional centroid, or broad cultural zone, with four deliberately withheld where a single point would overstate the evidence. |
+| **Plate IV — Geographic Origins** | A searchable historical atlas locating 160 scripts at a documented site, regional centroid, or broad cultural zone, with four deliberately withheld where a single point would overstate the evidence. Dense points expand on zoom; a ten-route register distinguishes documented transmission, qualified proposals, and cultural adaptation. |
 
 ## Explore and cite
 
@@ -34,6 +34,8 @@ Specimens follow a strict order of evidence. The script writing its own name is 
 
 `client/src/data/origins.ts` contains the Plate IV geographic record. A coordinate means **historical development or first secure attestation**, not modern territory or the full geographic extent of use. `site`, `region`, and `broad` make the level of geographical claim explicit; `withheld` is used where an origin cannot responsibly be collapsed into one point. See `research/geographic-origin-policy.md` for the evidence policy and the sources that frame it.
 
+`client/src/data/routes.ts` holds the deliberately small historical corridor register. Lines on Plate IV are **not borders, migration tracks, or universal explanations**. Their solid, dashed, and dotted styles respectively indicate attested transmission, a qualified proposal, and cultural adaptation; each route opens a note and a source link. See `research/transmission-route-policy.md` for the claims, dating, and source basis.
+
 ## Development
 
 ```bash
@@ -52,6 +54,7 @@ pnpm build
 - **Poster acceptance test:** `node scripts/test-poster-download.mjs`
 - **Origin-coordinate completeness:** `node --import tsx scripts/validate-origin-research.mjs`
 - **Origin data generation:** `node --import tsx scripts/generate-origin-data.mjs`
+- **Cluster and route interaction acceptance test:** `node scripts/test-origin-map.mjs`
 
 ## Sources and limits
 

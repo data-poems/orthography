@@ -40,4 +40,11 @@
 - [x] Retain the script detail leaf and deep-link behavior on the map
 - [x] Verify desktop, tablet, and phone behavior; checkpoint and push
 
+## 6. Geographic map depth
+- [x] Define a source-aware route policy that separates attested transmission from inferred influence
+- [x] Create a compact, auditable dataset of major historical spread routes
+- [x] Replace crowded point nudges with expandable interactive map clusters
+- [x] Add route visibility, source-aware legends, and route detail annotations
+- [x] Verify desktop, tablet, and phone; checkpoint and push
+
 - [ ] Checkpoint and deliver

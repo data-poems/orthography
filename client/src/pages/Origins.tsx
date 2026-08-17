@@ -7,12 +7,13 @@
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, Crosshair, MapPinned, Minus, Plus } from "lucide-react";
+import { ArrowLeft, Crosshair, MapPinned, Minus, Plus, Route as RouteIcon, X } from "lucide-react";
 import DetailLeaf from "@/components/DetailLeaf";
 import OriginMap, { type OriginMapHandle } from "@/components/OriginMap";
 import PlateNav from "@/components/PlateNav";
 import { allScripts, familyColors, familyLabels, scriptById, type Family } from "@/data";
 import { ORIGIN_MAP_STATS, originByScriptId } from "@/data/origins";
+import { transmissionRoutes, type RouteEvidence } from "@/data/routes";
 import { useViewport } from "@/hooks/useViewport";
 
 const families = Array.from(
@@ -25,6 +26,8 @@ export default function Origins() {
   const controlsRef = useRef<OriginMapHandle | null>(null);
   const [query, setQuery] = useState("");
   const [family, setFamily] = useState<Family | "all">("all");
+  const [showRoutes, setShowRoutes] = useState(true);
+  const [activeRouteId, setActiveRouteId] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(() => {
     const id = new URLSearchParams(window.location.search).get("script");
     return id && id !== "root" && scriptById.has(id) ? id : null;
@@ -76,6 +79,8 @@ export default function Origins() {
   }, [query, family]);
 
   const filtered = query.trim() !== "" || family !== "all";
+  const activeRoute = activeRouteId ? transmissionRoutes.find((route) => route.id === activeRouteId) : undefined;
+  const routeLegend: Record<RouteEvidence, string> = { attested: "solid", probable: "dashed", adaptation: "dotted" };
   return (
     <div className="atlas-leaf grain flex min-h-screen flex-col bg-background">
       <header className="sticky top-0 z-30 border-b border-border bg-[var(--vellum-deep)]/95 px-4 py-2.5 backdrop-blur-sm">
@@ -135,6 +140,9 @@ export default function Origins() {
             ids={filtered ? visibleIds : new Set()}
             selectedId={selectedId}
             onSelect={openScript}
+            showRoutes={showRoutes}
+            activeRouteId={activeRouteId}
+            onRouteSelect={(id) => setActiveRouteId((current) => current === id ? null : id)}
             registerControls={(controls) => { controlsRef.current = controls; }}
           />
           <div className="absolute bottom-3 left-3 z-10 max-w-[17rem] border border-border bg-[var(--vellum)]/95 px-3 py-2 backdrop-blur-sm">
@@ -144,19 +152,34 @@ export default function Origins() {
               <span><i className="mr-1 inline-block h-2 w-2 rounded-full border border-[var(--ink)] bg-[var(--vellum)] align-[1px]" />region</span>
               <span><i className="mr-1 inline-block h-2 w-2 rounded-full border border-dashed border-[var(--ink)] align-[1px]" />broad</span>
             </div>
-            <p className="mt-1.5 text-[0.72rem] italic leading-snug text-[var(--ink-faint)]">Tap a point for the source-aware record. Drag to inspect dense areas; the point position is a historical reference, not a boundary.</p>
+            {showRoutes && <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 border-t border-border/70 pt-1.5 text-[0.68rem] text-[var(--ink-mid)]"><span><i className="mr-1 inline-block w-3 border-t border-[var(--ink-mid)] align-[3px]" />attested route</span><span><i className="mr-1 inline-block w-3 border-t border-dashed border-[var(--ink-mid)] align-[3px]" />qualified proposal</span><span><i className="mr-1 inline-block w-3 border-t border-dotted border-[var(--ink-mid)] align-[3px]" />cultural adaptation</span></div>}
+            <p className="mt-1.5 text-[0.72rem] italic leading-snug text-[var(--ink-faint)]">Clusters carry a count at overview; tap one to separate its records. Drag to inspect dense areas; a point is a historical reference, not a boundary.</p>
           </div>
           <div className="absolute right-3 top-3 z-10 flex flex-col gap-1">
             <button onClick={() => controlsRef.current?.zoomBy(1.4)} className="atlas-tool rail-btn" aria-label="Zoom in"><Plus size={15} /></button>
             <button onClick={() => controlsRef.current?.zoomBy(0.72)} className="atlas-tool rail-btn" aria-label="Zoom out"><Minus size={15} /></button>
             <button onClick={() => controlsRef.current?.reset()} className="atlas-tool rail-btn" aria-label="Reset map"><Crosshair size={15} /></button>
+            <button onClick={() => setShowRoutes((value) => !value)} className={`atlas-tool rail-btn ${showRoutes ? "text-[var(--rubric)]" : ""}`} aria-label={showRoutes ? "Hide historical transmission routes" : "Show historical transmission routes"}><RouteIcon size={15} /></button>
           </div>
+          {activeRoute && (
+            <aside className="absolute bottom-3 right-3 z-10 max-w-[20rem] border border-border bg-[var(--vellum)]/95 px-3 py-2.5 shadow-[0_8px_20px_-14px_oklch(0.28_0.022_55/0.55)] backdrop-blur-sm">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <div className="caption text-[9px]">{routeLegend[activeRoute.evidence]} historical route · {activeRoute.period}</div>
+                  <h2 className="mt-0.5 font-[var(--font-display)] text-[1.08rem] leading-tight">{activeRoute.label}</h2>
+                </div>
+                <button onClick={() => setActiveRouteId(null)} className="atlas-tool -mr-1 -mt-1 flex h-7 w-7 items-center justify-center" aria-label="Close route annotation"><X size={13} /></button>
+              </div>
+              <p className="mt-1.5 text-[0.8rem] italic leading-snug text-[var(--ink-mid)]">{activeRoute.note}</p>
+              <a href={activeRoute.source} target="_blank" rel="noopener noreferrer" className="caption mt-2 inline-block border-b border-border pb-px text-[9px] hover:border-[var(--rubric)] hover:text-[var(--rubric)]">Route basis ↗</a>
+            </aside>
+          )}
         </div>
 
         <footer className="flex flex-col gap-3 border-b border-border py-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <div className="caption text-[9px]">Historical mapping register</div>
-            <p className="mt-1 max-w-[52rem] text-[0.88rem] leading-snug text-[var(--ink-mid)]">The map works from specific sites where the record permits, regional centroids where development is geographically distributed, and broad cultural zones where a single origin would overstate the evidence. Branch color follows the genealogy plate.</p>
+            <p className="mt-1 max-w-[52rem] text-[0.88rem] leading-snug text-[var(--ink-mid)]">The map works from specific sites where the record permits, regional centroids where development is geographically distributed, and broad cultural zones where a single origin would overstate the evidence. Historical corridors distinguish attested transmission, qualified proposals, and cultural adaptation. Branch color follows the genealogy plate.</p>
           </div>
           <span className="caption whitespace-nowrap text-[9px]">{filtered ? `${visibleIds.size} shown` : `${ORIGIN_MAP_STATS.mapped} shown`} · {ORIGIN_MAP_STATS.withheld} withheld</span>
         </footer>

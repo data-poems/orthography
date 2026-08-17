@@ -14,6 +14,7 @@ import { feature } from "topojson-client";
 import worldTopology from "world-atlas/countries-110m.json";
 import { familyColors, scriptById, type ScriptNode } from "@/data";
 import { mappedOrigins, type OriginRecord } from "@/data/origins";
+import { transmissionRoutes, type RouteEvidence } from "@/data/routes";
 import { shortSpecimen, specimenOf } from "@/lib/specimen";
 
 export interface OriginMapHandle {
@@ -30,6 +31,29 @@ type MapPoint = OriginRecord & {
   dy: number;
 };
 type RawPoint = Omit<MapPoint, "dx" | "dy">;
+type MarkerCluster = {
+  id: string;
+  x: number;
+  y: number;
+  members: RawPoint[];
+};
+type RenderRoute = (typeof transmissionRoutes)[number] & { path: string };
+
+const routeStyle: Record<RouteEvidence, { dash: string; opacity: number }> = {
+  attested: { dash: "", opacity: 0.7 },
+  probable: { dash: "5 4", opacity: 0.62 },
+  adaptation: { dash: "1.5 3", opacity: 0.74 },
+};
+
+function curveBetween(from: RawPoint, to: RawPoint, bend: number) {
+  const deltaX = to.x - from.x;
+  const deltaY = to.y - from.y;
+  const length = Math.hypot(deltaX, deltaY) || 1;
+  const arc = Math.min(48, 15 + length * 0.105) * bend;
+  const controlX = (from.x + to.x) / 2 - (deltaY / length) * arc;
+  const controlY = (from.y + to.y) / 2 + (deltaX / length) * arc;
+  return `Q ${controlX.toFixed(1)} ${controlY.toFixed(1)} ${to.x.toFixed(1)} ${to.y.toFixed(1)}`;
+}
 
 const topology = worldTopology as any;
 const countries = feature(topology, topology.objects.countries) as any;
@@ -45,12 +69,18 @@ export default function OriginMap({
   ids,
   selectedId,
   onSelect,
+  showRoutes = true,
+  activeRouteId,
+  onRouteSelect,
   registerControls,
 }: {
   /** Empty set means no current filter; otherwise only these scripts are foregrounded. */
   ids: Set<string>;
   selectedId: string | null;
   onSelect: (id: string) => void;
+  showRoutes?: boolean;
+  activeRouteId?: string | null;
+  onRouteSelect?: (id: string) => void;
   registerControls?: (handle: OriginMapHandle) => void;
 }) {
   const hostRef = useRef<HTMLDivElement | null>(null);
@@ -59,6 +89,7 @@ export default function OriginMap({
   const zoomRef = useRef<ZoomBehavior<SVGSVGElement, unknown> | null>(null);
   const [size, setSize] = useState({ width: 900, height: 560 });
   const [hoverId, setHoverId] = useState<string | null>(null);
+  const [mapScale, setMapScale] = useState(1);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -90,17 +121,37 @@ export default function OriginMap({
         const point = projection([origin.longitude, origin.latitude]);
         return node && point ? [{ ...origin, node, x: point[0], y: point[1] }] : [];
       });
+    const pointById = new Map(raw.map((point) => [point.id, point]));
+    const routes: RenderRoute[] = transmissionRoutes.flatMap((route, routeIndex) => {
+      const stops = route.stops.map((id) => pointById.get(id));
+      if (stops.some((point) => !point)) return [];
+      const known = stops as RawPoint[];
+      const path = known.reduce((drawing, point, index) => {
+        if (!index) return `M ${point.x.toFixed(1)} ${point.y.toFixed(1)}`;
+        return `${drawing} ${curveBetween(known[index - 1], point, (routeIndex + index) % 2 ? 1 : -1)}`;
+      }, "");
+      return [{ ...route, path }];
+    });
 
-    /** A visible, reversible nudge prevents otherwise coincident historical
-        regions from becoming a false single point. The metadata keeps the true
-        coordinate and describes the precision level. */
+    /** At overview scale, nearby historical origins are an honest cluster rather
+        than a false suggestion that several developments happened at one exact
+        point. Clicking a cluster zooms to separate its individual records. */
     const clusters = new Map<string, RawPoint[]>();
     for (const point of raw) {
-      const key = `${Math.round(point.x / 9)}:${Math.round(point.y / 9)}`;
+      const key = `${Math.round(point.x / 16)}:${Math.round(point.y / 16)}`;
       const members = clusters.get(key) ?? [];
       members.push(point);
       clusters.set(key, members);
     }
+    const clusterList: MarkerCluster[] = Array.from(clusters.entries()).map(([id, members]) => ({
+      id,
+      x: members.reduce((sum, point) => sum + point.x, 0) / members.length,
+      y: members.reduce((sum, point) => sum + point.y, 0) / members.length,
+      members,
+    }));
+
+    /** At close range, a small radial separation makes each member selectable
+        without changing the location recorded in its metadata. */
     const points: MapPoint[] = [];
     for (const members of Array.from(clusters.values())) {
       members.forEach((point, index) => {
@@ -118,6 +169,8 @@ export default function OriginMap({
       countriesPath: path(countries) ?? "",
       graticulePath: path(graticule) ?? "",
       points,
+      clusters: clusterList,
+      routes,
       positions: new Map(points.map((point) => [point.id, point])),
     };
   }, [size]);
@@ -130,6 +183,9 @@ export default function OriginMap({
       .scaleExtent([1, 7])
       .on("zoom", (event: D3ZoomEvent<SVGSVGElement, unknown>) => {
         layer.setAttribute("transform", event.transform.toString());
+        setMapScale((previous) =>
+          Math.abs(previous - event.transform.k) > 0.025 ? event.transform.k : previous,
+        );
       });
     zoomRef.current = behavior;
     const selection = select(svg);
@@ -157,6 +213,57 @@ export default function OriginMap({
 
   const activeId = hoverId ?? selectedId;
   const active = activeId ? layout.positions.get(activeId) : undefined;
+  const clusterMode = mapScale < 2.15 && !selectedId;
+
+  const zoomToCluster = (cluster: MarkerCluster) => {
+    const svg = svgRef.current;
+    const behavior = zoomRef.current;
+    if (!svg || !behavior) return;
+    const scale = 3.15;
+    select(svg)
+      .transition()
+      .duration(460)
+      .call(
+        behavior.transform,
+        zoomIdentity
+          .translate(size.width / 2 - cluster.x * scale, size.height / 2 - cluster.y * scale)
+          .scale(scale),
+      );
+  };
+
+  const renderPoint = (point: MapPoint) => {
+    const focused = activeId === point.id;
+    const dimmed = ids.size > 0 && !ids.has(point.id);
+    const color = familyColors[point.node.family];
+    const radius = focused ? 7.5 : point.precision === "site" ? 4.2 : 3.8;
+    return (
+      <g
+        key={point.id}
+        transform={`translate(${point.x + point.dx},${point.y + point.dy})`}
+        opacity={dimmed ? 0.13 : activeId && !focused ? 0.53 : 1}
+        onPointerEnter={() => setHoverId(point.id)}
+        onPointerLeave={() => setHoverId(null)}
+        onFocus={() => setHoverId(point.id)}
+        onBlur={() => setHoverId(null)}
+        onClick={() => onSelect(point.id)}
+        role="button"
+        tabIndex={0}
+        aria-label={`${point.node.name}: ${point.label}`}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            onSelect(point.id);
+          }
+        }}
+        style={{ cursor: "pointer" }}>
+        <circle r={13} fill="transparent" />
+        {point.precision === "broad" && <circle r={radius + 2.4} fill="none" stroke={color} strokeWidth="1.1" strokeDasharray="1.5 2" />}
+        {point.precision === "region" && <circle r={radius + 1.3} fill="var(--vellum)" stroke={color} strokeWidth="1.2" />}
+        <circle r={radius} fill={point.precision === "region" ? "var(--vellum)" : color} stroke={color} strokeWidth={point.precision === "site" ? 1.1 : 1.45} />
+        {focused && <circle r={radius + 5} fill="none" stroke="var(--rubric)" strokeWidth="1.2" />}
+      </g>
+    );
+  };
 
   return (
     <div ref={hostRef} className="relative h-full w-full overflow-hidden">
@@ -178,39 +285,67 @@ export default function OriginMap({
         <g ref={layerRef}>
           <path d={layout.graticulePath} fill="none" stroke="var(--ink)" strokeOpacity="0.08" strokeWidth="0.6" strokeDasharray="1.5 5" />
           <path d={layout.countriesPath} fill="var(--vellum-deep)" fillOpacity="0.74" stroke="var(--ink)" strokeOpacity="0.28" strokeWidth="0.72" filter="url(#map-inkbite)" />
-          {layout.points.map((point) => {
-            const focused = activeId === point.id;
-            const dimmed = ids.size > 0 && !ids.has(point.id);
-            const color = familyColors[point.node.family];
-            const radius = focused ? 7.5 : point.precision === "site" ? 4.2 : 3.8;
+          {showRoutes && layout.routes.map((route) => {
+            const style = routeStyle[route.evidence];
+            const activeRoute = activeRouteId === route.id;
             return (
-              <g
-                key={point.id}
-                transform={`translate(${point.x + point.dx},${point.y + point.dy})`}
-                opacity={dimmed ? 0.13 : activeId && !focused ? 0.53 : 1}
-                onPointerEnter={() => setHoverId(point.id)}
-                onPointerLeave={() => setHoverId(null)}
-                onFocus={() => setHoverId(point.id)}
-                onBlur={() => setHoverId(null)}
-                onClick={() => onSelect(point.id)}
+              <path
+                key={route.id}
+                d={route.path}
+                fill="none"
+                stroke={activeRoute ? "var(--rubric)" : "var(--ink-mid)"}
+                strokeOpacity={activeRoute ? 0.92 : style.opacity}
+                strokeWidth={activeRoute ? 2.25 : 1.25}
+                strokeDasharray={style.dash || undefined}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onRouteSelect?.(route.id);
+                }}
                 role="button"
                 tabIndex={0}
-                aria-label={`${point.node.name}: ${point.label}`}
+                aria-label={`${route.label}: ${route.evidence} transmission route`}
                 onKeyDown={(event) => {
                   if (event.key === "Enter" || event.key === " ") {
                     event.preventDefault();
-                    onSelect(point.id);
+                    onRouteSelect?.(route.id);
                   }
                 }}
-                style={{ cursor: "pointer" }}>
-                <circle r={13} fill="transparent" />
-                {point.precision === "broad" && <circle r={radius + 2.4} fill="none" stroke={color} strokeWidth="1.1" strokeDasharray="1.5 2" />}
-                {point.precision === "region" && <circle r={radius + 1.3} fill="var(--vellum)" stroke={color} strokeWidth="1.2" />}
-                <circle r={radius} fill={point.precision === "region" ? "var(--vellum)" : color} stroke={color} strokeWidth={point.precision === "site" ? 1.1 : 1.45} />
-                {focused && <circle r={radius + 5} fill="none" stroke="var(--rubric)" strokeWidth="1.2" />}
-              </g>
+                style={{ cursor: "pointer", transition: "stroke 160ms var(--ease-out), stroke-width 160ms var(--ease-out)" }}>
+                <title>{route.label} · {route.evidence}</title>
+              </path>
             );
           })}
+          {clusterMode
+            ? layout.clusters.map((cluster) => {
+                const visible = ids.size ? cluster.members.filter((point) => ids.has(point.id)) : cluster.members;
+                if (!visible.length) return null;
+                if (visible.length === 1) {
+                  const point = layout.points.find((candidate) => candidate.id === visible[0].id);
+                  return point ? renderPoint(point) : null;
+                }
+                return (
+                  <g
+                    key={`cluster-${cluster.id}`}
+                    transform={`translate(${cluster.x},${cluster.y})`}
+                    onClick={() => zoomToCluster(cluster)}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`${visible.length} historical script origins. Activate to zoom in and separate them.`}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        zoomToCluster(cluster);
+                      }
+                    }}
+                    style={{ cursor: "zoom-in" }}>
+                    <title>{visible.length} historical origins — activate to expand</title>
+                    <circle r={12.5} fill="var(--vellum)" fillOpacity="0.95" stroke="var(--ink)" strokeOpacity="0.68" strokeWidth="1" />
+                    <circle r={9.5} fill="none" stroke="var(--rubric)" strokeOpacity="0.72" strokeWidth="1.1" strokeDasharray="2 1.5" />
+                    <text y="3.5" textAnchor="middle" fill="var(--ink)" fontFamily="var(--font-mono)" fontSize="8.5" fontWeight="700">{visible.length}</text>
+                  </g>
+                );
+              })
+            : layout.points.map(renderPoint)}
           {selectedId && active && (
             <text
               x={active.x + active.dx + 11}
