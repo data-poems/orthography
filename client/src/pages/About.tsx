@@ -9,7 +9,9 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import PlateNav from "@/components/PlateNav";
 import { allScripts, familyColors, familyLabels, type Family } from "@/data";
 
-const SPECIMENS = "/manus-storage/inscription-specimens-web_237d6682.png";
+import { assetUrl } from "@/lib/asset";
+
+const SPECIMENS = assetUrl("media/inscription-specimens.jpg");
 
 function Rubric({ children }: { children: React.ReactNode }) {
   return (

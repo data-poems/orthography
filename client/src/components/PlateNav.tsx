@@ -6,8 +6,9 @@
  * is ink at low emphasis. Hairline rules, no boxes, no buttons.
  */
 import { Link, useLocation } from "wouter";
+import { assetUrl } from "@/lib/asset";
 
-const LOGO = "/manus-storage/aleph-mark-web_d69c2b44.png";
+const LOGO = assetUrl("media/aleph-mark.png");
 
 const PLATES = [
   { href: "/", label: "The chart", roman: "I" },

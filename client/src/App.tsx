@@ -5,7 +5,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Router, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -13,7 +13,14 @@ import About from "./pages/About";
 import Gallery from "./pages/Gallery";
 import Origins from "./pages/Origins";
 
-function Router() {
+/** Wouter `base` has no trailing slash; Vite `BASE_URL` is like `/writing/` or `/`. */
+function routerBaseFromVite(): string | undefined {
+  const raw = import.meta.env.BASE_URL ?? "/";
+  const trimmed = raw.replace(/\/$/, "");
+  return trimmed === "" ? undefined : trimmed;
+}
+
+function RouterView() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
@@ -27,12 +34,19 @@ function Router() {
 }
 
 function App() {
+  const base = routerBaseFromVite();
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
         <TooltipProvider delayDuration={200}>
           <Toaster />
-          <Router />
+          {base ? (
+            <Router base={base}>
+              <RouterView />
+            </Router>
+          ) : (
+            <RouterView />
+          )}
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

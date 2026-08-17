@@ -31,8 +31,9 @@ import PlateCartouche from "@/components/PlateCartouche";
 import ScriptIndex from "@/components/ScriptIndex";
 import { allScripts, scriptById, typologyLabels } from "@/data";
 import { useViewport } from "@/hooks/useViewport";
+import { assetUrl } from "@/lib/asset";
 
-const LOGO = "/manus-storage/aleph-mark-web_d69c2b44.png";
+const LOGO = assetUrl("media/aleph-mark.png");
 const CORPUS_COUNT = allScripts.filter((s) => s.id !== "root").length;
 
 export default function Home() {

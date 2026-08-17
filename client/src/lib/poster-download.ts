@@ -1,3 +1,6 @@
+import tangutFontUrl from "@/assets/fonts/tangut.woff2?url";
+import oldUyghurFontUrl from "@/assets/fonts/olduyghur.woff2?url";
+
 /**
  * Render Plate II into a single downloadable PDF broadside.
  *
@@ -43,8 +46,8 @@ export async function downloadPosterPdf(element: HTMLElement) {
 
     const style = doc.createElement("style");
     style.textContent = `
-      @font-face { font-family:"Noto Serif Tangut"; src:url("/manus-storage/tangut-sub_bf74322c.woff2") format("woff2"); }
-      @font-face { font-family:"Noto Serif Old Uyghur"; src:url("/manus-storage/olduyghur-sub_cad54cab.woff2") format("woff2"); }
+      @font-face { font-family:"Noto Serif Tangut"; src:url("${tangutFontUrl}") format("woff2"); }
+      @font-face { font-family:"Noto Serif Old Uyghur"; src:url("${oldUyghurFontUrl}") format("woff2"); }
       * { box-sizing:border-box; }
       html, body { margin:0; width:1500px; background:#f4ede2; color:#493a31; }
       body { padding:54px; font-family:"EB Garamond", Georgia, serif; }

@@ -7,7 +7,9 @@
 import { Link } from "wouter";
 import { scriptById } from "@/data";
 
-const LOGO = "/manus-storage/aleph-mark-web_d69c2b44.png";
+import { assetUrl } from "@/lib/asset";
+
+const LOGO = assetUrl("media/aleph-mark.png");
 
 const FOUR = [
   { id: "cuneiform", place: "Mesopotamia", year: "c. 3400 BC" },
