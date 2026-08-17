@@ -21,6 +21,7 @@ import {
   typologyLabels,
   type ScriptNode,
 } from "@/data";
+import { originByScriptId } from "@/data/origins";
 
 function Versal({ node }: { node: ScriptNode }) {
   // Prefer a glyph from the script itself; fall back to the Latin initial.
@@ -61,6 +62,7 @@ export default function DetailLeaf({
   const line = ancestryOf(node.id).filter((id) => id !== "root" && id !== node.id);
   const kids = childrenOf.get(node.id) ?? [];
   const parent = node.parent ? scriptById.get(node.parent) : undefined;
+  const origin = originByScriptId.get(node.id);
 
   return (
     <aside
@@ -198,6 +200,12 @@ export default function DetailLeaf({
           {[
             ["Period", node.period],
             ["Region", node.region],
+            ...(origin
+              ? ([
+                  ["Map origin", origin.label],
+                  ["Map precision", origin.precision === "site" ? "Documented site" : origin.precision === "region" ? "Regional centroid" : origin.precision === "broad" ? "Broad historical zone" : "Intentionally withheld"],
+                ] as [string, string][])
+              : []),
             ["Type", `${typologyLabels[node.typology]} — ${typologyGloss[node.typology]}`],
             ["Direction", directionLabels[node.direction] ?? node.direction],
             ["Vitality", statusLabels[node.status]],
@@ -214,6 +222,24 @@ export default function DetailLeaf({
             </div>
           ))}
         </dl>
+
+        {origin && (
+          <aside className="specimen mb-6 px-4 py-3" aria-label="Geographic origin note">
+            <div className="caption mb-1.5 text-[9px]">Geographic record</div>
+            <p className="text-[14px] italic leading-snug text-[var(--ink-mid)]">
+              {origin.note}
+            </p>
+            {origin.source && origin.source !== node.source && (
+              <a
+                href={origin.source}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="caption mt-2 inline-flex items-center gap-1.5 border-b border-border pb-0.5 text-[9px] hover:border-[var(--rubric)] hover:text-[var(--rubric)]">
+                Map basis <ArrowUpRight size={10} />
+              </a>
+            )}
+          </aside>
+        )}
 
         <CharacterInventory
           scriptId={node.id}

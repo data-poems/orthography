@@ -1,7 +1,8 @@
 /**
  * STYLE REMINDER — Scriptorium Vellum
- * The running head of a bound volume. Three plates in one codex: the chart,
- * the specimen sheet, the essay. Vermilion marks the leaf you are on; the rest
+ * The running head of a bound volume. Four plates in one codex: the chart,
+ * the specimen sheet, the essay, and the origin map. Vermilion marks the leaf
+ * you are on; the rest
  * is ink at low emphasis. Hairline rules, no boxes, no buttons.
  */
 import { Link, useLocation } from "wouter";
@@ -12,6 +13,7 @@ const PLATES = [
   { href: "/", label: "The chart", roman: "I" },
   { href: "/specimens", label: "The specimens", roman: "II" },
   { href: "/about", label: "The essay", roman: "III" },
+  { href: "/origins", label: "The origins", roman: "IV" },
 ] as const;
 
 export default function PlateNav({ dense = false }: { dense?: boolean }) {
@@ -21,10 +23,10 @@ export default function PlateNav({ dense = false }: { dense?: boolean }) {
       aria-label="Plates"
       className={`flex items-center gap-4 ${dense ? "" : "gap-5"}`}>
       <Link href="/" className="flex shrink-0 items-center gap-2">
-        <img src={LOGO} alt="The Tree of Writing" className="h-6 w-6" />
+        <img src={LOGO} alt="The Tree of Writing" className="h-7 w-7" />
         {!dense && (
           <span
-            className="hidden text-[0.72rem] uppercase leading-none sm:inline"
+            className="hidden text-[0.72rem] uppercase leading-none lg:inline"
             style={{
               fontFamily: "var(--font-mono)",
               letterSpacing: "0.2em",

@@ -33,4 +33,11 @@
 - [x] Commit the project and push (`e6da402`)
 - [x] Confirm the pushed tree excludes node_modules and build output
 
+## 5. Geographic origin plate
+- [x] Audit regional fields and define an honest origin-coordinate policy
+- [x] Add coordinate, confidence, and historical-place data for 160 mapped scripts; withhold four unsafe point claims
+- [x] Build Plate IV: geographic origins with searchable, clickable markers
+- [x] Retain the script detail leaf and deep-link behavior on the map
+- [x] Verify desktop, tablet, and phone behavior; checkpoint and push
+
 - [ ] Checkpoint and deliver

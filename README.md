@@ -1,12 +1,13 @@
 # The Tree of Writing
 
-An interactive atlas of **164 documented writing systems**. The project traces proposed genealogies from the earliest independent inventions through later alphabets, abugidas, syllabaries, logographies, and modern community-led scripts. It is a static React application built as three linked manuscript plates.
+An interactive atlas of **164 documented writing systems**. The project traces proposed genealogies from the earliest independent inventions through later alphabets, abugidas, syllabaries, logographies, and modern community-led scripts. It is a static React application built as four linked manuscript plates.
 
 | Plate | Purpose |
 |---|---|
 | **Plate I — Radial Genealogy** | A zoomable radial tree; lineage certainty, date filtering, search, and node-level detail. |
 | **Plate II — Specimen Sheet** | A poster-like gallery of 148 Unicode-renderable examples, arrangeable by descent, date, or typology. |
 | **Plate III — Essay** | A companion account of independent invention, descent, orthographic structure, material history, and undeciphered systems. |
+| **Plate IV — Geographic Origins** | A searchable historical atlas locating 160 scripts at a documented site, regional centroid, or broad cultural zone, with four deliberately withheld where a single point would overstate the evidence. |
 
 ## Explore and cite
 
@@ -15,6 +16,7 @@ Every script can be linked directly from either Plate I or Plate II:
 ```text
 /?script=devanagari
 /specimens?script=georgian
+/origins?script=cuneiform
 /?script=devanagari&inventory=1
 ```
 
@@ -29,6 +31,8 @@ The corpus is in `client/src/data/`. Each script records its historical relation
 Specimens follow a strict order of evidence. The script writing its own name is preferred; an attested word or canonical letter series is used where an autonym is unavailable; a script that cannot be represented honestly is explicitly marked rather than given a fabricated glyph.
 
 `gen_inventories.py` produces `client/src/data/inventories.ts` from Unicode’s `Scripts.txt`, `UnicodeData.txt`, and `PropertyValueAliases.txt`. It includes only assigned codepoints, groups them by character role, and lazy-loads the data only when a reader opens a character inventory.
+
+`client/src/data/origins.ts` contains the Plate IV geographic record. A coordinate means **historical development or first secure attestation**, not modern territory or the full geographic extent of use. `site`, `region`, and `broad` make the level of geographical claim explicit; `withheld` is used where an origin cannot responsibly be collapsed into one point. See `research/geographic-origin-policy.md` for the evidence policy and the sources that frame it.
 
 ## Development
 
@@ -46,6 +50,8 @@ pnpm build
 - **Corpus validation:** `python3 /home/ubuntu/validate_corpus.py`
 - **Specimen coverage:** `node scripts/specimen-coverage.mjs`
 - **Poster acceptance test:** `node scripts/test-poster-download.mjs`
+- **Origin-coordinate completeness:** `node --import tsx scripts/validate-origin-research.mjs`
+- **Origin data generation:** `node --import tsx scripts/generate-origin-data.mjs`
 
 ## Sources and limits
 

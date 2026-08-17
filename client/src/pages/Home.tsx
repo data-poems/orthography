@@ -13,6 +13,7 @@ import {
   HelpCircle,
   LayoutGrid,
   List,
+  MapPinned,
   Maximize2,
   Minimize2,
   Minus,
@@ -265,6 +266,13 @@ export default function Home() {
         className="rail-btn">
         <LayoutGrid size={15} />
       </Link>
+      <Link
+        href="/origins"
+        aria-label="Plate IV — geographic origins"
+        title="Plate IV — places where writing took form"
+        className="rail-btn">
+        <MapPinned size={15} />
+      </Link>
       <button
         onClick={() => setHelpOpen(true)}
         aria-label="How to read this chart"
@@ -309,6 +317,11 @@ export default function Home() {
               href="/specimens"
               className="caption shrink-0 border-b border-border pb-0.5 text-[9.5px]">
               Sheet
+            </Link>
+            <Link
+              href="/origins"
+              className="caption shrink-0 border-b border-border pb-0.5 text-[9.5px]">
+              Map
             </Link>
           </div>
 

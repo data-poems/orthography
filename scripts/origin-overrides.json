@@ -1,0 +1,38 @@
+[
+  {
+    "id": "greek",
+    "latitude": 38.48,
+    "longitude": 23.64,
+    "precision": "region",
+    "origin_label": "Euboea, early Archaic Greece",
+    "origin_note": "Most specialists place the early eighth-century adoption of Phoenician letters for Greek somewhere on Euboea; this is a regional attribution, not a claimed single workshop.",
+    "source_url": "https://en.wikipedia.org/wiki/History_of_the_Greek_alphabet"
+  },
+  {
+    "id": "gothic-alphabet",
+    "latitude": 43.1,
+    "longitude": 25.6,
+    "precision": "broad",
+    "origin_label": "Lower Danube / Moesia, fourth-century Gothic mission",
+    "origin_note": "Wulfila developed the alphabet for Gothic Bible translation in the Greco-Roman world around the Black Sea and Lower Danube; a single creation site is not securely documented.",
+    "source_url": "https://en.wikipedia.org/wiki/Gothic_alphabet"
+  },
+  {
+    "id": "armenian",
+    "latitude": 40.17,
+    "longitude": 44.51,
+    "precision": "region",
+    "origin_label": "Armenia, around the Vagharshapat–Echmiadzin region",
+    "origin_note": "Mesrop Mashtots and Sahak introduced the alphabet in Armenia around 405; this point is a regional historical reference rather than a documented invention site.",
+    "source_url": "https://en.wikipedia.org/wiki/Armenian_alphabet"
+  },
+  {
+    "id": "georgian",
+    "latitude": 41.84,
+    "longitude": 44.72,
+    "precision": "region",
+    "origin_label": "Kartli (Iberia), eastern Georgia",
+    "origin_note": "The script is generally linked to the Christianization of Iberia/Kartli before its fifth-century attestations; exact origin and authorship remain contested, so this is a regional attribution.",
+    "source_url": "https://en.wikipedia.org/wiki/Georgian_scripts"
+  }
+]

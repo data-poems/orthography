@@ -251,6 +251,57 @@
     color: var(--ink-mid);
   }
 
+  /* Plate IV: a cartographic leaf carries its own pale ruling and prick marks.
+     The form controls are catalogue slips — one ruled edge, no browser-like box. */
+  .atlas-leaf {
+    background-image:
+      linear-gradient(90deg, oklch(0.28 0.022 55 / 0.035) 1px, transparent 1px),
+      linear-gradient(0deg, oklch(0.28 0.022 55 / 0.025) 1px, transparent 1px);
+    background-size: 34px 34px, 34px 34px;
+  }
+  .atlas-frame {
+    background-image:
+      radial-gradient(ellipse at 18% 15%, oklch(0.82 0.035 73 / 0.22), transparent 42%),
+      repeating-linear-gradient(to bottom, transparent 0, transparent 39px, oklch(0.28 0.022 55 / 0.045) 39px, oklch(0.28 0.022 55 / 0.045) 40px);
+  }
+  .atlas-slip {
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-left: 1px solid oklch(0.28 0.022 55 / 0.18);
+    border-radius: 0;
+    background-color: oklch(0.958 0.015 84 / 0.46);
+    color: var(--ink);
+    box-shadow: inset 0 -1px 0 oklch(0.28 0.022 55 / 0.05);
+    font-family: var(--font-body);
+  }
+  .atlas-slip::placeholder {
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+  .atlas-register {
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-left: 1px solid oklch(0.28 0.022 55 / 0.18);
+    border-radius: 0;
+    background-color: oklch(0.958 0.015 84 / 0.38);
+    color: var(--ink-mid);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+  .atlas-tool {
+    border: 0;
+    border-left: 1px solid var(--border);
+    background: oklch(0.945 0.018 82 / 0.78);
+    color: var(--ink-mid);
+    box-shadow: inset 0 -1px 0 oklch(0.28 0.022 55 / 0.09);
+  }
+  .atlas-tool:hover {
+    background: oklch(0.945 0.018 82 / 0.96);
+    color: var(--rubric);
+  }
+
   /* Signature element 1: ruled prickings. Parchment ruled for writing. */
   .ruled {
     background-image: repeating-linear-gradient(
