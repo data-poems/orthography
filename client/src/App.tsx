@@ -2,12 +2,9 @@
  * STYLE REMINDER — Scriptorium Vellum
  * Light theme only; the ground is vellum, so no dark mode toggle.
  */
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Router, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
-import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Gallery from "./pages/Gallery";
@@ -37,18 +34,13 @@ function App() {
   const base = routerBaseFromVite();
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="light">
-        <TooltipProvider delayDuration={200}>
-          <Toaster />
-          {base ? (
-            <Router base={base}>
-              <RouterView />
-            </Router>
-          ) : (
-            <RouterView />
-          )}
-        </TooltipProvider>
-      </ThemeProvider>
+      {base ? (
+        <Router base={base}>
+          <RouterView />
+        </Router>
+      ) : (
+        <RouterView />
+      )}
     </ErrorBoundary>
   );
 }

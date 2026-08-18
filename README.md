@@ -47,6 +47,8 @@ pnpm check
 pnpm build
 ```
 
+The repository is a plain Vite + React app: `client/` is the Vite root, `client/src/data/` the corpus, `scripts/` the generators and tests. Nothing runs on a server. The Manus scaffolding it was born with (runtime plugin, debug collector, storage proxy, Express shell, OAuth stubs, the unused shadcn component set) was removed on 2026-08-18; `client/src/components/ui/` keeps only the four primitives the plates use.
+
 Production `vite` `base` is `/writing/` (`VITE_BASE_PATH`). Override with `VITE_BASE_PATH=/` for a root-hosted build.
 
 ## Deploy
@@ -63,12 +65,13 @@ A systemd timer (`writing-deploy.timer`) fast-forwards `main` and rebuilds when 
 
 ## Verification notes
 
-- **Corpus type-check:** `pnpm check` (the corpus is TypeScript; the old `validate_corpus.py` lived in the Manus sandbox and is not part of this repository)
+- **Corpus type-check:** `pnpm check` (the corpus is TypeScript)
 - **Specimen coverage:** `node scripts/specimen-coverage.mjs`
-- **Poster acceptance test:** `node scripts/test-poster-download.mjs`
 - **Origin-coordinate completeness:** `node --import tsx scripts/validate-origin-research.mjs`
 - **Origin data generation:** `node --import tsx scripts/generate-origin-data.mjs`
-- **Cluster and route interaction acceptance test:** `node scripts/test-origin-map.mjs`
+- **Browser acceptance tests:** `node scripts/test-poster-download.mjs` (Plate II PDF) and `node scripts/test-origin-map.mjs` (Plate IV clusters and routes). Both take `ATLAS_URL` (origin plus base path, no trailing slash; default `http://localhost:3000` for `pnpm dev`) and `CHROMIUM_PATH` (default `/usr/bin/chromium`). Against a production build: `pnpm build && pnpm preview`, then `ATLAS_URL=http://127.0.0.1:4173/writing node scripts/test-poster-download.mjs`.
+
+The poster export builds its broadside in an isolated iframe and copies only the Google Fonts stylesheets into it. The app's own sheet uses OKLCH tokens that html2canvas 1.4 cannot parse; in `vite dev` that sheet is inline, so the failure only ever showed in production builds.
 
 ## Sources and limits
 

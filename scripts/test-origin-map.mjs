@@ -5,9 +5,12 @@
  */
 import { chromium } from "playwright-core";
 
+// ATLAS_URL is the origin plus base path the app is served from, without a
+// trailing slash (dev: http://localhost:3000; preview: http://127.0.0.1:4173/writing).
+const ATLAS_URL = (process.env.ATLAS_URL ?? "http://localhost:3000").replace(/\/$/, "");
 const browser = await chromium.launch({
   headless: true,
-  executablePath: "/usr/bin/chromium",
+  executablePath: process.env.CHROMIUM_PATH ?? "/usr/bin/chromium",
   args: ["--no-sandbox", "--disable-gpu"],
 });
 
@@ -15,7 +18,7 @@ try {
   const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
   const messages = [];
   page.on("pageerror", (error) => messages.push(error.message));
-  await page.goto("http://localhost:3000/origins", { waitUntil: "networkidle" });
+  await page.goto(`${ATLAS_URL}/origins`, { waitUntil: "networkidle" });
 
   const route = page.getByRole("button", { name: /Mediterranean alphabet corridor/i });
   await route.waitFor();

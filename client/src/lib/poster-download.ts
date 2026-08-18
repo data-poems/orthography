@@ -35,9 +35,12 @@ export async function downloadPosterPdf(element: HTMLElement) {
     doc.write("<!doctype html><html><head><meta charset=\"utf-8\"></head><body></body></html>");
     doc.close();
 
-    // Carry the atlas's loaded Noto webfont families into the isolated broadside.
+    // Carry the atlas's loaded webfont families (Google Fonts) into the isolated
+    // broadside. Only font stylesheets: the production build also links the app's
+    // own CSS, whose OKLCH tokens html2canvas cannot parse. In `vite dev` that
+    // sheet is an inline <style>, which is why this only ever failed in production.
     for (const original of Array.from(document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]'))) {
-      if (!original.href) continue;
+      if (!original.href || !/fonts\.googleapis\.com/.test(original.href)) continue;
       const link = doc.createElement("link");
       link.rel = "stylesheet";
       link.href = original.href;
