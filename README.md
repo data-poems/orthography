@@ -20,7 +20,7 @@ Every script can be linked directly from either Plate I or Plate II:
 /writing/?script=devanagari&inventory=1
 ```
 
-Live: [datapoems.io/writing/](https://datapoems.io/writing/). Local `pnpm dev` still serves these paths at the site root.
+Live: [datapoems.io/writing/](https://datapoems.io/writing/) (canonical), and the same build at `/writing/` on [lukesteuber.com](https://lukesteuber.com/writing/), [world-languages.com](https://world-languages.com/writing/) and [diachronica.com](https://diachronica.com/writing/). Local `pnpm dev` still serves these paths at the site root.
 
 The first two open the appropriate script leaf. The `inventory=1` modifier expands its Unicode character inventory. The link icon at the head of a script leaf copies that URL.
 
@@ -49,15 +49,15 @@ pnpm build
 
 Production `vite` `base` is `/writing/` (`VITE_BASE_PATH`). Override with `VITE_BASE_PATH=/` for a root-hosted build.
 
-## Deploy (datapoems.io)
+## Deploy
 
-On drummer the checkout is `/home/coolhand/projects/orthography`. Caddy serves `dist/public` at `/writing/` on `datapoems.io`. Rebuild and publish with:
+On drummer the checkout is `/home/coolhand/projects/orthography`. Caddy serves `dist/public` at `/writing/` on datapoems.io, lukesteuber.com, world-languages.com and diachronica.com through one shared `writing_spa` snippet in `~/admin/Caddyfile`; the Sign-Language Atlas (`lukeslp/sign-language-atlas`) sits beside it at `/sign/` on the same four hosts. Rebuild and publish with:
 
 ```bash
 ~/bin/deploy-writing.sh
 ```
 
-A systemd timer (`writing-deploy.timer`) fast-forwards `main` and rebuilds when origin moves. It will not overwrite a dirty tree.
+A systemd timer (`writing-deploy.timer`) fast-forwards `main` and rebuilds when origin moves. It will not overwrite a dirty tree. `client/public/media/radial-card.jpg` is a 2400x1260 render of Plate I; the world-languages.com index uses it as the tile for this atlas.
 
 `scripts/test-poster-download.mjs` is an end-to-end Chromium test for the Plate II PDF. It confirms that the download is a valid PDF without adding test output to the repository.
 
