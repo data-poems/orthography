@@ -30,7 +30,7 @@ The **Download poster PDF** action on Plate II creates a client-side broadside P
 
 The corpus is in `client/src/data/`. Each script records its historical relationships, date range, typology, direction, regions, languages, sources, sample, endonym, and display font hint.
 
-Specimens follow a strict order of evidence. The script writing its own name is preferred; an attested word or canonical letter series is used where an autonym is unavailable; a script that cannot be represented honestly is explicitly marked rather than given a fabricated glyph.
+Specimens follow a strict order of evidence. First choice is the script writing its own name; where no autonym exists, an attested word or canonical letter series stands in; and a script that cannot be rendered honestly says so on the sheet rather than carrying a fabricated glyph.
 
 `gen_inventories.py` produces `client/src/data/inventories.ts` from Unicode’s `Scripts.txt`, `UnicodeData.txt`, and `PropertyValueAliases.txt`. It includes only assigned codepoints, groups them by character role, and lazy-loads the data only when a reader opens a character inventory.
 
@@ -72,6 +72,6 @@ A systemd timer (`writing-deploy.timer`) fast-forwards `main` and rebuilds when 
 
 ## Sources and limits
 
-Each individual record includes a primary source link; external research notes are retained in the working history. Genealogical edges deliberately distinguish attested descent, probable descent, disputed descent, and stimulus diffusion. The atlas does not present uncertain relationships as settled fact.
+Each record links its primary source; the working history keeps the external research notes. Genealogical edges deliberately distinguish attested descent, probable descent, disputed descent, and stimulus diffusion. The atlas does not present uncertain relationships as settled fact.
 
 The app uses the Scriptorium Vellum visual language: vellum ground, iron-gall ink hierarchy, disciplined rubric vermilion, and a Cormorant / EB Garamond / JetBrains Mono typographic system.
