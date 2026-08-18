@@ -63,7 +63,7 @@ A systemd timer (`writing-deploy.timer`) fast-forwards `main` and rebuilds when 
 
 ## Verification notes
 
-- **Corpus validation:** `python3 /home/ubuntu/validate_corpus.py`
+- **Corpus type-check:** `pnpm check` (the corpus is TypeScript; the old `validate_corpus.py` lived in the Manus sandbox and is not part of this repository)
 - **Specimen coverage:** `node scripts/specimen-coverage.mjs`
 - **Poster acceptance test:** `node scripts/test-poster-download.mjs`
 - **Origin-coordinate completeness:** `node --import tsx scripts/validate-origin-research.mjs`
