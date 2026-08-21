@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * The Brahmic branch: the largest family in the tree, ~198 scripts by one
  * count. Specimen glyphs matter most here; keep the prose dated and sourced.
  */

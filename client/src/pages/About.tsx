@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * A reading page, so the measure narrows and the ruling shows. Single column
  * of body text with a ruled left margin holding the running heads. Vermilion
  * for section marks and the versal initial only.

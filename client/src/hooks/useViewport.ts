@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * Viewport class for the plate. Mobile is not a narrowed desktop: the margin
  * becomes a sheet, the leaf becomes a sheet, and the plate keeps the whole page.
  */

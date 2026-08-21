@@ -1,9 +1,9 @@
-# Working notes — The Tree of Writing
+# Working notes: The Tree of Writing
 
 ## Corpus state (validated)
 164 scripts plus a conceptual `root`. 26 scripts hang directly from root
-(independent inventions and stimulus-diffusion creations). Validator lives at
-`/home/ubuntu/validate_corpus.py`; run `python3 /home/ubuntu/validate_corpus.py`.
+(independent inventions and stimulus-diffusion creations). Run `pnpm check` to
+validate the TypeScript corpus.
 
 By family: brahmic 67, sinitic 19, aramaic 18, independent 13, semitic 10,
 latin 9, greek 5, aegean 5, undeciphered 4, egyptian 4, mesoamerican 4,
@@ -12,12 +12,8 @@ By status: living 66, extinct 48, historical 31, liturgical 14, revived 6.
 
 Data files in `client/src/data/`: types.ts, index.ts (assembles + lookups),
 scripts-ancient.ts, scripts-semitic.ts, scripts-european.ts, scripts-brahmic.ts,
-scripts-sinitic.ts, scripts-independent.ts, scripts-expansion.ts (34 generated
-from parallel research), scripts-expansion-b.ts (Tocharian, Meitei Mayek, Modi,
-Tai Tham — hand-written).
-
-Generator: `/home/ubuntu/gen_expansion.py` reads
-`/home/ubuntu/script_expansion_research.json`.
+scripts-sinitic.ts, scripts-independent.ts, scripts-expansion.ts, and
+scripts-expansion-b.ts (Tocharian, Meitei Mayek, Modi, and Tai Tham).
 
 ## Component map
 - `pages/Home.tsx` — shell: header, margin column, dendrogram, detail leaf
@@ -28,11 +24,6 @@ Generator: `/home/ubuntu/gen_expansion.py` reads
 - `components/PlateCartouche.tsx` — titling block + four inventions key
 - `components/HelpDialog.tsx` — how to read the chart
 - `lib/tree-layout.ts` — angular allocation, bbox fitting, link paths
-
-## Assets (uploaded, referenced by /manus-storage/ paths)
-- logo: `/manus-storage/aleph-mark-web_d69c2b44.png`
-- specimens strip: `/manus-storage/inscription-specimens-web_237d6682.png`
-- vellum hero: uploaded alongside; originals in `/home/ubuntu/webdev-static-assets/`
 
 ## Refinement round goals (current)
 1. **Reduce chrome** — the margin column becomes an on-demand overlay; header
@@ -92,7 +83,6 @@ legible, fills the circle, and preserves the genealogy exactly.
 6. Fit centres on the ORIGIN, not the bbox — the root is at 0,0 and bbox
    centring pushed it off-centre whenever one side ran longer.
 
-### Still open
 ### Resolved
 
 The key insight: **legibility on a radial plate is arc length, not angle.** At
@@ -174,8 +164,7 @@ shorthand, mwangwego). These render the romanised name in italic plus the note.
 Resolver lives in `client/src/lib/specimen.ts`: `specimenOf()` and
 `shortSpecimen()`. Used by Dendrogram (node glyphs + tooltip), ScriptIndex (rows),
 DetailLeaf (hero block). Verify new specimens with
-`python3 /home/ubuntu/verify_autonyms.py` (maps every codepoint to its block) and
-`node scripts/audit-specimens.mjs`.
+`node scripts/audit-specimens.mjs` and `node scripts/specimen-coverage.mjs`.
 
 ### Family jump rail
 

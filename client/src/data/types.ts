@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * Data layer for the manuscript. No presentation concerns here; the page is
  * ruled elsewhere. Keep every record sourced and dated — the brand voice names
  * dates, places, and people, so the data must supply them.

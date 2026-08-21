@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * The index of the plate, as a manuscript carries its own table. This is the
  * primary way in on a phone: a 164-node radial chart cannot be navigated by
  * pinching alone, so the corpus is also offered as a ruled, grouped list with

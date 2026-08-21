@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * The running head of a bound volume. Four plates in one codex: the chart,
  * the specimen sheet, the essay, and the origin map. Vermilion marks the leaf
  * you are on; the rest

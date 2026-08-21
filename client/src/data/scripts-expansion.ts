@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * Expansion quire: further documented systems, chiefly the Brahmic branches of
  * India and Southeast Asia, the Landa merchant scripts, the Tibetan group, and
  * the twentieth-century inventions of northeast India and West Africa.

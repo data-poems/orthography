@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * An inventory is an exemplar sheet: ruled, exact, and quiet. It gives every
  * assigned Unicode character its own small cell, so the visitor reads a script
  * as a system rather than as one decorative sample.

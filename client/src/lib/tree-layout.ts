@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * Geometry only. A tidy radial tree rooted at the invention of writing.
  *
  * WHY NOT A CLASSIC DENDROGRAM: in the usual construction a child's angular

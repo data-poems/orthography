@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * The alphabetic line: Proto-Sinaitic through Phoenician into Aramaic, Hebrew,
  * Syriac, Arabic, Ge'ez and the Central Asian cursives. Ink, not marketing.
  */

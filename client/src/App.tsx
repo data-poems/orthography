@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * Light theme only; the ground is vellum, so no dark mode toggle.
  */
 import NotFound from "@/pages/NotFound";

@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * Scripts invented from scratch or by stimulus diffusion, where someone knew
  * that writing was possible but not how it worked. The most human corner of
  * the tree — keep the inventors' names and dates in the prose.

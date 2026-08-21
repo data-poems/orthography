@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * The origins, Mesopotamian, Egyptian, Aegean, Mesoamerican and early Semitic
  * records. Prose in `detail` is the manuscript's body text: declarative,
  * specific, naming dates and people. No marketing register.

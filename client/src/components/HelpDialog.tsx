@@ -1,7 +1,3 @@
-/**
- * STYLE REMINDER — Scriptorium Vellum
- * The reader's note on how to read the plate. Vellum ground, ink text, one red.
- */
 import { ArrowUpRight } from "lucide-react";
 import {
   Dialog,
@@ -108,4 +104,3 @@ export default function HelpDialog({
     </Dialog>
   );
 }
-

@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * Plate IV is a historical atlas leaf: no contemporary tiles, no territorial
  * claims. Its quiet map base is an engraved field; inked points show historical
  * places of development or first secure attestation, and their precision is

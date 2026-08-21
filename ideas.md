@@ -1,22 +1,6 @@
-# The Tree of Writing — Design Brainstorm
+# The Tree of Writing: Design Direction
 
-## Three candidate directions
-
-### 1. Scriptorium Vellum
-**Very Brief Intro:** The visualization is staged as a scholar's working manuscript — warm vellum ground, iron-gall ink, red rubrication, marginal annotation. The emotional intent is quiet reverence for the physical labor of writing.
-**Probability:** 0.038
-
-### 2. Epigraphic Field Survey
-**Very Brief Intro:** A cool, technical archaeological drafting aesthetic — squeeze-paper grays, measured baselines, plate numbers, hairline registration marks. The intent is forensic precision, as if the tree were a plate in a nineteenth-century corpus of inscriptions.
-**Probability:** 0.071
-
-### 3. Clay and Ochre
-**Very Brief Intro:** Earth-fired terracotta and ochre pigment with impressed, tactile forms, referencing tablets and cave-pigment mark-making. The intent is warmth and materiality — writing as a thing pressed into a surface.
-**Probability:** 0.024
-
----
-
-## CHOSEN: 1 — Scriptorium Vellum
+## Scriptorium Vellum
 
 **Design Movement:** Late-medieval European manuscript design crossed with the editorial rigor of a Bringhurst-era scholarly monograph. Reference points: the Book of Kells' rubrication logic, the ruled prickings and hair-side/flesh-side tonal variation of parchment, and the plate engravings in nineteenth-century decipherment publications (Gardiner, Prinsep, Champollion's *Lettre à M. Dacier*).
 

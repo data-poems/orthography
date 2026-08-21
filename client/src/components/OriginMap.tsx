@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * Plate IV is a copperplate atlas, not a contemporary GIS dashboard. The sea
  * stays vellum, land is a quiet wash, and branch pigments identify only the
  * small historical points. A point names a place of development or first secure

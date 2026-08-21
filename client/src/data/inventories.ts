@@ -1,10 +1,9 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * The letter inventory is the exemplar sheet a scribe would rule out before
  * writing: every character the script actually has, in Unicode order.
  *
  * GENERATED FILE — do not edit by hand.
- * Built by /home/ubuntu/gen_inventories.py from the Unicode Character Database
+ * Built from the Unicode Character Database
  * (Scripts.txt, UnicodeData.txt, PropertyValueAliases.txt). Only ASSIGNED
  * codepoints appear here, which is what keeps the grid free of tofu.
  */

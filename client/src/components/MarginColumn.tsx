@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * The manuscript's gutter. Controls read as marginal annotation, never chrome.
  * Filters DIM non-matches rather than removing them — the page stays intact.
  */

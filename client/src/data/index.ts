@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * The single assembled corpus, plus derived lookups. Nothing here renders;
  * this is the quire being stitched.
  */

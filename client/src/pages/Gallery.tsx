@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * Plate II is a type foundry's specimen sheet, not a card grid. The glyph is the
  * only thing that carries size; every caption drops to mono at 9–10px so the
  * writing itself does the talking. Rules divide, boxes do not: cells are

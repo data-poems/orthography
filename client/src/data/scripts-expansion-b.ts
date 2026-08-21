@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * Second expansion quire: the Central Asian Brahmi of the Tarim Basin, the
  * body-part alphabet of Manipur, the Marathi shorthand of the Maratha
  * secretariat, and the palm-leaf script of Lan Na.

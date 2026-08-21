@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * These are restrained historical corridors, not geopolitical borders or
  * migration trails. Their source-aware styles make uncertainty legible.
  */

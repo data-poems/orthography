@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * The western branch: Greek and everything it fathered — Old Italic, Latin,
  * runes, Gothic, Glagolitic, Cyrillic, Armenian, Georgian. Ink hierarchy only.
  */

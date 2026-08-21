@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * The Sinitic branch and the East Asian scripts that were inspired by it
  * without descending from it. Distinguish descent from stimulus carefully.
  */

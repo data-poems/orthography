@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * The plate owns the page. Chrome is reduced to a hairline apparatus rail and a
  * floating wordmark; the margin apparatus and the detail leaf are summoned, not
  * permanently mounted. On a phone the plate stays full-bleed and everything

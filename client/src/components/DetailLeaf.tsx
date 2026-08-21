@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * The detail leaf is a page laid down from the right. Opens with a rubricated
  * versal initial set in the script being described where Unicode permits.
  * The specimen block is the hero; prose is body text, not marketing.
@@ -140,10 +139,7 @@ export default function DetailLeaf({
         className={`quire-scroll ruled min-h-0 flex-1 overflow-y-auto pt-5 ${
           handle ? "px-5 pb-10" : "px-7 pb-16"
         }`}>
-        {/* Specimen block — the hero. */}
-        {/* Specimen block — the hero of the leaf. The heading states plainly what
-            is being shown: the script naming itself, an attested text, or nothing,
-            so a reader is never left guessing whether a glyph is authentic. */}
+        {/* The heading distinguishes an autonym from an attested text. */}
         {(() => {
           const spec = specimenOf(node);
           if (spec.kind === "none") {

@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * The specimen is the hero of this atlas. One rule, used everywhere, so the plate,
  * the index and the detail leaf never disagree about what a script looks like.
  */

@@ -1,5 +1,4 @@
 /**
- * STYLE REMINDER — Scriptorium Vellum
  * The tree is the page's illumination. Ink hierarchy carries structure;
  * vermilion marks ONLY the attended descent line. Hovering lifts a node and
  * illuminates its full lineage to the root, as a reader traces with a finger.

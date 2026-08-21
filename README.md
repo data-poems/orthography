@@ -4,10 +4,10 @@ An interactive atlas of **164 documented writing systems**. The project traces p
 
 | Plate | Purpose |
 |---|---|
-| **Plate I — Radial Genealogy** | A zoomable radial tree; lineage certainty, date filtering, search, and node-level detail. |
-| **Plate II — Specimen Sheet** | A poster-like gallery of 148 Unicode-renderable examples, arrangeable by descent, date, or typology. |
-| **Plate III — Essay** | A companion account of independent invention, descent, orthographic structure, material history, and undeciphered systems. |
-| **Plate IV — Geographic Origins** | A searchable historical atlas locating 160 scripts at a documented site, regional centroid, or broad cultural zone, with four deliberately withheld where a single point would overstate the evidence. Dense points expand on zoom; a ten-route register distinguishes documented transmission, qualified proposals, and cultural adaptation. |
+| **Plate I: Radial Genealogy** | A zoomable radial tree; lineage certainty, date filtering, search, and node-level detail. |
+| **Plate II: Specimen Sheet** | A poster-like gallery of 148 Unicode-renderable examples, arrangeable by descent, date, or typology. |
+| **Plate III: Essay** | A companion account of independent invention, descent, orthographic structure, material history, and undeciphered systems. |
+| **Plate IV: Geographic Origins** | A searchable historical atlas locating 160 scripts at a documented site, regional centroid, or broad cultural zone, with four deliberately withheld where a single point would overstate the evidence. Dense points expand on zoom; a ten-route register distinguishes documented transmission, qualified proposals, and cultural adaptation. |
 
 ## Explore and cite
 
@@ -32,7 +32,7 @@ The corpus is in `client/src/data/`. Each script records its historical relation
 
 Specimens follow a strict order of evidence. First choice is the script writing its own name; where no autonym exists, an attested word or canonical letter series stands in; and a script that cannot be rendered honestly says so on the sheet rather than carrying a fabricated glyph.
 
-`gen_inventories.py` produces `client/src/data/inventories.ts` from Unicode’s `Scripts.txt`, `UnicodeData.txt`, and `PropertyValueAliases.txt`. It includes only assigned codepoints, groups them by character role, and lazy-loads the data only when a reader opens a character inventory.
+`client/src/data/inventories.ts` was generated from Unicode’s `Scripts.txt`, `UnicodeData.txt`, and `PropertyValueAliases.txt`. It includes only assigned codepoints, groups them by character role, and loads the data only when a reader opens a character inventory.
 
 `client/src/data/origins.ts` contains the Plate IV geographic record. A coordinate means **historical development or first secure attestation**, not modern territory or the full geographic extent of use. `site`, `region`, and `broad` make the level of geographical claim explicit; `withheld` is used where an origin cannot responsibly be collapsed into one point. See `research/geographic-origin-policy.md` for the evidence policy and the sources that frame it.
 
@@ -47,7 +47,7 @@ pnpm check
 pnpm build
 ```
 
-The repository is a plain Vite + React app: `client/` is the Vite root, `client/src/data/` the corpus, `scripts/` the generators and tests. Nothing runs on a server. The Manus scaffolding it was born with (runtime plugin, debug collector, storage proxy, Express shell, OAuth stubs, the unused shadcn component set) was removed on 2026-08-18; `client/src/components/ui/` keeps only the four primitives the plates use.
+The repository is a plain Vite + React app: `client/` is the Vite root, `client/src/data/` holds the corpus, and `scripts/` holds the generators and tests. Nothing runs on a server. `client/src/components/ui/` contains only the four interface primitives the plates use.
 
 Production `vite` `base` is `/writing/` (`VITE_BASE_PATH`). Override with `VITE_BASE_PATH=/` for a root-hosted build.
 

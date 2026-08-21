@@ -1,9 +1,3 @@
-/**
- * STYLE REMINDER — Scriptorium Vellum
- * The plate's own titling block, as an engraved corpus would carry it: plate
- * mark, title, a rule, and the four inventions listed as the key. It carries the
- * wordmark itself, so the page needs no header band at all.
- */
 import { Link } from "wouter";
 import { scriptById } from "@/data";
 
