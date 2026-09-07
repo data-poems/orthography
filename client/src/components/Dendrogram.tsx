@@ -191,7 +191,7 @@ export default function Dendrogram({
               <circle
                 r={r}
                 fill="none"
-                stroke="oklch(0.28 0.022 55)"
+                stroke="var(--ink)"
                 strokeOpacity={i === 0 ? 0.13 : 0.075}
                 strokeDasharray={i === 0 ? undefined : "1 9"}
               />
@@ -236,7 +236,7 @@ export default function Dendrogram({
                     key={a.id}
                     d={a.path}
                     fill="none"
-                    stroke={lit ? "var(--rubric)" : "oklch(0.44 0.026 58)"}
+                    stroke={lit ? "var(--rubric)" : "var(--ink-mid)"}
                     strokeWidth={lit ? 1.4 : 0.7}
                     strokeDasharray="2 4"
                     strokeOpacity={lit ? 0.85 : 0.28}
@@ -255,7 +255,7 @@ export default function Dendrogram({
                 lineage.has(l.target.data.id) && lineage.has(l.source.data.id);
               const stroke = lit
                 ? "var(--rubric)"
-                : familyColors[l.target.data.family];
+                : `var(--family-${l.target.data.family}, ${familyColors[l.target.data.family]})`;
               // An origin node's stem is a long open dash: it is a reach outward
               // for legibility, not a claim of transmission.
               const dash = l.target.origin
@@ -316,7 +316,7 @@ export default function Dendrogram({
                     ? Math.min(3.6 + Math.log2(n.leaves + 1) * 0.72, 6)
                     : 3.2;
               const r = st.isActive ? base + 2.6 : base;
-              const fam = familyColors[n.data.family];
+              const fam = `var(--family-${n.data.family}, ${familyColors[n.data.family]})`;
               const living = n.data.status === "living";
               const lt = labelTransform(n, r + 6);
               const showLabel =

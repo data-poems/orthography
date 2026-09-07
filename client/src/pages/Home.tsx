@@ -282,6 +282,11 @@ export default function Home() {
     </div>
   );
 
+  // A chrome-free plate for gallery embeds and captures, using the same renderer.
+  if (document.documentElement.dataset.bare === "true") {
+    return <main className="h-[100dvh] w-full bg-background"><Dendrogram selectedId={null} onSelect={openScript} matchIds={matchIds} cutoffYear={null} showInfluences showLabels animate={false} /></main>;
+  }
+
   /* ── Phone: a different application, not a squeezed desktop ─────────── */
   if (isPhone) {
     return (

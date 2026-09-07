@@ -520,3 +520,27 @@
   src: url("./assets/fonts/olduyghur.woff2") format("woff2");
   font-display: swap;
 }
+
+/* Midnight shares the World Languages gallery ground; lineage hues remain distinct. */
+:root[data-theme="midnight"] {
+  color-scheme: dark;
+  --vellum: #080d23; --vellum-deep: #10172f; --vellum-wash: #1a2541;
+  --ink: #dcdce8; --ink-mid: #aab5cf; --ink-faint: #8a98b8;
+  --rubric: #72d6f2; --card: #10172f; --popover: #10172f;
+  --border: #2e3b5c; --input: #2e3b5c;
+  --family-origins: #acb4d2; --family-mesopotamian: #ad90ed;
+  --family-egyptian: #76b9eb; --family-semitic: #b687eb;
+  --family-aramaic: #d17db8; --family-brahmic: #51c2a6;
+  --family-greek: #66b7ec; --family-latin: #859ff3;
+  --family-cyrillic: #b797e7; --family-sinitic: #e58ba0;
+  --family-mesoamerican: #91c878; --family-aegean: #5ccdd5;
+  --family-independent: #c4a4ee; --family-undeciphered: #a2abc4;
+}
+[data-theme="midnight"] .bg-background {
+  background-image: radial-gradient(ellipse at 65% 38%, #23214a88, transparent 68%), radial-gradient(ellipse at 32% 55%, #12365355, transparent 70%);
+}
+[data-theme="midnight"] .grain::after { display: none; }
+[data-theme="midnight"] .rail-btn { background: #10172fe8; color: var(--ink-mid); box-shadow: inset 0 0 0 1px var(--border); }
+[data-theme="midnight"] .rail-btn:hover { color: var(--rubric); background: #1a2541; }
+.theme-switch { position: fixed; bottom: 12px; right: 16px; z-index: 20; min-height: 44px; padding: 8px 12px; background: var(--vellum); color: var(--ink-mid); border: 1px solid var(--border); font: 12px var(--font-mono); }
+[data-bare] .theme-switch { display: none; }
