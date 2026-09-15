@@ -3,7 +3,7 @@ import { scriptById } from "@/data";
 
 import { assetUrl } from "@/lib/asset";
 
-const LOGO = assetUrl("media/aleph-mark.png");
+const LOGO = assetUrl("media/writing-mark.svg");
 
 const FOUR = [
   { id: "cuneiform", place: "Mesopotamia", year: "c. 3400 BC" },

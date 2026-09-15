@@ -72,7 +72,7 @@ The poster export builds its broadside in an isolated iframe and copies only the
 
 ## Sources and limits
 
-Records include source links; the geographic and transmission policies explain how those sources support the map. Some references are secondary summaries. Genealogical edges deliberately distinguish attested descent, probable descent, disputed descent, and stimulus diffusion. The atlas does not present uncertain relationships as settled fact.
+Records include source links; the geographic and transmission policies explain how those sources support the map. Some references are secondary summaries. Genealogical edges deliberately distinguish attested descent, probable descent, disputed descent, and stimulus diffusion. Read those edge categories alongside each record's sources; they describe the current interpretation, which may need revision.
 
 The default theme pairs a vellum-colored background with dark ink and red accents. Typefaces include Cormorant, EB Garamond, and JetBrains Mono.
 
@@ -88,6 +88,6 @@ using the same radial renderer. Capture this at 2400×1260, JPEG quality 92, for
 
 Original application code is [MIT licensed](LICENSE), copyright Luke Steuber.
 Unicode data, bundled fonts, and other third-party materials retain their own
-terms. See [THIRD_PARTY.md](THIRD_PARTY.md) for sources and unresolved asset
+terms. See [THIRD_PARTY.md](THIRD_PARTY.md) for sources and asset
 provenance. A source citation does not grant permission to redistribute its
 text or images.

@@ -7,7 +7,7 @@
 import { Link, useLocation } from "wouter";
 import { assetUrl } from "@/lib/asset";
 
-const LOGO = assetUrl("media/aleph-mark.png");
+const LOGO = assetUrl("media/writing-mark.svg");
 
 const PLATES = [
   { href: "/", label: "The chart", roman: "I" },

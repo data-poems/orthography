@@ -30,14 +30,14 @@ link their references. Those links document the research basis; they do not
 claim that every historical relationship is settled or that cited publications
 are MIT licensed.
 
-## Images awaiting provenance
+## Original interface artwork
 
-The repository includes `client/public/media/aleph-mark.png` and
-`client/public/media/inscription-specimens.jpg`, but their source, creator, and
-redistribution terms are not recorded. The inscription image is used by the
-essay and social preview; the aleph mark is used as the logo and favicon.
-Resolve that provenance or replace the assets before public redistribution.
+`client/public/media/writing-mark.svg` is an original geometric branch mark by
+Luke Steuber. The essay's opening uses ordinary text characters rather than
+photographs of historical inscriptions. Neither is evidence of an ancient
+artifact or a reconstruction of one.
 
-`radial-card.jpg` and `radial-card-midnight.jpg` are documented as captures of the
-atlas. Their publication still depends on clearing the materials visible in
-the captured interface.
+`radial-card.jpg` and `radial-card-midnight.jpg` are captures of this atlas.
+Earlier image assets with unrecorded provenance have been removed from the
+release tree. Historical Git revisions still contain those assets and must not
+be treated as cleared for public redistribution.

@@ -32,7 +32,7 @@ import { allScripts, scriptById, typologyLabels } from "@/data";
 import { useViewport } from "@/hooks/useViewport";
 import { assetUrl } from "@/lib/asset";
 
-const LOGO = assetUrl("media/aleph-mark.png");
+const LOGO = assetUrl("media/writing-mark.svg");
 const CORPUS_COUNT = allScripts.filter((s) => s.id !== "root").length;
 
 export default function Home() {
