@@ -7,8 +7,8 @@ of the materials below.
 
 `client/src/data/inventories.ts` derives from the Unicode Character Database's
 `Scripts.txt`, `UnicodeData.txt`, and `PropertyValueAliases.txt`. The source file
-does not record its Unicode version or input checksums; reproducing that exact
-generation remains release work. The Unicode copyright and permission notice is
+does not record its Unicode version or input checksums. Exact regeneration
+requires identifying those inputs. The Unicode copyright and permission notice is
 in [licenses/UNICODE.txt](licenses/UNICODE.txt), retrieved from
 [Unicode](https://www.unicode.org/license.txt) on September 15, 2026.
 
@@ -38,6 +38,3 @@ photographs of historical inscriptions. Neither is evidence of an ancient
 artifact or a reconstruction of one.
 
 `radial-card.jpg` and `radial-card-midnight.jpg` are captures of this atlas.
-Earlier image assets with unrecorded provenance have been removed from the
-release tree. Historical Git revisions still contain those assets and must not
-be treated as cleared for public redistribution.
