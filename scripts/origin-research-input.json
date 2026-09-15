@@ -1,0 +1,1478 @@
+[
+  {
+    "id": "cuneiform",
+    "name": "Cuneiform",
+    "family": "mesopotamian",
+    "region": "Mesopotamia (southern Iraq)",
+    "yearStart": -3400,
+    "source": "https://en.wikipedia.org/wiki/Cuneiform",
+    "tagline": "The earliest writing system, pressed into wet clay with a reed stylus."
+  },
+  {
+    "id": "proto-elamite",
+    "name": "Proto-Elamite",
+    "family": "undeciphered",
+    "region": "Susa, southwestern Iran",
+    "yearStart": -3100,
+    "source": "https://en.wikipedia.org/wiki/Proto-Elamite",
+    "tagline": "Contemporary with proto-cuneiform, still unread."
+  },
+  {
+    "id": "old-persian-cuneiform",
+    "name": "Old Persian Cuneiform",
+    "family": "mesopotamian",
+    "region": "Achaemenid Persia",
+    "yearStart": -525,
+    "source": "https://en.wikipedia.org/wiki/Old_Persian_cuneiform",
+    "tagline": "A semi-syllabary that borrowed cuneiform's wedges but not its system."
+  },
+  {
+    "id": "ugaritic",
+    "name": "Ugaritic",
+    "family": "semitic",
+    "region": "Ugarit, northern Syria",
+    "yearStart": -1400,
+    "source": "https://en.wikipedia.org/wiki/Ugaritic_alphabet",
+    "tagline": "An alphabet written in wedges — cuneiform's shapes, Canaan's system."
+  },
+  {
+    "id": "anatolian-hieroglyphs",
+    "name": "Anatolian Hieroglyphs",
+    "family": "independent",
+    "region": "Anatolia and northern Syria",
+    "yearStart": -1400,
+    "source": "https://en.wikipedia.org/wiki/Anatolian_hieroglyphs",
+    "tagline": "An indigenous Anatolian logosyllabary, read boustrophedon."
+  },
+  {
+    "id": "egyptian-hieroglyphs",
+    "name": "Egyptian Hieroglyphs",
+    "family": "egyptian",
+    "region": "Egypt",
+    "yearStart": -3250,
+    "source": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
+    "tagline": "Logo-consonantal, monumental, and the distant ancestor of most letters now in use."
+  },
+  {
+    "id": "hieratic",
+    "name": "Hieratic",
+    "family": "egyptian",
+    "region": "Egypt",
+    "yearStart": -3200,
+    "source": "https://en.wikipedia.org/wiki/Hieratic",
+    "tagline": "The priestly cursive — hieroglyphs written fast, with a brush on papyrus."
+  },
+  {
+    "id": "demotic",
+    "name": "Demotic",
+    "family": "egyptian",
+    "region": "Egypt",
+    "yearStart": -650,
+    "source": "https://en.wikipedia.org/wiki/Demotic_(Egyptian)",
+    "tagline": "The 'popular' script of Late Period Egypt, and the middle band of the Rosetta Stone."
+  },
+  {
+    "id": "meroitic",
+    "name": "Meroitic",
+    "family": "egyptian",
+    "region": "Kingdom of Kush (Sudan)",
+    "yearStart": -300,
+    "source": "https://en.wikipedia.org/wiki/Meroitic_script",
+    "tagline": "Nubia's own script: Egyptian signs, an African language nobody can yet read."
+  },
+  {
+    "id": "coptic",
+    "name": "Coptic",
+    "family": "greek",
+    "region": "Egypt",
+    "yearStart": 200,
+    "source": "https://en.wikipedia.org/wiki/Coptic_script",
+    "tagline": "The last stage of Egyptian, written in Greek letters plus six demotic signs."
+  },
+  {
+    "id": "cretan-hieroglyphs",
+    "name": "Cretan Hieroglyphs",
+    "family": "aegean",
+    "region": "Crete",
+    "yearStart": -2100,
+    "source": "https://en.wikipedia.org/wiki/Cretan_hieroglyphs",
+    "tagline": "Minoan Crete's first script, found mostly on seals, undeciphered."
+  },
+  {
+    "id": "linear-a",
+    "name": "Linear A",
+    "family": "aegean",
+    "region": "Crete and the Aegean",
+    "yearStart": -1800,
+    "source": "https://en.wikipedia.org/wiki/Linear_A",
+    "tagline": "The Minoan administrative script. Readable in sound, unreadable in sense."
+  },
+  {
+    "id": "linear-b",
+    "name": "Linear B",
+    "family": "aegean",
+    "region": "Crete and Mycenaean Greece",
+    "yearStart": -1450,
+    "source": "https://en.wikipedia.org/wiki/Linear_B",
+    "tagline": "Greek written five centuries before the Greek alphabet, and forgotten."
+  },
+  {
+    "id": "cypro-minoan",
+    "name": "Cypro-Minoan",
+    "family": "aegean",
+    "region": "Cyprus",
+    "yearStart": -1550,
+    "source": "https://en.wikipedia.org/wiki/Cypro-Minoan_syllabary",
+    "tagline": "Cyprus's Bronze Age syllabary, adapted from Linear A and still unread."
+  },
+  {
+    "id": "cypriot-syllabary",
+    "name": "Cypriot Syllabary",
+    "family": "aegean",
+    "region": "Cyprus",
+    "yearStart": -1050,
+    "source": "https://en.wikipedia.org/wiki/Cypriot_syllabary",
+    "tagline": "Greek written syllabically for seven centuries, alongside the alphabet."
+  },
+  {
+    "id": "maya",
+    "name": "Maya Script",
+    "family": "mesoamerican",
+    "region": "Mesoamerica (Guatemala, Mexico, Belize, Honduras)",
+    "yearStart": -300,
+    "source": "https://en.wikipedia.org/wiki/Maya_script",
+    "tagline": "The only substantially deciphered writing system of the Americas."
+  },
+  {
+    "id": "isthmian",
+    "name": "Isthmian (Epi-Olmec)",
+    "family": "mesoamerican",
+    "region": "Isthmus of Tehuantepec, Mexico",
+    "yearStart": -150,
+    "source": "https://en.wikipedia.org/wiki/Isthmian_script",
+    "tagline": "A sparse Mesoamerican corpus, claimed as deciphered and widely doubted."
+  },
+  {
+    "id": "zapotec",
+    "name": "Zapotec",
+    "family": "mesoamerican",
+    "region": "Oaxaca, Mexico",
+    "yearStart": -500,
+    "source": "https://en.wikipedia.org/wiki/Zapotec_script",
+    "tagline": "Monte Albán's monumental script, the earliest writing in Mesoamerica."
+  },
+  {
+    "id": "aztec",
+    "name": "Aztec (Nahuatl) Writing",
+    "family": "mesoamerican",
+    "region": "Central Mexico",
+    "yearStart": 1200,
+    "source": "https://en.wikipedia.org/wiki/Aztec_writing",
+    "tagline": "Pictorial codices with rebus name-glyphs, in the Mixteca-Puebla tradition."
+  },
+  {
+    "id": "indus",
+    "name": "Indus Script",
+    "family": "undeciphered",
+    "region": "Indus Valley (Pakistan and northwest India)",
+    "yearStart": -2600,
+    "source": "https://en.wikipedia.org/wiki/Indus_script",
+    "tagline": "Thousands of seals, no long texts, and no agreed reading."
+  },
+  {
+    "id": "rongorongo",
+    "name": "Rongorongo",
+    "family": "undeciphered",
+    "region": "Easter Island (Rapa Nui)",
+    "yearStart": 1500,
+    "source": "https://en.wikipedia.org/wiki/Rongorongo",
+    "tagline": "Twenty-six wooden objects, carved in reverse boustrophedon, unread."
+  },
+  {
+    "id": "voynich",
+    "name": "Voynich Manuscript Script",
+    "family": "undeciphered",
+    "region": "Central Europe",
+    "yearStart": 1404,
+    "source": "https://en.wikipedia.org/wiki/Voynich_manuscript",
+    "tagline": "A single illustrated codex in an alphabet used nowhere else."
+  },
+  {
+    "id": "proto-sinaitic",
+    "name": "Proto-Sinaitic",
+    "family": "semitic",
+    "region": "Sinai Peninsula and Middle Egypt",
+    "yearStart": -1850,
+    "source": "https://en.wikipedia.org/wiki/Proto-Sinaitic_script",
+    "tagline": "The first alphabet: about forty inscriptions from a turquoise mine, and the ancestor of A."
+  },
+  {
+    "id": "proto-canaanite",
+    "name": "Proto-Canaanite",
+    "family": "semitic",
+    "region": "Canaan (Levant)",
+    "yearStart": -1400,
+    "source": "https://en.wikipedia.org/wiki/Proto-Canaanite_alphabet",
+    "tagline": "The Late Bronze Age stage between the Sinai inscriptions and Phoenician."
+  },
+  {
+    "id": "phoenician",
+    "name": "Phoenician",
+    "family": "semitic",
+    "region": "Levantine coast, and the Mediterranean",
+    "yearStart": -1050,
+    "source": "https://en.wikipedia.org/wiki/Phoenician_alphabet",
+    "tagline": "Twenty-two consonants, one fixed direction, and the parent of Greek and Aramaic alike."
+  },
+  {
+    "id": "paleo-hebrew",
+    "name": "Paleo-Hebrew",
+    "family": "semitic",
+    "region": "Kingdoms of Israel and Judah",
+    "yearStart": -800,
+    "source": "https://en.wikipedia.org/wiki/Paleo-Hebrew_alphabet",
+    "tagline": "The original Hebrew script, displaced by Aramaic but not quite killed."
+  },
+  {
+    "id": "samaritan",
+    "name": "Samaritan",
+    "family": "semitic",
+    "region": "Nablus, West Bank; Holon, Israel",
+    "yearStart": -600,
+    "source": "https://en.wikipedia.org/wiki/Samaritan_script",
+    "tagline": "The only living descendant of the original Hebrew letterforms."
+  },
+  {
+    "id": "ancient-south-arabian",
+    "name": "Ancient South Arabian",
+    "family": "semitic",
+    "region": "Yemen and southern Arabia",
+    "yearStart": -1000,
+    "source": "https://en.wikipedia.org/wiki/Ancient_South_Arabian_script",
+    "tagline": "The monumental musnad of Saba, and the parent of Ethiopian writing."
+  },
+  {
+    "id": "ancient-north-arabian",
+    "name": "Ancient North Arabian",
+    "family": "semitic",
+    "region": "Northern Arabia and the Syrian desert",
+    "yearStart": -800,
+    "source": "https://en.wikipedia.org/wiki/Ancient_North_Arabian",
+    "tagline": "Tens of thousands of desert graffiti in a family of related alphabets."
+  },
+  {
+    "id": "geez",
+    "name": "Ge'ez (Ethiopic)",
+    "family": "semitic",
+    "region": "Ethiopia and Eritrea",
+    "yearStart": -100,
+    "source": "https://en.wikipedia.org/wiki/Ge%CA%BDez_script",
+    "tagline": "An abugida invented in fourth-century Aksum, still written every day."
+  },
+  {
+    "id": "tifinagh",
+    "name": "Tifinagh",
+    "family": "semitic",
+    "region": "North Africa and the Sahara",
+    "yearStart": -300,
+    "source": "https://en.wikipedia.org/wiki/Tifinagh",
+    "tagline": "The Berber script: ancient Libyco-Berber, kept alive by the Tuareg and now official in Morocco."
+  },
+  {
+    "id": "aramaic",
+    "name": "Aramaic",
+    "family": "aramaic",
+    "region": "Levant, Mesopotamia, Persia, Central Asia",
+    "yearStart": -800,
+    "source": "https://en.wikipedia.org/wiki/Aramaic_alphabet",
+    "tagline": "The most generative script in history: nearly every Middle Eastern and Indian writing system runs through it."
+  },
+  {
+    "id": "hebrew",
+    "name": "Hebrew",
+    "family": "aramaic",
+    "region": "Israel, and the Jewish diaspora",
+    "yearStart": -300,
+    "source": "https://en.wikipedia.org/wiki/Hebrew_alphabet",
+    "tagline": "The Aramaic square script, adopted for Hebrew and never given up."
+  },
+  {
+    "id": "syriac",
+    "name": "Syriac",
+    "family": "aramaic",
+    "region": "Syria, Iraq, Turkey, Kerala",
+    "yearStart": -100,
+    "source": "https://en.wikipedia.org/wiki/Syriac_alphabet",
+    "tagline": "Three cursive hands that carried Christianity from Edessa to China."
+  },
+  {
+    "id": "mandaic",
+    "name": "Mandaic",
+    "family": "aramaic",
+    "region": "southern Iraq and Khuzestan, Iran",
+    "yearStart": 200,
+    "source": "https://en.wikipedia.org/wiki/Mandaic_alphabet",
+    "tagline": "The script of the Mandaeans, in which every letter is a vowel or a consonant."
+  },
+  {
+    "id": "palmyrene",
+    "name": "Palmyrene",
+    "family": "aramaic",
+    "region": "Palmyra, Syria",
+    "yearStart": -100,
+    "source": "https://en.wikipedia.org/wiki/Palmyrene_alphabet",
+    "tagline": "The monumental hand of a caravan city, and the first Semitic script deciphered."
+  },
+  {
+    "id": "nabataean",
+    "name": "Nabataean",
+    "family": "aramaic",
+    "region": "Petra, Jordan, and northern Arabia",
+    "yearStart": -200,
+    "source": "https://en.wikipedia.org/wiki/Nabataean_alphabet",
+    "tagline": "Petra's cursive, which ligatured itself into the Arabic alphabet."
+  },
+  {
+    "id": "arabic",
+    "name": "Arabic",
+    "family": "aramaic",
+    "region": "North Africa, the Middle East, South and Southeast Asia",
+    "yearStart": 400,
+    "source": "https://en.wikipedia.org/wiki/Arabic_script",
+    "tagline": "The second most widely used script on earth, and the most thoroughly cursive."
+  },
+  {
+    "id": "perso-arabic",
+    "name": "Perso-Arabic",
+    "family": "aramaic",
+    "region": "Iran, Afghanistan, Pakistan, India",
+    "yearStart": 900,
+    "source": "https://en.wikipedia.org/wiki/Persian_alphabet",
+    "tagline": "Arabic plus four letters, and the model for every eastern adaptation."
+  },
+  {
+    "id": "urdu-nastaliq",
+    "name": "Urdu (Nastaliq)",
+    "family": "aramaic",
+    "region": "Pakistan and India",
+    "yearStart": 1300,
+    "source": "https://en.wikipedia.org/wiki/Urdu_alphabet",
+    "tagline": "Perso-Arabic with retroflexes, set on a diagonal baseline."
+  },
+  {
+    "id": "thaana",
+    "name": "Thaana",
+    "family": "aramaic",
+    "region": "Maldives",
+    "yearStart": 1600,
+    "source": "https://en.wikipedia.org/wiki/Thaana",
+    "tagline": "A Maldivian invention whose consonants are derived from numerals."
+  },
+  {
+    "id": "hanifi-rohingya",
+    "name": "Hanifi Rohingya",
+    "family": "aramaic",
+    "region": "Rakhine State, Myanmar; Bangladesh",
+    "yearStart": 1980,
+    "source": "https://en.wikipedia.org/wiki/Hanifi_Rohingya_script",
+    "tagline": "A modern alphabet built on Arabic forms for a stateless language."
+  },
+  {
+    "id": "pahlavi",
+    "name": "Pahlavi",
+    "family": "aramaic",
+    "region": "Persia",
+    "yearStart": -200,
+    "source": "https://en.wikipedia.org/wiki/Pahlavi_scripts",
+    "tagline": "Middle Persian in Aramaic letters, with Aramaic words read aloud as Persian."
+  },
+  {
+    "id": "avestan",
+    "name": "Avestan",
+    "family": "aramaic",
+    "region": "Sasanian Persia; Parsi India",
+    "yearStart": 400,
+    "source": "https://en.wikipedia.org/wiki/Avestan_alphabet",
+    "tagline": "A phonetically engineered alphabet, designed to record scripture exactly."
+  },
+  {
+    "id": "sogdian",
+    "name": "Sogdian",
+    "family": "aramaic",
+    "region": "Samarkand and the Silk Road",
+    "yearStart": 100,
+    "source": "https://en.wikipedia.org/wiki/Sogdian_alphabet",
+    "tagline": "The Silk Road's commercial cursive, and the hinge to Inner Asia."
+  },
+  {
+    "id": "old-uyghur",
+    "name": "Old Uyghur",
+    "family": "aramaic",
+    "region": "Tarim Basin and Mongolia",
+    "yearStart": 700,
+    "source": "https://en.wikipedia.org/wiki/Old_Uyghur_alphabet",
+    "tagline": "Sogdian turned on its side, and the ancestor of the Mongolian script."
+  },
+  {
+    "id": "mongolian",
+    "name": "Mongolian",
+    "family": "aramaic",
+    "region": "Inner Mongolia (China) and Mongolia",
+    "yearStart": 1204,
+    "source": "https://en.wikipedia.org/wiki/Mongolian_script",
+    "tagline": "The only major living script written in vertical columns left to right."
+  },
+  {
+    "id": "manchu",
+    "name": "Manchu",
+    "family": "aramaic",
+    "region": "Manchuria and Qing China",
+    "yearStart": 1599,
+    "source": "https://en.wikipedia.org/wiki/Manchu_alphabet",
+    "tagline": "The Mongolian script with dots and circles, and the language of the Qing court."
+  },
+  {
+    "id": "old-turkic",
+    "name": "Old Turkic (Orkhon)",
+    "family": "aramaic",
+    "region": "Mongolia and the Yenisei",
+    "yearStart": 700,
+    "source": "https://en.wikipedia.org/wiki/Old_Turkic_script",
+    "tagline": "The runiform script of the Orkhon inscriptions, the oldest Turkic texts."
+  },
+  {
+    "id": "kharosthi",
+    "name": "Kharosthi",
+    "family": "brahmic",
+    "region": "Gandhara (Pakistan and Afghanistan)",
+    "yearStart": -400,
+    "source": "https://en.wikipedia.org/wiki/Kharosthi",
+    "tagline": "Brahmi's right-to-left sibling, the script of Gandharan Buddhism."
+  },
+  {
+    "id": "greek",
+    "name": "Greek",
+    "family": "greek",
+    "region": "Greece, Cyprus, and the ancient Mediterranean",
+    "yearStart": -800,
+    "source": "https://en.wikipedia.org/wiki/History_of_the_Greek_alphabet",
+    "tagline": "The first script to write vowels as letters in their own right."
+  },
+  {
+    "id": "old-italic",
+    "name": "Old Italic",
+    "family": "latin",
+    "region": "Italy",
+    "yearStart": -700,
+    "source": "https://en.wikipedia.org/wiki/Old_Italic_scripts",
+    "tagline": "The Euboean Greek alphabet, reshaped across pre-Roman Italy."
+  },
+  {
+    "id": "latin",
+    "name": "Latin",
+    "family": "latin",
+    "region": "Worldwide",
+    "yearStart": -700,
+    "source": "https://en.wikipedia.org/wiki/Latin_script",
+    "tagline": "The most widely used script in history, by a very wide margin."
+  },
+  {
+    "id": "runic",
+    "name": "Runic (Futhark)",
+    "family": "latin",
+    "region": "Scandinavia, Germany, Britain",
+    "yearStart": 150,
+    "source": "https://en.wikipedia.org/wiki/Runes",
+    "tagline": "Angular Germanic letters cut for wood and stone, named for 'secret'."
+  },
+  {
+    "id": "ogham",
+    "name": "Ogham",
+    "family": "latin",
+    "region": "Ireland and western Britain",
+    "yearStart": 350,
+    "source": "https://en.wikipedia.org/wiki/Ogham",
+    "tagline": "Notches cut across the edge of a standing stone, read upwards."
+  },
+  {
+    "id": "gothic-alphabet",
+    "name": "Gothic",
+    "family": "greek",
+    "region": "Balkans and Italy",
+    "yearStart": 350,
+    "source": "https://en.wikipedia.org/wiki/Gothic_alphabet",
+    "tagline": "Designed by a bishop in the fourth century to translate the Bible."
+  },
+  {
+    "id": "armenian",
+    "name": "Armenian",
+    "family": "greek",
+    "region": "Armenia and the Armenian diaspora",
+    "yearStart": 405,
+    "source": "https://en.wikipedia.org/wiki/Armenian_alphabet",
+    "tagline": "Created in AD 405 by Mesrop Mashtots, and essentially unchanged since."
+  },
+  {
+    "id": "georgian",
+    "name": "Georgian",
+    "family": "greek",
+    "region": "Georgia",
+    "yearStart": 430,
+    "source": "https://en.wikipedia.org/wiki/Georgian_scripts",
+    "tagline": "Three successive alphabets for one language, all still legible in Georgia."
+  },
+  {
+    "id": "glagolitic",
+    "name": "Glagolitic",
+    "family": "cyrillic",
+    "region": "Moravia, Bulgaria, Croatia",
+    "yearStart": 863,
+    "source": "https://en.wikipedia.org/wiki/Glagolitic_script",
+    "tagline": "Saint Cyril's original Slavic alphabet, invented for a mission in 863."
+  },
+  {
+    "id": "cyrillic",
+    "name": "Cyrillic",
+    "family": "cyrillic",
+    "region": "Eastern Europe, Russia, Central Asia, the Caucasus",
+    "yearStart": 893,
+    "source": "https://en.wikipedia.org/wiki/Cyrillic_script",
+    "tagline": "Named for Cyril, but built by his students at Preslav after his death."
+  },
+  {
+    "id": "old-permic",
+    "name": "Old Permic (Abur)",
+    "family": "cyrillic",
+    "region": "Komi lands, northern Russia",
+    "yearStart": 1372,
+    "source": "https://en.wikipedia.org/wiki/Old_Permic_script",
+    "tagline": "A fourteenth-century missionary alphabet for Komi, mixing Cyrillic with tamga marks."
+  },
+  {
+    "id": "deseret",
+    "name": "Deseret",
+    "family": "latin",
+    "region": "Utah Territory, United States",
+    "yearStart": 1854,
+    "source": "https://en.wikipedia.org/wiki/Deseret_alphabet",
+    "tagline": "A phonemic replacement for English spelling, sponsored by Brigham Young."
+  },
+  {
+    "id": "shavian",
+    "name": "Shavian",
+    "family": "latin",
+    "region": "United Kingdom",
+    "yearStart": 1960,
+    "source": "https://en.wikipedia.org/wiki/Shavian_alphabet",
+    "tagline": "Bernard Shaw left money in his will for a better English alphabet."
+  },
+  {
+    "id": "ipa",
+    "name": "International Phonetic Alphabet",
+    "family": "latin",
+    "region": "Worldwide (scholarly)",
+    "yearStart": 1888,
+    "source": "https://en.wikipedia.org/wiki/International_Phonetic_Alphabet",
+    "tagline": "One symbol per speech sound, for every language on earth."
+  },
+  {
+    "id": "braille",
+    "name": "Braille",
+    "family": "latin",
+    "region": "Worldwide",
+    "yearStart": 1824,
+    "source": "https://en.wikipedia.org/wiki/Braille",
+    "tagline": "A tactile six-dot cell, devised by a fifteen-year-old in 1824."
+  },
+  {
+    "id": "brahmi",
+    "name": "Brahmi",
+    "family": "brahmic",
+    "region": "India and Sri Lanka",
+    "yearStart": -400,
+    "source": "https://en.wikipedia.org/wiki/Brahmi_script",
+    "tagline": "The ancestor of 198 scripts, and the first alphabet to organise itself by phonetics."
+  },
+  {
+    "id": "gupta",
+    "name": "Gupta (Late Brahmi)",
+    "family": "brahmic",
+    "region": "Northern India",
+    "yearStart": 320,
+    "source": "https://en.wikipedia.org/wiki/Gupta_script",
+    "tagline": "The northern cursive of the Gupta empire, from which most Indian scripts descend."
+  },
+  {
+    "id": "siddham",
+    "name": "Siddham",
+    "family": "brahmic",
+    "region": "India, China, Japan",
+    "yearStart": 550,
+    "source": "https://en.wikipedia.org/wiki/Siddha%E1%B9%83_script",
+    "tagline": "The Buddhist script of the Silk Road, still written by Japanese calligraphers."
+  },
+  {
+    "id": "sharada",
+    "name": "Sharada",
+    "family": "brahmic",
+    "region": "Kashmir and the Punjab hills",
+    "yearStart": 800,
+    "source": "https://en.wikipedia.org/wiki/Sharada_script",
+    "tagline": "Kashmir's script, and the root of the Landa commercial hands."
+  },
+  {
+    "id": "nagari",
+    "name": "Nagari",
+    "family": "brahmic",
+    "region": "Northern and central India",
+    "yearStart": 600,
+    "source": "https://en.wikipedia.org/wiki/Nagari_script",
+    "tagline": "The 'urban' script of medieval India, parent of Devanagari and Nandinagari."
+  },
+  {
+    "id": "devanagari",
+    "name": "Devanagari",
+    "family": "brahmic",
+    "region": "India and Nepal",
+    "yearStart": 800,
+    "source": "https://en.wikipedia.org/wiki/Devanagari",
+    "tagline": "The fourth most widely used writing system on earth, in over 120 languages."
+  },
+  {
+    "id": "gurmukhi",
+    "name": "Gurmukhi",
+    "family": "brahmic",
+    "region": "Punjab, India",
+    "yearStart": 1539,
+    "source": "https://en.wikipedia.org/wiki/Gurmukhi",
+    "tagline": "Standardised by the second Sikh Guru so scripture could be written exactly."
+  },
+  {
+    "id": "gujarati",
+    "name": "Gujarati",
+    "family": "brahmic",
+    "region": "Gujarat, India",
+    "yearStart": 1600,
+    "source": "https://en.wikipedia.org/wiki/Gujarati_script",
+    "tagline": "Devanagari with the headline removed, for speed of writing."
+  },
+  {
+    "id": "bengali-assamese",
+    "name": "Bengali–Assamese",
+    "family": "brahmic",
+    "region": "Bengal and Assam",
+    "yearStart": 1000,
+    "source": "https://en.wikipedia.org/wiki/Bengali%E2%80%93Assamese_script",
+    "tagline": "The fifth most used script in the world, shared by two national languages."
+  },
+  {
+    "id": "odia",
+    "name": "Odia",
+    "family": "brahmic",
+    "region": "Odisha, India",
+    "yearStart": 1050,
+    "source": "https://en.wikipedia.org/wiki/Odia_script",
+    "tagline": "Rounded tops, because a straight stylus stroke splits a palm leaf."
+  },
+  {
+    "id": "tibetan",
+    "name": "Tibetan",
+    "family": "brahmic",
+    "region": "Tibet, Bhutan, Nepal, India",
+    "yearStart": 620,
+    "source": "https://en.wikipedia.org/wiki/Tibetan_script",
+    "tagline": "Commissioned by a seventh-century emperor, and famously conservative in spelling."
+  },
+  {
+    "id": "phags-pa",
+    "name": "ʼPhags-pa",
+    "family": "brahmic",
+    "region": "The Mongol Empire",
+    "yearStart": 1269,
+    "source": "https://en.wikipedia.org/wiki/%CA%BCPhags-pa_script",
+    "tagline": "A universal script for the Mongol empire, designed by a Tibetan lama in 1269."
+  },
+  {
+    "id": "kadamba",
+    "name": "Kadamba",
+    "family": "brahmic",
+    "region": "Karnataka and the Deccan",
+    "yearStart": 400,
+    "source": "https://en.wikipedia.org/wiki/Kadamba_script",
+    "tagline": "Southern Brahmi in the Deccan, parent of Kannada and Telugu."
+  },
+  {
+    "id": "kannada",
+    "name": "Kannada",
+    "family": "brahmic",
+    "region": "Karnataka, India",
+    "yearStart": 1400,
+    "source": "https://en.wikipedia.org/wiki/Kannada_script",
+    "tagline": "The rounded Deccan hand, for one of India's oldest literary languages."
+  },
+  {
+    "id": "telugu",
+    "name": "Telugu",
+    "family": "brahmic",
+    "region": "Andhra Pradesh and Telangana, India",
+    "yearStart": 1400,
+    "source": "https://en.wikipedia.org/wiki/Telugu_script",
+    "tagline": "Distinctive tick-marked letters for the most spoken Dravidian language."
+  },
+  {
+    "id": "pallava",
+    "name": "Pallava (Grantha)",
+    "family": "brahmic",
+    "region": "Tamil Nadu and maritime Southeast Asia",
+    "yearStart": 300,
+    "source": "https://en.wikipedia.org/wiki/Pallava_script",
+    "tagline": "The script Tamil merchants carried to Southeast Asia, seeding a dozen alphabets."
+  },
+  {
+    "id": "tamil",
+    "name": "Tamil",
+    "family": "brahmic",
+    "region": "Tamil Nadu, Sri Lanka, Singapore, Malaysia",
+    "yearStart": 700,
+    "source": "https://en.wikipedia.org/wiki/Tamil_script",
+    "tagline": "The simplest Brahmic inventory, because Tamil needs no aspirates."
+  },
+  {
+    "id": "malayalam",
+    "name": "Malayalam",
+    "family": "brahmic",
+    "region": "Kerala, India",
+    "yearStart": 830,
+    "source": "https://en.wikipedia.org/wiki/Malayalam_script",
+    "tagline": "Grantha's fullest development, with the largest letter inventory in India."
+  },
+  {
+    "id": "sinhala",
+    "name": "Sinhala",
+    "family": "brahmic",
+    "region": "Sri Lanka",
+    "yearStart": 700,
+    "source": "https://en.wikipedia.org/wiki/Sinhala_script",
+    "tagline": "Sri Lanka's rounded script, with prenasalised consonants unique in the family."
+  },
+  {
+    "id": "khmer",
+    "name": "Khmer",
+    "family": "brahmic",
+    "region": "Cambodia",
+    "yearStart": 611,
+    "source": "https://en.wikipedia.org/wiki/Khmer_script",
+    "tagline": "The oldest dated inscription in Southeast Asia, and the parent of Thai and Lao."
+  },
+  {
+    "id": "thai",
+    "name": "Thai",
+    "family": "brahmic",
+    "region": "Thailand",
+    "yearStart": 1283,
+    "source": "https://en.wikipedia.org/wiki/Thai_script",
+    "tagline": "Attributed to King Ram Khamhaeng in 1283, and tonally ingenious."
+  },
+  {
+    "id": "lao",
+    "name": "Lao",
+    "family": "brahmic",
+    "region": "Laos",
+    "yearStart": 1350,
+    "source": "https://en.wikipedia.org/wiki/Lao_script",
+    "tagline": "Thai's sibling, deliberately simplified by twentieth-century reform."
+  },
+  {
+    "id": "mon-burmese",
+    "name": "Mon–Burmese",
+    "family": "brahmic",
+    "region": "Myanmar",
+    "yearStart": 1000,
+    "source": "https://en.wikipedia.org/wiki/Burmese_script",
+    "tagline": "Circles, because a straight line splits a palm leaf."
+  },
+  {
+    "id": "kawi",
+    "name": "Kawi (Old Javanese)",
+    "family": "brahmic",
+    "region": "Java, Bali, and maritime Southeast Asia",
+    "yearStart": 750,
+    "source": "https://en.wikipedia.org/wiki/Kawi_script",
+    "tagline": "The maritime Southeast Asian script from which a dozen island alphabets grew."
+  },
+  {
+    "id": "balinese",
+    "name": "Balinese",
+    "family": "brahmic",
+    "region": "Bali, Indonesia",
+    "yearStart": 1000,
+    "source": "https://en.wikipedia.org/wiki/Balinese_script",
+    "tagline": "Still cut into palm-leaf lontar manuscripts by Balinese scribes."
+  },
+  {
+    "id": "javanese",
+    "name": "Javanese (Hanacaraka)",
+    "family": "brahmic",
+    "region": "Java, Indonesia",
+    "yearStart": 1500,
+    "source": "https://en.wikipedia.org/wiki/Javanese_script",
+    "tagline": "Named for the first four letters of a sentence about two quarrelling messengers."
+  },
+  {
+    "id": "baybayin",
+    "name": "Baybayin",
+    "family": "brahmic",
+    "region": "Philippines",
+    "yearStart": 1300,
+    "source": "https://en.wikipedia.org/wiki/Baybayin",
+    "tagline": "Widely literate at Spanish contact, then almost completely lost."
+  },
+  {
+    "id": "cham",
+    "name": "Cham",
+    "family": "brahmic",
+    "region": "Vietnam and Cambodia",
+    "yearStart": 350,
+    "source": "https://en.wikipedia.org/wiki/Cham_script",
+    "tagline": "The Champa kingdom's script, and the oldest Indic script in Southeast Asia."
+  },
+  {
+    "id": "ol-chiki",
+    "name": "Ol Chiki",
+    "family": "brahmic",
+    "region": "Jharkhand, West Bengal, Odisha",
+    "yearStart": 1925,
+    "source": "https://en.wikipedia.org/wiki/Ol_Chiki_script",
+    "tagline": "Designed in 1925 so Santali would not have to be written in anyone else's alphabet."
+  },
+  {
+    "id": "canadian-syllabics",
+    "name": "Canadian Aboriginal Syllabics",
+    "family": "brahmic",
+    "region": "Canada",
+    "yearStart": 1840,
+    "source": "https://en.wikipedia.org/wiki/Canadian_Aboriginal_syllabics",
+    "tagline": "The vowel is written by rotating the consonant — unique among the world's scripts."
+  },
+  {
+    "id": "pollard-miao",
+    "name": "Pollard (Miao)",
+    "family": "brahmic",
+    "region": "Guizhou and Yunnan, China",
+    "yearStart": 1904,
+    "source": "https://en.wikipedia.org/wiki/Pollard_script",
+    "tagline": "A Canadian syllabics-inspired script for the Hmong of Guizhou."
+  },
+  {
+    "id": "oracle-bone",
+    "name": "Oracle Bone Script",
+    "family": "sinitic",
+    "region": "Anyang, Henan, China",
+    "yearStart": -1250,
+    "source": "https://en.wikipedia.org/wiki/Oracle_bone_script",
+    "tagline": "Divination questions carved on ox scapulae and turtle plastrons."
+  },
+  {
+    "id": "seal-script",
+    "name": "Seal Script",
+    "family": "sinitic",
+    "region": "China",
+    "yearStart": -800,
+    "source": "https://en.wikipedia.org/wiki/Seal_script",
+    "tagline": "Standardised by the Qin after unification, and still cut into seals today."
+  },
+  {
+    "id": "chinese-traditional",
+    "name": "Chinese Characters (Traditional)",
+    "family": "sinitic",
+    "region": "Taiwan, Hong Kong, Macau, and diaspora",
+    "yearStart": -200,
+    "source": "https://en.wikipedia.org/wiki/Chinese_characters",
+    "tagline": "The only one of the four original inventions of writing still in continuous use."
+  },
+  {
+    "id": "chinese-simplified",
+    "name": "Chinese Characters (Simplified)",
+    "family": "sinitic",
+    "region": "Mainland China, Singapore, Malaysia",
+    "yearStart": 1956,
+    "source": "https://en.wikipedia.org/wiki/Simplified_Chinese_characters",
+    "tagline": "A 1956 state reform that reduced stroke counts for mass literacy."
+  },
+  {
+    "id": "kanji",
+    "name": "Kanji",
+    "family": "sinitic",
+    "region": "Japan",
+    "yearStart": 400,
+    "source": "https://en.wikipedia.org/wiki/Kanji",
+    "tagline": "Chinese characters adapted to a completely unrelated language."
+  },
+  {
+    "id": "manyogana",
+    "name": "Man'yōgana",
+    "family": "sinitic",
+    "region": "Japan",
+    "yearStart": 600,
+    "source": "https://en.wikipedia.org/wiki/Man%27y%C5%8Dgana",
+    "tagline": "Chinese characters used purely for sound, and the raw material of kana."
+  },
+  {
+    "id": "hiragana",
+    "name": "Hiragana",
+    "family": "sinitic",
+    "region": "Japan",
+    "yearStart": 800,
+    "source": "https://en.wikipedia.org/wiki/Hiragana",
+    "tagline": "The cursive 'women's hand' that became Japan's default syllabary."
+  },
+  {
+    "id": "katakana",
+    "name": "Katakana",
+    "family": "sinitic",
+    "region": "Japan",
+    "yearStart": 800,
+    "source": "https://en.wikipedia.org/wiki/Katakana",
+    "tagline": "Fragments of characters, invented by monks annotating sutras."
+  },
+  {
+    "id": "hanja",
+    "name": "Hanja",
+    "family": "sinitic",
+    "region": "Korea",
+    "yearStart": 100,
+    "source": "https://en.wikipedia.org/wiki/Hanja",
+    "tagline": "Chinese characters in Korea, now largely retired in favour of Hangul."
+  },
+  {
+    "id": "chu-nom",
+    "name": "Chữ Nôm",
+    "family": "sinitic",
+    "region": "Vietnam",
+    "yearStart": 1200,
+    "source": "https://en.wikipedia.org/wiki/Ch%E1%BB%AF_N%C3%B4m",
+    "tagline": "Over ten thousand new characters for Vietnamese, abandoned in a generation."
+  },
+  {
+    "id": "sawndip",
+    "name": "Sawndip",
+    "family": "sinitic",
+    "region": "Guangxi, China",
+    "yearStart": 700,
+    "source": "https://en.wikipedia.org/wiki/Sawndip",
+    "tagline": "Zhuang written in adapted Chinese characters for over a millennium, unofficially."
+  },
+  {
+    "id": "nushu",
+    "name": "Nüshu",
+    "family": "sinitic",
+    "region": "Jiangyong, Hunan, China",
+    "yearStart": 1600,
+    "source": "https://en.wikipedia.org/wiki/N%C3%BCshu",
+    "tagline": "A syllabary used only by women, in one county, for four centuries."
+  },
+  {
+    "id": "bopomofo",
+    "name": "Bopomofo (Zhuyin)",
+    "family": "sinitic",
+    "region": "Taiwan",
+    "yearStart": 1918,
+    "source": "https://en.wikipedia.org/wiki/Bopomofo",
+    "tagline": "A phonetic notation built from fragments of ancient characters."
+  },
+  {
+    "id": "khitan-large",
+    "name": "Khitan Large Script",
+    "family": "sinitic",
+    "region": "Liao Empire (northern China and Mongolia)",
+    "yearStart": 920,
+    "source": "https://en.wikipedia.org/wiki/Khitan_large_script",
+    "tagline": "Commissioned in 920 by an emperor who wanted his own writing."
+  },
+  {
+    "id": "khitan-small",
+    "name": "Khitan Small Script",
+    "family": "sinitic",
+    "region": "Liao Empire",
+    "yearStart": 925,
+    "source": "https://en.wikipedia.org/wiki/Khitan_small_script",
+    "tagline": "Phonetic elements assembled into square blocks — five centuries before Hangul."
+  },
+  {
+    "id": "jurchen",
+    "name": "Jurchen",
+    "family": "sinitic",
+    "region": "Jin Empire (Manchuria and northern China)",
+    "yearStart": 1119,
+    "source": "https://en.wikipedia.org/wiki/Jurchen_script",
+    "tagline": "The Jin dynasty's script, modelled on Khitan and Chinese."
+  },
+  {
+    "id": "tangut",
+    "name": "Tangut",
+    "family": "sinitic",
+    "region": "Western Xia (Ningxia and Gansu)",
+    "yearStart": 1036,
+    "source": "https://en.wikipedia.org/wiki/Tangut_script",
+    "tagline": "Nearly six thousand brand-new characters, decreed into existence in 1036."
+  },
+  {
+    "id": "yi",
+    "name": "Yi (Nuosu)",
+    "family": "sinitic",
+    "region": "Sichuan and Yunnan, China",
+    "yearStart": 1400,
+    "source": "https://en.wikipedia.org/wiki/Yi_script",
+    "tagline": "A classical logographic script, reformed in 1974 into a 756-sign syllabary."
+  },
+  {
+    "id": "dongba",
+    "name": "Dongba",
+    "family": "sinitic",
+    "region": "Yunnan, China",
+    "yearStart": 1000,
+    "source": "https://en.wikipedia.org/wiki/Dongba_symbols",
+    "tagline": "The world's only pictographic system still used by living priests."
+  },
+  {
+    "id": "hangul",
+    "name": "Hangul",
+    "family": "independent",
+    "region": "Korea",
+    "yearStart": 1443,
+    "source": "https://en.wikipedia.org/wiki/Hangul",
+    "tagline": "The one script whose inventor explained his reasoning, and shaped the letters like the mouth."
+  },
+  {
+    "id": "cherokee",
+    "name": "Cherokee",
+    "family": "independent",
+    "region": "Oklahoma and North Carolina, United States",
+    "yearStart": 1821,
+    "source": "https://en.wikipedia.org/wiki/Cherokee_syllabary",
+    "tagline": "Invented by an illiterate silversmith who reasoned out how writing must work."
+  },
+  {
+    "id": "vai",
+    "name": "Vai",
+    "family": "independent",
+    "region": "Liberia and Sierra Leone",
+    "yearStart": 1833,
+    "source": "https://en.wikipedia.org/wiki/Vai_syllabary",
+    "tagline": "A West African syllabary said to have been revealed in a dream."
+  },
+  {
+    "id": "nko",
+    "name": "N'Ko",
+    "family": "independent",
+    "region": "Guinea, Mali, Côte d'Ivoire",
+    "yearStart": 1949,
+    "source": "https://en.wikipedia.org/wiki/N%27Ko_script",
+    "tagline": "Created in 1949 for the Manding languages, and spread by grassroots literacy campaigns."
+  },
+  {
+    "id": "adlam",
+    "name": "Adlam",
+    "family": "independent",
+    "region": "Guinea and the Fula diaspora",
+    "yearStart": 1989,
+    "source": "https://en.wikipedia.org/wiki/Adlam_script",
+    "tagline": "Invented by two teenage brothers in 1989, and now on Android keyboards."
+  },
+  {
+    "id": "bamum",
+    "name": "Bamum",
+    "family": "independent",
+    "region": "Cameroon",
+    "yearStart": 1896,
+    "source": "https://en.wikipedia.org/wiki/Bamum_script",
+    "tagline": "A king's script, revised six times in twenty years from pictographs to a syllabary."
+  },
+  {
+    "id": "pahawh-hmong",
+    "name": "Pahawh Hmong",
+    "family": "independent",
+    "region": "Laos, Vietnam, and the Hmong diaspora",
+    "yearStart": 1959,
+    "source": "https://en.wikipedia.org/wiki/Pahawh_Hmong",
+    "tagline": "A messianic script that writes the rime before the onset."
+  },
+  {
+    "id": "mwangwego",
+    "name": "Mwangwego",
+    "family": "independent",
+    "region": "Malawi",
+    "yearStart": 1979,
+    "source": "https://en.wikipedia.org/wiki/Mwangwego_script",
+    "tagline": "A Malawian abugida designed in 1979, taught by its inventor for decades."
+  },
+  {
+    "id": "osage",
+    "name": "Osage",
+    "family": "independent",
+    "region": "Oklahoma, United States",
+    "yearStart": 2006,
+    "source": "https://en.wikipedia.org/wiki/Osage_script",
+    "tagline": "A twenty-first-century alphabet, created so a language could be revived on its own terms."
+  },
+  {
+    "id": "afaka",
+    "name": "Afaka",
+    "family": "independent",
+    "region": "Suriname",
+    "yearStart": 1910,
+    "source": "https://en.wikipedia.org/wiki/Afaka_script",
+    "tagline": "A syllabary for a Surinamese creole, said to have come in a dream in 1908."
+  },
+  {
+    "id": "shorthand",
+    "name": "Shorthand (Pitman & Gregg)",
+    "family": "independent",
+    "region": "Britain and the United States",
+    "yearStart": 1837,
+    "source": "https://en.wikipedia.org/wiki/Pitman_shorthand",
+    "tagline": "Phonetic systems built for speed, and an influence on two continents' scripts."
+  },
+  {
+    "id": "tocharian",
+    "name": "Tocharian",
+    "family": "brahmic",
+    "region": "Tarim Basin, Xinjiang",
+    "yearStart": 300,
+    "source": "https://en.wikipedia.org/wiki/Tocharian_script",
+    "tagline": "The slanting Brahmi of the Silk Road, recording two extinct Indo-European languages spoken in what is now Xinjiang."
+  },
+  {
+    "id": "meitei-mayek",
+    "name": "Meitei Mayek",
+    "family": "brahmic",
+    "region": "Manipur and Assam, India",
+    "yearStart": 568,
+    "source": "https://en.wikipedia.org/wiki/Meitei_script",
+    "tagline": "Every letter is named after a part of the human body, and the whole script was brought back from disuse by act of legislature."
+  },
+  {
+    "id": "modi",
+    "name": "Modi",
+    "family": "brahmic",
+    "region": "Maharashtra, India",
+    "yearStart": 1200,
+    "source": "https://en.wikipedia.org/wiki/Modi_script",
+    "tagline": "A cursive shorthand for Devanagari, designed so a clerk need not lift the pen to re-ink it."
+  },
+  {
+    "id": "tai-tham",
+    "name": "Tai Tham (Lanna)",
+    "family": "brahmic",
+    "region": "Northern Thailand, Laos, Shan State, Sipsong Panna",
+    "yearStart": 1376,
+    "source": "https://en.wikipedia.org/wiki/Tai_Tham_script",
+    "tagline": "The palm-leaf script of Lan Na, whose rounded letters exist because a straight stroke tears a leaf along its fibres."
+  },
+  {
+    "id": "grantha",
+    "name": "Grantha",
+    "family": "brahmic",
+    "region": "Tamil Nadu and Kerala, India",
+    "yearStart": 400,
+    "source": "https://en.wikipedia.org/wiki/Grantha_script",
+    "tagline": "A classical South Indian Brahmic script primarily used to write Sanskrit and the ancestor of the modern Malayalam script."
+  },
+  {
+    "id": "tigalari",
+    "name": "Tigalari (Tulu)",
+    "family": "brahmic",
+    "region": "Tulu Nadu and Malnad regions of Karnataka, India",
+    "yearStart": 1159,
+    "source": "https://en.wikipedia.org/wiki/Tigalari_script",
+    "tagline": "Tigalari is a Southern Brahmic script historically used in coastal Karnataka to write Sanskrit, Tulu, and Kannada."
+  },
+  {
+    "id": "nandinagari",
+    "name": "Nandinagari",
+    "family": "brahmic",
+    "region": "Southern India (Maharashtra, Karnataka, Andhra Pradesh, Tamil Nadu)",
+    "yearStart": 1000,
+    "source": "https://en.wikipedia.org/wiki/Nandinagari",
+    "tagline": "Nandinagari is a historical Brahmic script that served as the official script of the Vijayanagara Empire for writing Sanskrit in southern India."
+  },
+  {
+    "id": "kaithi",
+    "name": "Kaithi",
+    "family": "brahmic",
+    "region": "Northern and Eastern India (Uttar Pradesh, Bihar, Jharkhand)",
+    "yearStart": 1090,
+    "source": "https://en.wikipedia.org/wiki/Kaithi",
+    "tagline": "Kaithi was the primary administrative and legal script of North India for centuries before being displaced by Devanagari under British rule."
+  },
+  {
+    "id": "sylheti-nagri",
+    "name": "Sylheti Nagri",
+    "family": "brahmic",
+    "region": "Sylhet region (Bangladesh and Northeast India)",
+    "yearStart": 1549,
+    "source": "https://en.wikipedia.org/wiki/Sylheti_Nagri",
+    "tagline": "An Indic script uniquely adapted by Bengali Muslims to write Islamic poetry and literature in the Sylhet region."
+  },
+  {
+    "id": "takri",
+    "name": "Takri",
+    "family": "brahmic",
+    "region": "Himachal Pradesh, Jammu and Kashmir, Punjab, and Uttarakhand, India",
+    "yearStart": 1500,
+    "source": "https://en.wikipedia.org/wiki/Takri_script",
+    "tagline": "A Brahmic abugida formerly used across the western Himalayas for administrative and literary records before being replaced by Devanagari."
+  },
+  {
+    "id": "multani",
+    "name": "Multani",
+    "family": "brahmic",
+    "region": "Multan region of Punjab and northern Sindh, Pakistan",
+    "yearStart": 1700,
+    "source": "https://en.wikipedia.org/wiki/Multani_script",
+    "tagline": "A mercantile script of the Punjab that briefly flourished as a literary medium before being replaced by the Arabic script."
+  },
+  {
+    "id": "khojki",
+    "name": "Khojki",
+    "family": "brahmic",
+    "region": "Sindh, Punjab, and Gujarat (present-day Pakistan and India)",
+    "yearStart": 1400,
+    "source": "https://en.wikipedia.org/wiki/Khojki_script",
+    "tagline": "Khojki is a Landa-derived script historically used by the Nizari Ismaili community of South Asia to record their sacred devotional poetry."
+  },
+  {
+    "id": "khudawadi",
+    "name": "Khudawadi",
+    "family": "brahmic",
+    "region": "Sindh (Pakistan) and India",
+    "yearStart": 1550,
+    "source": "https://en.wikipedia.org/wiki/Khudabadi_script",
+    "tagline": "A Landa-based mercantile script standardized in the 19th century for the Sindhi language before being eclipsed by the Perso-Arabic script."
+  },
+  {
+    "id": "chakma",
+    "name": "Chakma",
+    "family": "brahmic",
+    "region": "Chittagong Hill Tracts (Bangladesh) and Northeastern India (Mizoram, Tripura, Assam, Arunachal Pradesh)",
+    "yearStart": 500,
+    "source": "https://en.wikipedia.org/wiki/Chakma_script",
+    "tagline": "An indigenous Brahmic abugida of Bangladesh and Northeast India, notable for its inherent long 'ā' vowel and recent digital revitalization."
+  },
+  {
+    "id": "lepcha",
+    "name": "Lepcha",
+    "family": "brahmic",
+    "region": "Sikkim, Darjeeling, Kalimpong (India), Nepal, Bhutan",
+    "yearStart": 1700,
+    "source": "https://en.wikipedia.org/wiki/Lepcha_script",
+    "tagline": "An abugida derived from Tibetan that features unique superposed final consonants due to a historical 90-degree rotation in its writing direction."
+  },
+  {
+    "id": "limbu",
+    "name": "Limbu",
+    "family": "brahmic",
+    "region": "Nepal and Northeastern India",
+    "yearStart": 1740,
+    "source": "https://en.wikipedia.org/wiki/Limbu_script",
+    "tagline": "The Limbu script is a Brahmic abugida invented in the 18th century to write the Limbu language and preserve its oral traditions."
+  },
+  {
+    "id": "tirhuta",
+    "name": "Tirhuta",
+    "family": "brahmic",
+    "region": "Mithila region (Bihar, India and southern Nepal)",
+    "yearStart": 600,
+    "source": "https://en.wikipedia.org/wiki/Tirhuta_script",
+    "tagline": "An ancient Brahmic abugida historically used to write Maithili and Sanskrit in the Mithila region, now largely replaced by Devanagari."
+  },
+  {
+    "id": "saurashtra",
+    "name": "Saurashtra",
+    "family": "brahmic",
+    "region": "Tamil Nadu, India",
+    "yearStart": 1880,
+    "source": "https://en.wikipedia.org/wiki/Saurashtra_script",
+    "tagline": "A Brahmic script developed in the late 19th century to write the Saurashtra language in Tamil Nadu."
+  },
+  {
+    "id": "ranjana",
+    "name": "Ranjana",
+    "family": "brahmic",
+    "region": "Nepal, Tibet, China, Mongolia, Japan",
+    "yearStart": 1100,
+    "source": "https://en.wikipedia.org/wiki/Ranjana_script",
+    "tagline": "An ornate Brahmic script used for centuries to write Sanskrit and Newar, renowned for its calligraphic beauty and use in Buddhist texts."
+  },
+  {
+    "id": "soyombo",
+    "name": "Soyombo",
+    "family": "brahmic",
+    "region": "Mongolia",
+    "yearStart": 1686,
+    "source": "https://en.wikipedia.org/wiki/Soyombo_script",
+    "tagline": "An intricate 17th-century Mongolian abugida created by Zanabazar for Buddhist translations, whose special symbol became Mongolia's national emblem."
+  },
+  {
+    "id": "zanabazar-square",
+    "name": "Zanabazar Square",
+    "family": "brahmic",
+    "region": "Mongolia",
+    "yearStart": 1686,
+    "source": "https://en.wikipedia.org/wiki/Zanabazar_square_script",
+    "tagline": "A horizontal square script created by Zanabazar to write Mongolian, Tibetan, and Sanskrit."
+  },
+  {
+    "id": "marchen",
+    "name": "Marchen",
+    "family": "brahmic",
+    "region": "Tibet",
+    "yearStart": 600,
+    "source": "https://en.wikipedia.org/wiki/Marchen_script",
+    "tagline": "The Marchen script is a Tibetan-derived abugida historically used by the Bön religion to write the extinct Zhang-Zhung language of western Tibet."
+  },
+  {
+    "id": "tai-le",
+    "name": "Tai Le",
+    "family": "brahmic",
+    "region": "Yunnan (China), Myanmar, Laos",
+    "yearStart": 1407,
+    "source": "https://en.wikipedia.org/wiki/Tai_Le_script",
+    "tagline": "A Brahmic script used by the Tai Nüa people that underwent significant modern reforms to improve its phonetic accuracy."
+  },
+  {
+    "id": "new-tai-lue",
+    "name": "New Tai Lue",
+    "family": "brahmic",
+    "region": "Yunnan (China) and Southeast Asia",
+    "yearStart": 1950,
+    "source": "https://en.wikipedia.org/wiki/New_Tai_Lue_alphabet",
+    "tagline": "A 1950s Chinese government simplification of the traditional Tai Tham script designed to boost literacy among the Tai Lü people."
+  },
+  {
+    "id": "tai-viet",
+    "name": "Tai Viet",
+    "family": "brahmic",
+    "region": "Northwestern Vietnam, northern Laos, central Thailand",
+    "yearStart": 1500,
+    "source": "https://en.wikipedia.org/wiki/Tai_Viet_script",
+    "tagline": "The Tai Viet script is a Brahmic abugida used by the Tai Dam and other Tai peoples in Vietnam, notable for lacking inherent vowels."
+  },
+  {
+    "id": "buhid",
+    "name": "Buhid",
+    "family": "brahmic",
+    "region": "Mindoro, Philippines",
+    "yearStart": 1300,
+    "source": "https://en.wikipedia.org/wiki/Buhid_script",
+    "tagline": "An indigenous Brahmic abugida of the Philippines, still actively used by the Mangyan people of Mindoro to write poetry and songs on bamboo."
+  },
+  {
+    "id": "hanunoo",
+    "name": "Hanunoo",
+    "family": "brahmic",
+    "region": "Mindoro, Philippines",
+    "yearStart": 1300,
+    "source": "https://en.wikipedia.org/wiki/Hanunoo_script",
+    "tagline": "An indigenous Philippine script famous for being written vertically upward on bamboo to record traditional poetry."
+  },
+  {
+    "id": "tagbanwa",
+    "name": "Tagbanwa",
+    "family": "brahmic",
+    "region": "Palawan, Philippines",
+    "yearStart": 1300,
+    "source": "https://en.wikipedia.org/wiki/Tagbanwa_script",
+    "tagline": "Tagbanwa is an endangered indigenous Philippine script traditionally written bottom-to-top on bamboo but read horizontally."
+  },
+  {
+    "id": "rejang",
+    "name": "Rejang",
+    "family": "brahmic",
+    "region": "Bengkulu and South Sumatra, Indonesia",
+    "yearStart": 1750,
+    "source": "https://en.wikipedia.org/wiki/Rejang_alphabet",
+    "tagline": "An indigenous Brahmic script of Sumatra traditionally incised on bamboo and buffalo horn."
+  },
+  {
+    "id": "lontara",
+    "name": "Lontara (Buginese)",
+    "family": "brahmic",
+    "region": "South Sulawesi and West Sulawesi, Indonesia",
+    "yearStart": 1400,
+    "source": "https://en.wikipedia.org/wiki/Lontara_script",
+    "tagline": "Lontara is a Brahmic script of South Sulawesi, historically written on rolled palm leaves and used for Buginese genealogies and daily registers."
+  },
+  {
+    "id": "batak",
+    "name": "Batak",
+    "family": "brahmic",
+    "region": "Sumatra, Indonesia",
+    "yearStart": 1200,
+    "source": "https://en.wikipedia.org/wiki/Batak_script",
+    "tagline": "An abugida from Sumatra historically used by magician-priests for magical texts and divinatory books."
+  },
+  {
+    "id": "sundanese",
+    "name": "Sundanese",
+    "family": "brahmic",
+    "region": "West Java, Indonesia",
+    "yearStart": 1350,
+    "source": "https://en.wikipedia.org/wiki/Sundanese_script",
+    "tagline": "The Sundanese script is a revived indigenous writing system of West Java, Indonesia, based on a 14th-century script."
+  },
+  {
+    "id": "serbian-cyrillic",
+    "name": "Serbian Cyrillic",
+    "family": "cyrillic",
+    "region": "Serbia, Montenegro, Bosnia and Herzegovina",
+    "yearStart": 1818,
+    "source": "https://en.wikipedia.org/wiki/Serbian_Cyrillic_alphabet",
+    "tagline": "A highly phonetic Cyrillic alphabet reformed in 1818 by Vuk Karadžić to perfectly match the spoken Serbian language."
+  },
+  {
+    "id": "lisu",
+    "name": "Lisu (Fraser)",
+    "family": "latin",
+    "region": "Yunnan (China), Myanmar, Thailand, and India",
+    "yearStart": 1915,
+    "source": "https://en.wikipedia.org/wiki/Fraser_script",
+    "tagline": "An artificial abugida created in 1915 using rotated Latin uppercase letters to write the Lisu language."
+  },
+  {
+    "id": "mundari-bani",
+    "name": "Mundari Bani",
+    "family": "brahmic",
+    "region": "Odisha, Jharkhand, West Bengal, Assam (India)",
+    "yearStart": 1982,
+    "source": "https://en.wikipedia.org/wiki/Mundari_Bani",
+    "tagline": "Mundari Bani is a 20th-century alphabetic script created to write the Austroasiatic Mundari language of eastern India."
+  },
+  {
+    "id": "tangsa",
+    "name": "Tangsa",
+    "family": "brahmic",
+    "region": "Arunachal Pradesh, India and Sagaing Region, Myanmar",
+    "yearStart": 1990,
+    "source": "https://www.unicode.org/L2/L2021/21027-tangsa.pdf",
+    "tagline": "An original alphabet created in 1990 for the Tangsa language, notable for having distinct vowel letters for each of the language's four tones."
+  },
+  {
+    "id": "wancho",
+    "name": "Wancho",
+    "family": "brahmic",
+    "region": "Arunachal Pradesh, India",
+    "yearStart": 2001,
+    "source": "https://indianexpress.com/article/north-east-india/arunachal-pradesh/meet-banwang-losu-arunachal-man-who-scripted-history-by-creating-new-alphabet-for-ancient-tribal-language-5903790/",
+    "tagline": "An independent alphabet created in the 21st century to preserve the Wancho language and culture."
+  },
+  {
+    "id": "medefaidrin",
+    "name": "Medefaidrin",
+    "family": "independent",
+    "region": "Akwa Ibom State, Nigeria",
+    "yearStart": 1930,
+    "source": "https://en.wikipedia.org/wiki/Medefaidrin",
+    "tagline": "Medefaidrin is a constructed script created in 1930s Nigeria to write a Christian \"spirit language\" rooted in glossolalia."
+  }
+]

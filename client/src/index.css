@@ -1,0 +1,546 @@
+/**
+ * Ground is aged vellum, never white. Text is iron-gall ink (brown-black).
+ * ONE accent: rubric vermilion, for structure and attention only.
+ * Ink hierarchy, not color hierarchy. Family pigments stay subordinate.
+ * Type: Cormorant Garamond (display), EB Garamond (body), JetBrains Mono (data).
+ */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: 1px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 3px;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-vellum: var(--vellum);
+  --color-vellum-deep: var(--vellum-deep);
+  --color-vellum-wash: var(--vellum-wash);
+  --color-ink: var(--ink);
+  --color-ink-mid: var(--ink-mid);
+  --color-ink-faint: var(--ink-faint);
+  --color-rubric: var(--rubric);
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "EB Garamond", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+:root {
+  /* Aged vellum ground — three tonal washes, hair-side to flesh-side. */
+  --vellum: oklch(0.945 0.018 82);
+  --vellum-deep: oklch(0.912 0.024 80);
+  --vellum-wash: oklch(0.888 0.028 78);
+
+  /* Iron-gall ink: brown-black, fading warmer at low emphasis. */
+  --ink: oklch(0.28 0.022 55);
+  --ink-mid: oklch(0.44 0.026 58);
+  --ink-faint: oklch(0.62 0.024 62);
+
+  /* The single accent. Rubrication only. */
+  --rubric: oklch(0.512 0.176 32);
+
+  --background: var(--vellum);
+  --foreground: var(--ink);
+  --card: oklch(0.958 0.015 84);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.958 0.015 84);
+  --popover-foreground: var(--ink);
+  --primary: var(--rubric);
+  --primary-foreground: oklch(0.972 0.014 86);
+  --secondary: var(--vellum-deep);
+  --secondary-foreground: var(--ink);
+  --muted: var(--vellum-deep);
+  --muted-foreground: var(--ink-faint);
+  --accent: var(--vellum-wash);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.48 0.17 28);
+  --destructive-foreground: oklch(0.97 0.014 86);
+  --border: oklch(0.79 0.026 74);
+  --input: oklch(0.79 0.026 74);
+  --ring: var(--rubric);
+  --radius: 2px;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.62;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.012em;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--rubric);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: oklch(0.512 0.176 32 / 0.22);
+  }
+}
+
+@layer components {
+  /**
+   * Marginal apparatus: controls are written into the leaf, not mounted on it.
+   * A tool is a hairline-ruled cell with an engraved caption, never a chip.
+   */
+  .apparatus {
+    background: transparent;
+    border: 0;
+    border-left: 1px solid oklch(0.28 0.022 55 / 0.28);
+    color: var(--ink-mid);
+    padding: 0.28rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 160ms var(--ease-out);
+  }
+  .apparatus:hover {
+    color: var(--rubric);
+    border-left-color: var(--rubric);
+    background: oklch(0.512 0.176 32 / 0.05);
+  }
+  .apparatus:active {
+    transform: scale(0.97);
+  }
+  /**
+   * The apparatus rail: a hairline instrument stack sitting on the leaf. Reads
+   * as an engraver's tool mark, not a button — no fill until touched, a single
+   * ruled edge, and a hit area large enough for a thumb.
+   */
+  .rail-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    min-height: 2rem;
+    border: 0;
+    background: oklch(0.941 0.017 84 / 0.72);
+    color: var(--ink-mid);
+    backdrop-filter: blur(3px);
+    box-shadow: inset 0 0 0 1px oklch(0.28 0.022 55 / 0.14);
+    transition: all 150ms var(--ease-out);
+  }
+  .rail-btn:hover {
+    color: var(--rubric);
+    background: oklch(0.941 0.017 84 / 0.94);
+    box-shadow: inset 0 0 0 1px oklch(0.512 0.176 32 / 0.4);
+  }
+  .rail-btn:active {
+    transform: scale(0.94);
+  }
+  @media (pointer: coarse) {
+    .rail-btn {
+      min-width: 2.75rem;
+      min-height: 2.75rem;
+    }
+  }
+  /**
+   * Phone control: a properly sized touch target (44px, Apple's minimum) with a
+   * ruled edge rather than a filled pill, so the foot bar still reads as ruled
+   * apparatus rather than an app toolbar.
+   */
+  .phone-btn {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--vellum-deep);
+    color: var(--ink-mid);
+    transition: transform 160ms var(--ease-out), color 160ms var(--ease-out);
+  }
+  .phone-btn:active {
+    transform: scale(0.96);
+    color: var(--rubric);
+  }
+  /* Marginal glosses: a hairline hangs off the gutter, as a manuscript note. */
+  .gloss {
+    position: relative;
+    padding-left: 0.85rem;
+  }
+  .gloss::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.5rem;
+    height: 1px;
+    background: oklch(0.28 0.022 55 / 0.34);
+  }
+  /* A scribe's field rule: hairline with a terminal tick at each end. */
+  .field-rule {
+    position: relative;
+    height: 1px;
+    background: oklch(0.28 0.022 55 / 0.22);
+  }
+  .field-rule::before,
+  .field-rule::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    width: 1px;
+    height: 5px;
+    background: oklch(0.28 0.022 55 / 0.34);
+  }
+  .field-rule::before {
+    left: 0;
+  }
+  .field-rule::after {
+    right: 0;
+  }
+  /* Engraver's caption voice: small, letterspaced, uppercase mono. */
+  .caption {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .caption-tight {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-mid);
+  }
+
+  /* Plate IV: a cartographic leaf carries its own pale ruling and prick marks.
+     The form controls are catalogue slips — one ruled edge, no browser-like box. */
+  .atlas-leaf {
+    background-image:
+      linear-gradient(90deg, oklch(0.28 0.022 55 / 0.035) 1px, transparent 1px),
+      linear-gradient(0deg, oklch(0.28 0.022 55 / 0.025) 1px, transparent 1px);
+    background-size: 34px 34px, 34px 34px;
+  }
+  .atlas-frame {
+    background-image:
+      radial-gradient(ellipse at 18% 15%, oklch(0.82 0.035 73 / 0.22), transparent 42%),
+      repeating-linear-gradient(to bottom, transparent 0, transparent 39px, oklch(0.28 0.022 55 / 0.045) 39px, oklch(0.28 0.022 55 / 0.045) 40px);
+  }
+  .atlas-slip {
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-left: 1px solid oklch(0.28 0.022 55 / 0.18);
+    border-radius: 0;
+    background-color: oklch(0.958 0.015 84 / 0.46);
+    color: var(--ink);
+    box-shadow: inset 0 -1px 0 oklch(0.28 0.022 55 / 0.05);
+    font-family: var(--font-body);
+  }
+  .atlas-slip::placeholder {
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+  .atlas-register {
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-left: 1px solid oklch(0.28 0.022 55 / 0.18);
+    border-radius: 0;
+    background-color: oklch(0.958 0.015 84 / 0.38);
+    color: var(--ink-mid);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+  .atlas-tool {
+    border: 0;
+    border-left: 1px solid var(--border);
+    background: oklch(0.945 0.018 82 / 0.78);
+    color: var(--ink-mid);
+    box-shadow: inset 0 -1px 0 oklch(0.28 0.022 55 / 0.09);
+  }
+  .atlas-tool:hover {
+    background: oklch(0.945 0.018 82 / 0.96);
+    color: var(--rubric);
+  }
+
+  /* Signature element 1: ruled prickings. Parchment ruled for writing. */
+  .ruled {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 27px,
+      oklch(0.28 0.022 55 / 0.055) 27px,
+      oklch(0.28 0.022 55 / 0.055) 28px
+    );
+  }
+  .pricked::before,
+  .pricked::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      oklch(0.28 0.022 55 / 0.3) 0,
+      oklch(0.28 0.022 55 / 0.3) 1.5px,
+      transparent 1.5px,
+      transparent 28px
+    );
+    pointer-events: none;
+  }
+  .pricked::before {
+    left: 5px;
+  }
+  .pricked::after {
+    right: 5px;
+  }
+
+  /* Vellum grain: subtle fibrous noise so surfaces read as material. */
+  .grain {
+    position: relative;
+  }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");
+  }
+
+  /* Signature element 3: the specimen block, a type-specimen sheet device. */
+  .specimen {
+    background: var(--vellum-wash);
+    border: 1px solid var(--border);
+    box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.4);
+  }
+
+  /* Manuscript scrollbars: hairline, inked. */
+  .quire-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0.28 0.022 55 / 0.26) transparent;
+  }
+  .quire-scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .quire-scroll::-webkit-scrollbar-thumb {
+    background: oklch(0.28 0.022 55 / 0.26);
+  }
+  .quire-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* The specimen sheet is meant to leave the screen. Print it as a broadside:
+     no chrome, ink on paper, and never a specimen split across a page break. */
+  @media print {
+    .grain::after {
+      display: none;
+    }
+    section {
+      break-inside: auto;
+    }
+    li {
+      break-inside: avoid;
+    }
+    h2 {
+      break-after: avoid;
+    }
+  }
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .draw-in {
+    stroke-dasharray: var(--len);
+    stroke-dashoffset: var(--len);
+    animation: draw 900ms var(--ease-out) forwards;
+    animation-delay: var(--delay, 0ms);
+  }
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  .leaf-enter {
+    animation: leaf 260ms var(--ease-out) forwards;
+  }
+  @keyframes leaf {
+    from {
+      transform: translateX(14px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  .settle {
+    animation: settle 420ms var(--ease-out) forwards;
+    animation-delay: var(--delay, 0ms);
+    opacity: 0;
+  }
+  @keyframes settle {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Sheets and summoned leaves. Defined outside the reduced-motion guard so the
+   panels are always positioned correctly; the motion itself is short. */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes sheet-up {
+  from {
+    transform: translateY(14px);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes leaf-in {
+  from {
+    transform: translateX(-16px);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes leaf-in-right {
+  from {
+    transform: translateX(16px);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [style*="sheet-up"],
+  [style*="leaf-in"],
+  [style*="fade-in"] {
+    animation: none !important;
+  }
+}
+
+/**
+ * Two scripts have no Google Fonts webfont, so their specimens are self-hosted
+ * from the Noto project, subset to the codepoints this atlas actually shows.
+ * Without these, Tangut and Old Uyghur render as tofu on every device that
+ * lacks system coverage — which is nearly all of them.
+ */
+@font-face {
+  font-family: "Noto Serif Tangut";
+  src: url("./assets/fonts/tangut.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Serif Old Uyghur";
+  src: url("./assets/fonts/olduyghur.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* Midnight shares the World Languages gallery ground; lineage hues remain distinct. */
+:root[data-theme="midnight"] {
+  color-scheme: dark;
+  --vellum: #080d23; --vellum-deep: #10172f; --vellum-wash: #1a2541;
+  --ink: #dcdce8; --ink-mid: #aab5cf; --ink-faint: #8a98b8;
+  --rubric: #72d6f2; --card: #10172f; --popover: #10172f;
+  --border: #2e3b5c; --input: #2e3b5c;
+  --family-origins: #acb4d2; --family-mesopotamian: #ad90ed;
+  --family-egyptian: #76b9eb; --family-semitic: #b687eb;
+  --family-aramaic: #d17db8; --family-brahmic: #51c2a6;
+  --family-greek: #66b7ec; --family-latin: #859ff3;
+  --family-cyrillic: #b797e7; --family-sinitic: #e58ba0;
+  --family-mesoamerican: #91c878; --family-aegean: #5ccdd5;
+  --family-independent: #c4a4ee; --family-undeciphered: #a2abc4;
+}
+[data-theme="midnight"] .bg-background {
+  background-image: radial-gradient(ellipse at 65% 38%, #23214a88, transparent 68%), radial-gradient(ellipse at 32% 55%, #12365355, transparent 70%);
+}
+[data-theme="midnight"] .grain::after { display: none; }
+[data-theme="midnight"] .rail-btn { background: #10172fe8; color: var(--ink-mid); box-shadow: inset 0 0 0 1px var(--border); }
+[data-theme="midnight"] .rail-btn:hover { color: var(--rubric); background: #1a2541; }
+.theme-switch { position: fixed; bottom: 12px; right: 16px; z-index: 20; min-height: 44px; padding: 8px 12px; background: var(--vellum); color: var(--ink-mid); border: 1px solid var(--border); font: 12px var(--font-mono); }
+[data-bare] .theme-switch { display: none; }
