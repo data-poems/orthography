@@ -79,10 +79,10 @@ Each record links its primary source; the working history keeps the external res
 
 The app uses the Scriptorium Vellum visual language: vellum ground, iron-gall ink hierarchy, disciplined rubric vermilion, and a Cormorant / EB Garamond / JetBrains Mono typographic system.
 
-## Midnight gallery plate
+## App and preview styling
 
-`?theme=midnight` opens the dark blue treatment used by World Languages;
-`?theme=vellum` keeps the manuscript treatment. The corner theme control switches
-between them. `?bare=1&theme=midnight` removes the surrounding interface while
-using the same radial renderer. Capture this at 2400×1260, JPEG quality 92, for
-`client/public/media/radial-card-midnight.jpg`. The original vellum card remains.
+The interactive atlas uses Vellum, including older `?theme=midnight` links.
+Midnight is reserved for `?bare=1&theme=midnight` image captures. The blue
+`client/public/media/radial-card-midnight.jpg` is the tile and social preview;
+its tone does not select the app's theme. Vellum styling predates `3449072`,
+the September 7 commit that introduced Midnight.

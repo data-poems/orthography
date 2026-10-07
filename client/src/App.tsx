@@ -1,7 +1,6 @@
 /**
- * Vellum by default; shared links may select the Midnight plate.
+ * Light theme only; the ground is vellum, so no dark mode toggle.
  */
-import { useState } from "react";
 import NotFound from "@/pages/NotFound";
 import { Route, Router, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -32,18 +31,8 @@ function RouterView() {
 
 function App() {
   const base = routerBaseFromVite();
-  const [night, setNight] = useState(document.documentElement.dataset.theme === "midnight");
-  function toggleTheme() {
-    const next = !night;
-    setNight(next);
-    document.documentElement.dataset.theme = next ? "midnight" : "vellum";
-    const url = new URL(location.href);
-    url.searchParams.set("theme", next ? "midnight" : "vellum");
-    history.replaceState(history.state, "", url);
-  }
   return (
     <ErrorBoundary>
-      <button className="theme-switch" onClick={toggleTheme} aria-label={night ? "Use vellum theme" : "Use midnight theme"}>{night ? "Vellum" : "Midnight"}</button>
       {base ? (
         <Router base={base}>
           <RouterView />
