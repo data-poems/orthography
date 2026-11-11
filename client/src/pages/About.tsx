@@ -8,9 +8,6 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import PlateNav from "@/components/PlateNav";
 import { allScripts, familyColors, familyLabels, type Family } from "@/data";
 
-import { assetUrl } from "@/lib/asset";
-
-const SPECIMENS = assetUrl("media/inscription-specimens.jpg");
 
 function Rubric({ children }: { children: React.ReactNode }) {
   return (
@@ -41,11 +38,10 @@ export default function About() {
       {/* Opening plate */}
       <div className="relative border-b border-border">
         <div
-          className="h-[38vh] min-h-[240px] w-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${SPECIMENS})` }}
-          role="img"
-          aria-label="A plate of inscription specimens from several ancient scripts"
-        />
+          className="flex h-[38vh] min-h-[240px] items-center justify-center gap-10 overflow-hidden px-6 text-[5rem] text-[var(--rubric)]/30"
+          aria-hidden="true">
+          <span>Α</span><span>अ</span><span>א</span><span>A</span>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--vellum)] via-[var(--vellum)]/20 to-transparent" />
         <div className="absolute bottom-5 left-0 right-0">
           <div className="mx-auto max-w-5xl px-6">

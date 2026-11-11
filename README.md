@@ -41,7 +41,7 @@ Specimens follow a strict order of evidence. First choice is the script writing 
 ## Development
 
 ```bash
-pnpm install
+pnpm install --frozen-lockfile
 pnpm dev
 pnpm check
 pnpm build
@@ -51,17 +51,14 @@ The repository is a plain Vite + React app: `client/` is the Vite root, `client/
 
 Production `vite` `base` is `/writing/` (`VITE_BASE_PATH`). Override with `VITE_BASE_PATH=/` for a root-hosted build.
 
-## Deploy
+## Host a build
 
-On drummer the checkout is `/home/coolhand/projects/orthography`. Caddy serves `dist/public` at `/writing/` on datapoems.io, lukesteuber.com, world-languages.com and diachronica.com through one shared `writing_spa` snippet in `~/admin/Caddyfile`; the Sign-Language Atlas (`lukeslp/sign-language-atlas`) sits beside it at `/sign/` on the same four hosts. Rebuild and publish with:
+`pnpm build` writes a static site to `dist/public/`. Serve that directory at
+`/writing/`, with unknown page paths falling back to `index.html` so direct links
+work. To host at the domain root, build with `VITE_BASE_PATH=/ pnpm build`.
 
-```bash
-~/bin/deploy-writing.sh
-```
-
-A systemd timer (`writing-deploy.timer`) fast-forwards `main` and rebuilds when origin moves. It will not overwrite a dirty tree. `client/public/media/radial-card.jpg` is a 2400x1260 render of Plate I; the world-languages.com index uses it as the tile for this atlas.
-
-`scripts/test-poster-download.mjs` is an end-to-end Chromium test for the Plate II PDF. It confirms that the download is a valid PDF without adding test output to the repository.
+`pnpm preview` serves the production build locally. It is a preview server,
+not a production hosting service.
 
 ## Verification notes
 
@@ -75,9 +72,9 @@ The poster export builds its broadside in an isolated iframe and copies only the
 
 ## Sources and limits
 
-Each record links its primary source; the working history keeps the external research notes. Genealogical edges deliberately distinguish attested descent, probable descent, disputed descent, and stimulus diffusion. The atlas does not present uncertain relationships as settled fact.
+Records include source links; the geographic and transmission policies explain how those sources support the map. Some references are secondary summaries. Genealogical edges deliberately distinguish attested descent, probable descent, disputed descent, and stimulus diffusion. Read those edge categories alongside each record's sources; they describe the current interpretation, which may need revision.
 
-The app uses the Scriptorium Vellum visual language: vellum ground, iron-gall ink hierarchy, disciplined rubric vermilion, and a Cormorant / EB Garamond / JetBrains Mono typographic system.
+The default theme pairs a vellum-colored background with dark ink and red accents. Typefaces include Cormorant, EB Garamond, and JetBrains Mono.
 
 ## App and preview styling
 
@@ -86,3 +83,11 @@ Midnight is reserved for `?bare=1&theme=midnight` image captures. The blue
 `client/public/media/radial-card-midnight.jpg` is the tile and social preview;
 its tone does not select the app's theme. Vellum styling predates `3449072`,
 the September 7 commit that introduced Midnight.
+
+## License and attribution
+
+Original application code is [MIT licensed](LICENSE), copyright Luke Steuber.
+Unicode data, bundled fonts, and other third-party materials retain their own
+terms. See [THIRD_PARTY.md](THIRD_PARTY.md) for sources and asset
+provenance. A source citation does not grant permission to redistribute its
+text or images.
