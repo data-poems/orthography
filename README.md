@@ -1,5 +1,8 @@
 # The Tree of Writing
 
+[![Live](https://img.shields.io/badge/live-datapoems.io-4ad7d1?style=flat-square)](https://datapoems.io/writing/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
+
 An interactive atlas of **164 documented writing systems**. The project traces proposed genealogies from the earliest independent inventions through later alphabets, abugidas, syllabaries, logographies, and modern community-led scripts. It is a static React application built as four linked manuscript plates.
 
 | Plate | Purpose |
